@@ -1,1 +1,3 @@
-ads
+1- git add <ficheiro> 
+2- git commit -m "<comentario>"
+3- git push 
