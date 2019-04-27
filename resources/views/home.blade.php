@@ -54,7 +54,7 @@
                     <!-- Slide One - Set the background image for this slide in the line below -->
                     <div
                         class="carousel-item active"
-                        style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ1J-vRxZIRdqURlPuGV5dUGvx_LpQjWPeFbiIcOL1rJhA2mcN1g')">
+                        style="background-image: url('https://www.publicdomainpictures.net/pictures/260000/velka/paper-plane.jpg')">
                         <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">FlightClub</h2>
                             <p class="lead">Web app para gestão do Aeroclube FlightClub.</p>
