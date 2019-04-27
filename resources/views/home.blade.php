@@ -54,7 +54,7 @@
                     <!-- Slide One - Set the background image for this slide in the line below -->
                     <div
                         class="carousel-item active"
-                        style="background-image: url('https://doc-0g-70-docs.googleusercontent.com/docs/securesc/nt96t7rm5kpsu8262rhi30b2c1aminhu/5m59f81k49ermq60umiem4bao2lj0lqp/1555776000000/11636902279801971764/11636902279801971764/1a75wnburFG78udXM3LdDWhN7DDeTH0xn')">
+                        style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ1J-vRxZIRdqURlPuGV5dUGvx_LpQjWPeFbiIcOL1rJhA2mcN1g')">
                         <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">FlightClub</h2>
                             <p class="lead">Web app para gestão do Aeroclube FlightClub.</p>
