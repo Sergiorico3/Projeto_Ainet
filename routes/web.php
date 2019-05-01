@@ -19,3 +19,7 @@ Route::get('/login', function() {
     return view('auth.login');
 });
 
+Route::post('/login', function() {
+    return view('auth.login');
+});
+
