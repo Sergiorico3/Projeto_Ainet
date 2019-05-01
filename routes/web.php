@@ -11,15 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
-Route::get('/login', function() {
-    return view('auth.login');
-});
 
+<<<<<<< HEAD
 Route::post('/login', function() {
     return view('auth.login');
 });
 
+=======
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> 24990137dd1507da3b599d386c833a9e6523b7bc
