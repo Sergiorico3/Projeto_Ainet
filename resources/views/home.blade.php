@@ -1,21 +1,23 @@
-@extends('layouts.master') @section('title', 'FlightClub') @section('content')
-<body>
-   
-    <header>
+@extends('layouts.app')
 
-        <div class="carousel-inner" role="listbox">
-            <!-- Slide One - Set the background image for this slide in the line below -->
-            <div
-                class="carousel-item active"
-                style="background-image: url('https://www.publicdomainpictures.net/pictures/260000/velka/paper-plane.jpg')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h2 class="display-4"><i class="fab fa-telegram-plane"></i> FlightClub</h2>
-                    <p class="lead">Web app para gestão do Aeroclube FlightClub.</p>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    You are logged in!
                 </div>
             </div>
-
         </div>
-
-    </header>
-
-    @endsection
+    </div>
+</div>
+@endsection
