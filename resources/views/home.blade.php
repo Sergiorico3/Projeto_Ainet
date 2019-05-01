@@ -13,29 +13,27 @@
                     @endif You are logged in!
 
                 </div>
-                
-                <form action="{{ action('UserController@index', $user->id) }}" method="post">
-
-                <div class="card-body">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Email</th>
-                                <th>Fullname</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>{{ $user->email }}
-                                </td>
-                                <td>{{ $user->name }}
-                                </td>
-                            </tr>
-                        </tbody>
-
+                <form action="{{route('home',['id'=>$user->id])}}" method="get">
+                    @method('GET')
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Fullname</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->name}}</td>
+                                </tr>
+                            </table>
                     </div>
+                </form>
+                
                 </div>
+
             </div>
         </div>
     </div>

@@ -1,3 +1,1 @@
-﻿--> Importar base de dados 
---> N�o permitir que se possa criar conta mas que apenas se possa fazer login 
---> asdsdasdad
+﻿--> Alterar a rota para ir para o /home/{user} (LoginController)
