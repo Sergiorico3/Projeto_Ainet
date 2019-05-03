@@ -42,11 +42,7 @@
                                     <td>{{$user->tipo_socio}}</td>
                                     <td>{{$user->nome_informal}}</td>
                                     <td>{{$user->sexo}}</td>
-<<<<<<< HEAD
-                                    <td><img src="{{Storage::url('public/fotos/10000_5cc9725993c32.jpg')}}"></td>
-=======
                                     <td><img src="{{route('getfile',['user'=>$user->foto_url])}}"></td>
->>>>>>> 75e87a4a63a95d676837a40b791f8ba7cbcc2373
                                     <td>{{$user->nif}}</td>
                                     <td>{{$user->telefone}}</td>
                                     <td>{{$user->endereco}}</td>
