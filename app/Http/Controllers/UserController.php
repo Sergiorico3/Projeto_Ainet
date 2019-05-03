@@ -10,12 +10,12 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users=User::paginate(5);
+        $user=User::paginate(5);
 
-        return view('home', compact('users'));
+        return view('home', compact('user'));
     }
     
-    public function show(User $user)
+    public function show(User $socio)
     {
         $pagetitle = "Show user";
         /*
@@ -23,6 +23,12 @@ class UserController extends Controller
         */
         return view('home', compact('pagetitle', 'user'));
     }
+
+    public function create(User $socio)
+    {
+        
+    }
+
    
 
 }
