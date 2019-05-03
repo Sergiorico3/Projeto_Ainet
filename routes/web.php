@@ -12,6 +12,7 @@
 */
 
 Auth::routes();
+Auth::routes(['register'=>false, 'verified'=>true]);
 
 Route::get('/home/{user}', 'UserController@show')->name('home');
 
