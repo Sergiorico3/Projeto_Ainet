@@ -16,7 +16,7 @@
 
                 <div class="card-body">
 
-                    <form action="{{route('home',['id'=>$user->id])}}" method="get">
+                    <form method="GET" action="{{route('home',['id'=>$user->id])}}">
                         @method('GET')
                         <table class="table table-striped">
                             <thead>
@@ -42,7 +42,7 @@
                                     <td>{{$user->tipo_socio}}</td>
                                     <td>{{$user->nome_informal}}</td>
                                     <td>{{$user->sexo}}</td>
-                                    <td><img src="{{Storage::url($path)}}"></td>
+                                    <td><img src="{{User::findOrFail('public/fotos/10000_5cc9725993c32.jpg')}}"></td>
                                     <td>{{$user->nif}}</td>
                                     <td>{{$user->telefone}}</td>
                                     <td>{{$user->endereco}}</td>

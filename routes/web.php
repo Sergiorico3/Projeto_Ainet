@@ -16,3 +16,19 @@ Auth::routes(['register'=>false, 'verified'=>true]);
 
 Route::get('/home/{user}', 'UserController@show')->name('home');
 
+Route::get('/storage/{filename}', function ($filename)
+{
+    $path = storage_path('storage/app/public/fotos/' . $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
