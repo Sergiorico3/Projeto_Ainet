@@ -14,8 +14,8 @@
 Auth::routes(['register'=>false, 'verified'=>true]);
 
 //Home
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/{socio}', 'UserController@show')->name('home.show');
+Route::get('/home', 'HomeController@index')->name('home.index');
+Route::get('/home/{user}', 'UserController@show')->name('home');
 
 //Password
 Route::get('/password', 'Auth.LoginController@passwordShow')->name('password.change');
@@ -23,6 +23,9 @@ Route::patch('/password', 'Auth.LoginController@passwordSave')->name('password.s
 
 //email
 Route::get('/email/verify/{id}', 'LoginController@verifyEmail')->name('email');
+
+//fotos
+Route::get('storage/fotos/{foto}', 'UserController@getfile')->name('getfile');
 
 //socio
 Route::get('/socios', 'UserController@show')->name('socios.show');

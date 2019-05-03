@@ -29,7 +29,12 @@ class UserController extends Controller
         
     }
 
-   
+    public function getfile(User $foto) {
+        
+        $path=  DB::select('select foto_url from users where user = ?', [1]);
+        
+        return response()->file(storage_path('storage/fotos/' . $path));
+    }   
 
 }
 
