@@ -16,7 +16,7 @@
 
                 <div class="card-body">
 
-                    <form action="{{route('home',['id'=>$user->id])}}" method="get">
+                    <form method="GET" action="{{route('home.show',['id'=>$user->id])}}" >
                         @method('GET')
                         <table class="table table-striped">
                             <thead>
@@ -59,4 +59,15 @@
             </div>
         </div>
     </div>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+
     @endsection

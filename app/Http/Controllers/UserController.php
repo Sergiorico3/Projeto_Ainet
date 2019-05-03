@@ -15,7 +15,7 @@ class UserController extends Controller
         return view('home', compact('user'));
     }
     
-    public function show(User $socio)
+    public function show(User $user)
     {
         $pagetitle = "Show user";
         /*

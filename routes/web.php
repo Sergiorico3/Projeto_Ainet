@@ -15,14 +15,14 @@ Auth::routes(['register'=>false, 'verified'=>true]);
 
 //Home
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/{socio}', 'UserController@show')->name('home');
+Route::get('/home/{socio}', 'UserController@show')->name('home.show');
 
 //Password
-Route::get('/password', 'LoginController@passwordShow')->name('password.change');
-Route::patch('/password', 'LoginController@passwordSave')->name('password.save');
+Route::get('/password', 'Auth.LoginController@passwordShow')->name('password.change');
+Route::patch('/password', 'Auth.LoginController@passwordSave')->name('password.save');
 
 //email
-Route::get('/email/verify/{id}', 'LoginController')->name('email');
+Route::get('/email/verify/{id}', 'LoginController@verifyEmail')->name('email');
 
 //socio
 Route::get('/socios', 'UserController@show')->name('socios.show');
