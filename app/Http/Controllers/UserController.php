@@ -29,7 +29,10 @@ class UserController extends Controller
         
     }
 
-   
+    public function getfile(User $id) {
+        
+        return $path= $user->foto_url;
+    }   
 
 }
 

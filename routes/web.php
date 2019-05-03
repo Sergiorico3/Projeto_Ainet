@@ -24,6 +24,9 @@ Route::patch('/password', 'Auth.LoginController@passwordSave')->name('password.s
 //email
 Route::get('/email/verify/{id}', 'LoginController@verifyEmail')->name('email');
 
+//fotos
+Route::get('storage/fotos/{foto}', 'UserController@getfile')->name('getfile');
+
 //socio
 Route::get('/socios', 'UserController@show')->name('socios.show');
 Route::get('/socios/{socio}/edit', 'UserController@edit')->name('socios.edit');
