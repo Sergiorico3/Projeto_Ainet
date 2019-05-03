@@ -42,7 +42,7 @@
                                     <td>{{$user->tipo_socio}}</td>
                                     <td>{{$user->nome_informal}}</td>
                                     <td>{{$user->sexo}}</td>
-                                    <td><img src="{{route('getfile',['user'=>$user])}}"></td>
+                                    <td><img src="{{route('getfile',['user'=>$user->foto_url])}}"></td>
                                     <td>{{$user->nif}}</td>
                                     <td>{{$user->telefone}}</td>
                                     <td>{{$user->endereco}}</td>
