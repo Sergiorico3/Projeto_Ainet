@@ -14,6 +14,7 @@
 Auth::routes(['register'=>false, 'verified'=>true]);
 
 //Home
+Route::get('/', 'HomeController@home');
 Route::get('/home', 'HomeController@index')->name('home.index');
 Route::get('/home/{user}', 'UserController@show')->name('home');
 
