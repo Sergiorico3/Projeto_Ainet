@@ -64,9 +64,14 @@ class UserController extends Controller
         return redirect()->action('UserController@index');
     }
     
-    public function listAll(User $socios) {
-        if ($socios->num_socio) {
-            $termoPesquisa = $termoPesquisa->where('num_socio', $socios->num_socio);
+    public function listAll() {
+
+        dd(request()->query());
+        
+        $num_socio=request()->query('num_socio');
+
+        if ($num_socio) {
+            $termoPesquisa = $termoPesquisa->where('num_socio', $num_socio);
         }
 
         if ($socios->nome_informal) {

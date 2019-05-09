@@ -18,18 +18,18 @@
                 <div class="card-body">
 
                     <form method="GET" action="{{route('socios.listAll')}}">
-                        @method('GET')
+                       
                         <legend>Filtrar resultados:</legend>
                         Número sócio:<br>
-                        <input id="num_socio" type="text" class="form-control{{ $errors->has('num_socio') ? ' is-invalid' : '' }}" name="num_socio" value="{{ old('num_socio') }}" required autofocus>
+                        <input id="num_socio" type="text" class="form-control{{ $errors->has('num_socio') ? ' is-invalid' : '' }}" name="num_socio" value="{{ old('num_socio') }}"  autofocus>
                         Nome informal:<br>
-                        <input id="nome_informal" type="text" class="form-control{{ $errors->has('nome_informal') ? ' is-invalid' : '' }}" name="nome_informal" value="{{ old('nome_informal') }}" required autofocus>
+                        <input id="nome_informal" type="text" class="form-control{{ $errors->has('nome_informal') ? ' is-invalid' : '' }}" name="nome_informal" value="{{ old('nome_informal') }}"  autofocus>
                         E-mail:<br>
-                        <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                        <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"  autofocus>
                         Tipo sócio:<br>
-                        <input id="tipo_socio" type="text" class="form-control{{ $errors->has('tipo_socio') ? ' is-invalid' : '' }}" name="tipo_socio" value="{{ old('tipo_socio') }}" required autofocus>
+                        <input id="tipo_socio" type="text" class="form-control{{ $errors->has('tipo_socio') ? ' is-invalid' : '' }}" name="tipo_socio" value="{{ old('tipo_socio') }}"  autofocus>
                         Direção:<br>
-                        <input id="direcao" type="text" class="form-control{{ $errors->has('direcao') ? ' is-invalid' : '' }}" name="direcao" value="{{ old('direcao') }}" required autofocus>
+                        <input id="direcao" type="text" class="form-control{{ $errors->has('direcao') ? ' is-invalid' : '' }}" name="direcao" value="{{ old('direcao') }}" >
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-5">
                                 <br>
@@ -40,9 +40,7 @@
                         </div>
                         <br>
                     </form>
-
-                    <form method="GET" action="{{route('socios.listAll')}}">
-                        @method('GET')
+                    
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -71,7 +69,7 @@
                             @endforeach
                             </table>
                             {{$users->links()}}
-                        </form>
+                        
                     </div>
 
                 </div>
