@@ -64,18 +64,18 @@ class UserController extends Controller
         return redirect()->action('UserController@index');
     }
     
-    public function listAll() {
+    public function listAll() { //alterar para index
 
         dd(request()->query());
         
         $num_socio=request()->query('num_socio');
 
-        if ($num_socio) {
+        if ($num_socio) {       //alterar para "pesquisa"
             $termoPesquisa = $termoPesquisa->where('num_socio', $num_socio);
         }
 
         if ($socios->nome_informal) {
-            $termoPesquisa = $termoPesquisa->where('nome_informal', $socios->nome_informal);
+            $termoPesquisa = $termoPesquisa->where('nome_informal', 'like', '%' .$socios->nome_informal.'%');
         }
 
         if ($socios->email) {
