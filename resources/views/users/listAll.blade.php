@@ -17,9 +17,9 @@
 
                 <div class="card-body">
 
-                    <form method="GET" action="{{route('socios.listAll')}}">
+                    <form method="GET" action="{{route('socios.index')}}">
                        
-                        <legend>Filtrar resultados:</legend>
+                        <legend>Filtrar sócios:</legend>
                         Número sócio:<br>
                         <input id="num_socio" type="text" class="form-control{{ $errors->has('num_socio') ? ' is-invalid' : '' }}" name="num_socio" value="{{ old('num_socio') }}"  autofocus>
                         Nome informal:<br>
@@ -55,29 +55,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $user)
+                            @foreach($pesquisa as $i)
                                 <tr>
-                                    <td><img src="{{route('getfile',['user'=>$user->foto_url])}}"></td>
-                                    <td>{{$user->num_socio}}</td>
-                                    <td>{{$user->nome_informal}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>{{$user->telefone}}</td>
-                                    <td>{{$user->tipo_socio}}</td>
-                                    <td>{{$user->num_licenca}}</td>
-                                    <td>{{$user->direcao}}</td>
+                                    <td><img src="{{route('getfile',['user'=>$i->foto_url])}}"></td>
+                                    <td>{{$i->num_socio}}</td>
+                                    <td>{{$i->nome_informal}}</td>
+                                    <td>{{$i->email}}</td>
+                                    <td>{{$i->telefone}}</td>
+                                    <td>{{$i->tipo_socio}}</td>
+                                    <td>{{$i->num_licenca}}</td>
+                                    <td>{{$i->direcao}}</td>
                                 </tr>
                             @endforeach
+
                             </table>
-                            {{$users->links()}}
-                        
+                            {{$pesquisa->appends(request()->except('page'))->links() }}
+                            
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
-   
-
-
     @endsection

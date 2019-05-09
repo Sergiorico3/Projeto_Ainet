@@ -10,9 +10,35 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user=User::paginate(5);
+        $pesquisa=request()->query();
+        
+        $num_socio=request()->query('num_socio');
+        $nome_informal=request()->query('nome_informal');
+        $email=request()->query('email');
+        $tipo_socio=request()->query('tipo_socio');
+        $direcao=request()->query('direcao');
+        //podemos não criar as variaveis e passar diretamente "request()->query('num_socio')" para o if
 
-        return view('home', compact('socio'));
+        $pesquisa = User::where('id','>','0');
+        
+        if (isset($num_socio)) {      
+            $pesquisa = $pesquisa->where('num_socio', $num_socio);
+        }       
+        if ($nome_informal) {
+            $pesquisa = $pesquisa->where('nome_informal', 'like', '%'.$nome_informal.'%');
+        }
+        if ($email) {
+            $pesquisa = $pesquisa->where('email', $email);
+        }
+        if ($tipo_socio) {
+            $pesquisa = $pesquisa->where('tipo_socio', $tipo_socio);
+        }
+        if ($direcao) {
+            $pesquisa = $pesquisa->where('direcao', $direcao);
+        }
+
+        $pesquisa=$pesquisa->paginate(15);
+        return view('users.listAll', compact('pesquisa'));  
     }
     
     public function show(User $socio)
@@ -32,7 +58,7 @@ class UserController extends Controller
 
     public function getfile(User $id) {
         
-        return $path= $socio->foto_url;
+        return $path = $socio->foto_url;
     }   
 
     public function edit(User $socio)
@@ -64,39 +90,6 @@ class UserController extends Controller
         return redirect()->action('UserController@index');
     }
     
-    public function listAll() { //alterar para index
-
-        dd(request()->query());
-        
-        $num_socio=request()->query('num_socio');
-
-        if ($num_socio) {       //alterar para "pesquisa"
-            $termoPesquisa = $termoPesquisa->where('num_socio', $num_socio);
-        }
-
-        if ($socios->nome_informal) {
-            $termoPesquisa = $termoPesquisa->where('nome_informal', 'like', '%' .$socios->nome_informal.'%');
-        }
-
-        if ($socios->email) {
-            $termoPesquisa = $termoPesquisa->where('email', $socios->email);
-        }
-
-        if ($socios->tipo_socio) {
-            $termoPesquisa = $termoPesquisa->where('tipo_socio', $socios->tipo_socio);
-        }
-
-        if ($socios->direcao) {
-            $termoPesquisa = $termoPesquisa->where('direcao', $socios->direcao);
-        }
-
-
-
-
-
-        $users=User::where('ativo','=','1')->paginate(10);
-        return view('users.listAll', compact('users'));
-    }
 
 }
 
