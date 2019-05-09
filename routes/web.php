@@ -29,7 +29,7 @@ Route::get('/email/verify/{id}', 'LoginController@verifyEmail')->name('email');
 Route::get('storage/fotos/{foto}', 'UserController@getfile')->name('getfile');
 
 //socio
-Route::get('/socios', 'UserController@show')->name('socios.show');
+Route::get('/socios', 'UserController@listAll')->name('socios.listAll');
 Route::get('/socios/{socio}/edit', 'UserController@edit')->name('socios.edit');
 Route::get('/socios/create', 'UserController@create')->name('socios.create');
 Route::post('/socios', 'UserController@store')->name('socios.store');
