@@ -28,7 +28,7 @@ Route::get('/email/verify/{id}', 'LoginController@verifyEmail')->name('email')->
 Route::get('storage/fotos/{foto}', 'UserController@getfile')->name('getfile')->middleware('auth');
 
 //socio
-Route::get('/socios', 'UserController@show')->name('socios.show')->middleware('auth');
+Route::get('/socios', 'UserController@listAll')->name('socios.listAll')->middleware('auth');
 Route::get('/socios/{socio}/edit', 'UserController@edit')->name('socios.edit')->middleware('auth');
 Route::get('/socios/create', 'UserController@create')->name('socios.create')->middleware('isDirecao');
 Route::post('/socios', 'UserController@store')->name('socios.store')->middleware('isDirecao');
