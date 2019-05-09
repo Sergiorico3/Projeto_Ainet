@@ -163,6 +163,20 @@
                                     @endif
                                 </div>
 
+                                <div class="form-label-group">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        name="endereco"
+                                        id="inputNameInformal"
+                                        placeholder="Endereco"
+                                        value="{{ old('name', $socio->endereco) }}">
+                                    <label for="inputName">Endereco</label>
+                                    @if ($errors->has('endereco'))
+                                    <em>{{ $errors->first('endereco') }}</em>
+                                    @endif
+                                </div>
+
                                 <hr class="my-4">
                                 <button
                                     type="submit"
