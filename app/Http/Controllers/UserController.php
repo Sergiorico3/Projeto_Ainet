@@ -40,6 +40,16 @@ class UserController extends Controller
         $pesquisa=$pesquisa->paginate(15);
         return view('users.listAll', compact('pesquisa'));  
     }
+
+    public function store(){
+
+    }
+
+    public function create(User $socio)
+    {
+        $pagetitle = "Add socio";
+        return view('users.create', compact('pagetitle'));
+    }
     
     public function show(User $socio)
     {
@@ -48,26 +58,6 @@ class UserController extends Controller
         $user = User::findOrFail($user);
         */
         return view('home', compact('pagetitle', 'socio'));
-    }
-
-    public function create(User $socio)
-    {
-        $pagetitle = "Add socio";
-        return view('users.create', compact('pagetitle'));
-    }
-
-    public function getfile(User $id) {
-        
-        return $path = $socio->foto_url;
-    }   
-
-    public function edit(User $socio)
-    {
-        $pagetitle = "Show and edit socio";
-        /*
-        $user = User::findOrFail($user);
-        */
-        return view('users.edit', compact('pagetitle', 'socio'));
     }
 
     public function update(Request $request, $id)
@@ -89,6 +79,29 @@ class UserController extends Controller
         $userModel->save();
         return redirect()->action('UserController@index');
     }
+
+    public function destroy(){
+
+    }
+
+    public function edit(User $socio)
+    {
+        $pagetitle = "Show and edit socio";
+        /*
+        $user = User::findOrFail($user);
+        */
+        return view('users.edit', compact('pagetitle', 'socio'));
+    }
+    
+    /* Obsoleto
+    public function getfile(User $id) {
+        
+        return $path = $socio->foto_url;
+    }   
+    */
+    
+
+    
     
 
 }
