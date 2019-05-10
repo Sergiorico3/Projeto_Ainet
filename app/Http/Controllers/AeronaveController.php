@@ -25,7 +25,9 @@ class AeronaveController extends Controller
      */
     public function create()
     {
-        //
+        $pagetitle = "Adicionar aeronave";
+        return view('users.create', compact('pagetitle'));
+
     }
 
     /**

@@ -14,7 +14,8 @@
                     @endif You are logged in!
 
                 </div>
-
+                <a href="{{route('socios.create')}}">Criar sócio</a>
+                
                 <div class="card-body">
 
                     <form method="GET" action="{{route('socios.index')}}">

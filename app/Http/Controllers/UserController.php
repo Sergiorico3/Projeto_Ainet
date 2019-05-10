@@ -45,10 +45,11 @@ class UserController extends Controller
 
     }
 
-    public function create(User $socio)
+    public function create()
     {
+        $socio = new User;
         $pagetitle = "Add socio";
-        return view('users.create', compact('pagetitle'));
+        return view('users.create', compact('socio','pagetitle'));
     }
     
     public function show(User $socio)

@@ -40,8 +40,6 @@
                             @endforeach
 
                             </table>
-                            {{$aeronaves->appends(request()->except('page'))->links() }}
-                            
                     </div>
                 </div>
             </div>
