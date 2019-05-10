@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserRequest;
 
 class UserController extends Controller
 {
@@ -41,7 +42,11 @@ class UserController extends Controller
         return view('users.listAll', compact('pesquisa'));  
     }
 
-    public function store(){
+    public function store(StoreUserRequest $request){
+        $socio = new User;
+        $socio->fill($request->all());
+        $socio->save();
+        return redirect()->route("socios.index")->with('success', 'Sócio criado com sucesso!');
 
     }
 
