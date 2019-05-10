@@ -43,7 +43,7 @@ class UserController extends Controller
     }
 
     public function store(StoreUserRequest $request){
-        $socio = new User;
+        $socio = new User; 
         $socio->fill($request->all());
         $socio->save();
         return redirect()->route("socios.index")->with('success', 'Sócio criado com sucesso!');
