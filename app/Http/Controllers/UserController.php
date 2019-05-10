@@ -22,7 +22,7 @@ class UserController extends Controller
 
         $pesquisa = User::where('id','>','0');
         
-        if (isset($num_socio)) {      
+        if ($num_socio) {      
             $pesquisa = $pesquisa->where('num_socio', $num_socio);
         }       
         if ($nome_informal) {
@@ -43,18 +43,19 @@ class UserController extends Controller
     }
 
     public function store(StoreUserRequest $request){
-        $socio = new User; 
-        $socio->fill($request->all());
+        dd($socio);
+        $socio = new User;
+        $socio->fill(request()->all());
         $socio->save();
+        
         return redirect()->route("socios.index")->with('success', 'Sócio criado com sucesso!');
-
     }
 
     public function create()
     {
-        $socio = new User;
+        //$socio = new User;
         $pagetitle = "Add socio";
-        return view('users.create', compact('socio','pagetitle'));
+        return view('users.create', compact('pagetitle'));
     }
     
     public function show(User $socio)

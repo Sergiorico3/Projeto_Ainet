@@ -1,15 +1,26 @@
 @extends ('layouts.app')
 @section('title', 'Adicionar novo socio')
 @section('content')
-<form action="{{ action('UserController@store', $socio) }}" method="post" class="form-group">
+<form method="post" action="{{route('socios.store')}}"  class="form-group">
     @csrf
     @method('POST')
 
     <div class="form-group">
-        <label for="inputFullname">Número de sócio</label>
+        <label for="num_socio">Número de sócio</label>
         <input
             type="text" class="form-control"
-            name="inputNomeInformal" id="inputNomeInformal"
+            name="num_socio" id="num_socio"
+            placeholder="Introduza o nome informal" value="{{old('num_socio',$socio->num_socio)}}"
+            required
+            pattern="^[0-9]+$"
+            title="Número de sócio deve de conter apenas numeros"/>
+    </div>
+
+    <div class="form-group">
+        <label for="nome_informal">Nome informal</label>
+        <input
+            type="text" class="form-control"
+            name="nome_informal" id="nome_informal"
             placeholder="Introduza o nome informal" value="{{old('nome_informal',$socio->nome_informal)}}"
             required
             pattern="^[a-zA-ZÀ-ú\s]+$"
@@ -17,106 +28,87 @@
     </div>
 
     <div class="form-group">
-        <label for="inputFullname">Nome informal</label>
+        <label for="name">Nome completo</label>
         <input
             type="text" class="form-control"
-            name="inputNomeInformal" id="inputNomeInformal"
-            placeholder="Introduza o nome informal" value="{{old('nome_informal',$socio->nome_informal)}}"
+            name="name" id="name"
+            placeholder="Introduza o nome completo" value="{{old('name',$socio->name)}}"
             required
             pattern="^[a-zA-ZÀ-ú\s]+$"
-            title="Nome informal deve conter apenas letras"/>
-    </div>
-
-    <div class="form-group">
-        <label for="inputFullname">Nome completo</label>
-        <input
-            type="text" class="form-control"
-            name="inputNomeInformal" id="inputNomeInformal"
-            placeholder="Introduza o nome informal" value="{{old('nome_informal',$socio->nome_informal)}}"
-            required
-            pattern="^[a-zA-ZÀ-ú\s]+$"
-            title="Nome informal deve conter apenas letras"/>
+            title="Nome completo deve conter apenas letras"/>
     </div>
 
     <div class="form-group">
         <label for="sexo">Sexo</label><br>
         <label for="masculino">Masculino</label>
-        <input type="radio" name="gender" id="masculino" value="masculino"><br>
+        <input type="radio" name="sexo" id="masculino" value="masculino"><br>
         <label for="feminino">Feminino</label>
-        <input type="radio" name="gender" id="feminino" value="feminino"><br><br>
+        <input type="radio" name="sexo" id="feminino" value="feminino"><br>
 
     </div>
 
     <div class="form-group">
         Data de nascimento:
-        <input type="date" name="dataNascimento">
+        <input type="date" name="data_nascimento">
     </div>
 
-    <div class="form-row align-items-center">
-    <div class="col-auto">
-    <label class="sr-only" for="inlineFormInput">Name</label>
-    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="exemplo">
+    <div class="form-group">
+    <label for="inputEmail">Email</label>
+    <input
+        type="email" class="form-control"
+        name="email" id="inputEmail"
+        placeholder="Endereço de e-mail" value="{{old('email', $socio->email)}}"
+        required 
+        
+        title="Email must be properly formatted"
+        />
     </div>
-    <div class="col-auto">
-    <label class="sr-only" for="inlineFormInputGroup">Username</label>
-    <div class="input-group mb-2">
-        <div class="input-group-prepend">
-        <div class="input-group-text">@</div>
-        </div>
-        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="gmail.com">
-    </div>
-    </div>
-    <div class="col-auto">
-    </div>
-    <div class="col-auto">
-    </div>
-    </div>  
 
     <input type="file" name="pic" accept="image/*">
 
     <div class="form-group">
-        <label for="inputEmail">NIF</label>
+        <label for="nif">NIF</label>
         <input
             type="number" class="form-control"
-            name="email" id="inputEmail"
-            placeholder="Endereço e-mail" value="{{old('email', $socio->email)}}"
+            name="nif" id="nif"
+            placeholder="NIF" value="{{old('nif', $socio->nif)}}"
             required 
-            pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
-            title="O e-mail deve estar bem formatado"/>
+            pattern="^[0-9]+$"
+            title="O NIF deve conter apenas números"/>
     </div>
 
     <div class="form-group">
-        <label for="inputType">Tipo sócio</label>
-        <select name="type" id="inputType" class="form-control">
+        <label for="tipo_socio">Tipo sócio</label>
+        <select name="tipo_socio" id="tipo_socio" class="form-control">
             <option disabled selected> -- Selecione o tipo de sócio -- </option>
-            <option value="P" {{strval(old('type',$socio->type))=='P' ?"selected": ""}}>Piloto</option>
-            <option value="NP" {{strval(old('type',$socio->type))=='NP' ?"selected": ""}}>Não piloto</option> //intval passa para inteiro
-            <option value="A" {{strval(old('type',$socio->type))=='A' ?"selected": ""}}>Aeromodelista</option>
+            <option value="P" {{strval(old('tipo_socio',$socio->tipo_socio))=='P' ?"selected": ""}}>Piloto</option>
+            <option value="NP" {{strval(old('tipo_socio',$socio->tipo_socio))=='NP' ?"selected": ""}}>Não piloto</option>
+            <option value="A" {{strval(old('tipo_socio',$socio->tipo_socio))=='A' ?"selected": ""}}>Aeromodelista</option>
         </select>
     </div>
 
     <div class="form-group">
-        <label for="sexo">Quotas em dia</label><br>
+        <label for="quota_paga">Quotas em dia</label><br>
         <label for="masculino">Sim</label>
-        <input type="radio" name="gender" id="masculino" value="masculino"><br>
+        <input type="radio" name="quota_paga" id="1" value="1"><br>
         <label for="feminino">Não</label>
-        <input type="radio" name="gender" id="feminino" value="feminino"><br><br>
+        <input type="radio" name="quota_paga" id="0" value="0"><br>
     </div>
 
     <div class="form-group">
-        <label for="sexo">Sócio ativo</label><br>
+        <label for="ativo">Sócio ativo</label><br>
         <label for="masculino">Sim</label>
-        <input type="radio" name="gender" id="masculino" value="masculino"><br>
+        <input type="radio" name="ativo" id="1" value="1"><br>
         <label for="feminino">Não</label>
-        <input type="radio" name="gender" id="feminino" value="feminino"><br><br>
+        <input type="radio" name="ativo" id="0" value="0"><br>
     </div>
 
     <div class="form-group">
-        <label for="sexo">Direção</label><br>
+        <label for="direcao">Direção</label><br>
         <label for="masculino">Sim</label>
-        <input type="radio" name="gender" id="masculino" value="masculino"><br>
+        <input type="radio" name="direcao" id="1" value="1"><br>
         <label for="feminino">Não</label>
-        <input type="radio" name="gender" id="feminino" value="feminino"><br><br>
+        <input type="radio" name="direcao" id="0" value="0"><br>
         
     </div>
 
