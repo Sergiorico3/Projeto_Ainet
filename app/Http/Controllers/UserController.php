@@ -47,6 +47,11 @@ class UserController extends Controller
         $socio = new User;
         $socio->fill($request->all());
         $socio->password=Hash::make($socio->data_nascimento);
+        
+        //Guardar a imagem na BD
+        $request->file('foto_url')->store('public/img', 'user_'.$foto_url.'_photo.jpeg');
+
+
         $socio->save();
         return redirect()->route("socios.index")->with('success', 'Sócio criado com sucesso!');
     }
