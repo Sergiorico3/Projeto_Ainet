@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Movimento;
 use Illuminate\Http\Request;
+use App\Http\Controllers\MovimentoController;
 
 class MovimentoController extends Controller
 {
@@ -13,7 +15,43 @@ class MovimentoController extends Controller
      */
     public function index()
     {
-        //
+        $movimentos=request()->query();
+        
+        $id=request()->query('id');
+        $aeronave=request()->query('aeronave');
+        $piloto_id=request()->query('piloto_id');
+        $instrutor_id=request()->query('instrutor_id');
+        $data=request()->query('data');
+        $natureza=request()->query('natureza');
+        $confirmado=request()->query('confirmado');
+
+        $movimentos = Movimento::where('id','>','0');
+        
+        if ($id) {      
+            $movimentos = $movimentos->where('id', $id);
+        }
+        if ($aeronave) {      
+            $movimentos = $movimentos->where('aeronave', $aeronave);
+        }
+        if ($piloto_id) {      
+            $movimentos = $movimentos->where('piloto_id', $piloto_id);
+        }
+        if ($instrutor_id) {      
+            $movimentos = $movimentos->where('instrutor_id', $instrutor_id);
+        }
+        if ($data) {      
+            $movimentos = $movimentos->where('data', $data);
+        }
+        if ($natureza) {      
+            $movimentos = $movimentos->where('natureza', $natureza);
+        }
+        if ($confirmado) {      
+            $movimentos = $movimentos->where('confirmado', $confirmado);
+        }
+
+
+        $movimentos=$movimentos->paginate(15);
+        return view('movimentos.listAll', compact('movimentos'));
     }
 
     /**
@@ -45,7 +83,7 @@ class MovimentoController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
