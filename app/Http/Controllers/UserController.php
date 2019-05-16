@@ -49,7 +49,7 @@ class UserController extends Controller
         $socio->password=Hash::make($socio->data_nascimento);
         
         //Guardar a imagem na BD
-        $request->file('foto_url')->store('public/img', 'user_'.$foto_url.'_photo.jpeg');
+        //por implementar
 
 
         $socio->save();
