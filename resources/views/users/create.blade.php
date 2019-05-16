@@ -1,16 +1,28 @@
 @extends ('layouts.master')
 @section('title', 'Adicionar novo socio')
 @section('content')
+
 <form action="{{route('socios.store')}}" method="post" class="form-group">
     @csrf
     @method('POST')
     <br><br><br>
     <div class="form-group">
+        <label for="name">Nome completo</label>
+        <input
+            type="text" class="form-control"
+            name="name" id="name"
+            placeholder="Introduza o nome completo"
+            required
+            pattern="^[a-zA-ZÀ-ú\s]+$"
+            title="Nome completo deve conter apenas letras"/>
+    </div>
+
+    <div class="form-group">
         <label for="num_socio">Número de sócio</label>
         <input
             type="text" class="form-control"
             name="num_socio" id="num_socio"
-            placeholder="Introduza o nome informal" value=""
+            placeholder="Introduza o nome informal"
             required
             pattern="^[0-9]+$"
             title="Número de sócio deve de conter apenas numeros"/>
@@ -21,30 +33,18 @@
         <input
             type="text" class="form-control"
             name="nome_informal" id="nome_informal"
-            placeholder="Introduza o nome informal" value=""
+            placeholder="Introduza o nome informal"
             required
             pattern="^[a-zA-ZÀ-ú\s]+$"
             title="Nome informal deve conter apenas letras"/>
     </div>
-    
-    <div class="form-group">
-        <label for="name">Nome completo</label>
-        <input
-            type="text" class="form-control"
-            name="name" id="name"
-            placeholder="Introduza o nome completo" value=""
-            required
-            pattern="^[a-zA-ZÀ-ú\s]+$"
-            title="Nome completo deve conter apenas letras"/>
-    </div>
 
     <div class="form-group">
         <label for="sexo">Sexo</label><br>
-        <label for="masculino">Masculino</label>
-        <input type="radio" name="sexo" id="masculino" value="masculino"><br>
-        <label for="feminino">Feminino</label>
-        <input type="radio" name="sexo" id="feminino" value="feminino"><br>
-
+        <label for="Masculino">Masculino</label>
+        <input type="radio" name="sexo" id="M" value="M"><br>
+        <label for="Feminino">Feminino</label>
+        <input type="radio" name="sexo" id="F" value="F"><br>
     </div>
     
     <div class="form-group">
@@ -57,21 +57,21 @@
     <input
         type="email" class="form-control"
         name="email" id="inputEmail"
-        placeholder="Endereço de e-mail" value=""
+        placeholder="Endereço de e-mail"
         required 
         
         title="Email must be properly formatted"
         />
     </div>
 
-    <input type="file" name="pic" accept="image/*">
+    <input type="file" name="foto_url" accept="image/*">
 
     <div class="form-group">
         <label for="nif">NIF</label>
         <input
             type="number" class="form-control"
             name="nif" id="nif"
-            placeholder="NIF" value=""
+            placeholder="NIF"
             required 
             pattern="^[0-9]+$"
             title="O NIF deve conter apenas números"/>

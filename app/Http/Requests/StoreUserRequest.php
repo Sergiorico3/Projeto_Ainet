@@ -25,7 +25,7 @@ class StoreUserRequest extends FormRequest
     {
         return [
             //TODO
-            'name' => 'required|unique:posts|max:255'
+            //'name' => 'required|unique:posts|max:255'
         ];
     }
 }

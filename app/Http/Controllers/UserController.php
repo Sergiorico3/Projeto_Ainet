@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
 
 class UserController extends Controller
@@ -44,17 +45,15 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request){
         $socio = new User;
-        $socio = $request->input('name');
-        $socio->fill($request->input('name'));
+        $socio->fill($request->all());
+        $socio->password=Hash::make($socio->data_nascimento);
         $socio->save();
-        
         return redirect()->route("socios.index")->with('success', 'Sócio criado com sucesso!');
     }
 
     public function create()
     {
-        $socio = new User;
-        return view('users.create', compact('socio'));
+        return view('users.create');
     }
     
     public function show(User $socio)
