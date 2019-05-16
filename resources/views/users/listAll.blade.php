@@ -14,7 +14,13 @@
                     @endif You are logged in!
 
                 </div>
-                <a href="{{route('socios.create')}}">Criar sócio</a>
+
+                <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-5">
+                        <br>
+                        <a href="{{route('socios.create')}}" class="btn btn-info btn-xs" role="button">Criar sócio</a>
+                    </div>
+                </div>
                 
                 <div class="card-body">
 

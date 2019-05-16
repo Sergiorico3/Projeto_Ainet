@@ -43,9 +43,9 @@ class UserController extends Controller
     }
 
     public function store(StoreUserRequest $request){
-        dd($socio);
         $socio = new User;
-        $socio->fill(request()->all());
+        $socio = $request->input('name');
+        $socio->fill($request->input('name'));
         $socio->save();
         
         return redirect()->route("socios.index")->with('success', 'Sócio criado com sucesso!');
@@ -53,9 +53,8 @@ class UserController extends Controller
 
     public function create()
     {
-        //$socio = new User;
-        $pagetitle = "Add socio";
-        return view('users.create', compact('pagetitle'));
+        $socio = new User;
+        return view('users.create', compact('socio'));
     }
     
     public function show(User $socio)
