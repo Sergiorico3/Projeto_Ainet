@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -49,9 +50,11 @@ class UserController extends Controller
         $socio->password=Hash::make($socio->data_nascimento);
         
         //Guardar a imagem na BD
-        //por implementar
-
-
+        $socio->save();
+        $extension=$request->file('foto_url')->getClientOriginalExtension();
+        $name= $socio->id . '_photo.'.$extension;
+        $path = Storage::disk('public')->putFileAs('fotos', $request->file('foto_url'),$name);
+        $socio->foto_url=$name;
         $socio->save();
         return redirect()->route("socios.index")->with('success', 'Sócio criado com sucesso!');
     }

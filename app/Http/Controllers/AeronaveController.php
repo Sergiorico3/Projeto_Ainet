@@ -26,7 +26,7 @@ class AeronaveController extends Controller
     public function create()
     {
         $pagetitle = "Adicionar aeronave";
-        return view('users.create', compact('pagetitle'));
+        return view('aeronaves.create', compact('pagetitle'));
 
     }
 
@@ -38,7 +38,10 @@ class AeronaveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $aeronave = new Aeronave;
+        $aeronave->fill($request->all());
+        $aeronave->save();
+        return redirect()->route("aeronaves.index")->with('success', 'Aeronave criada com sucesso!');
     }
 
     /**
