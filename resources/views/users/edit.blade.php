@@ -30,7 +30,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><img src="{{route('getfile',['user'=>$socio->foto_url])}}"></td>
+                                    <td><img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}"></td>
                                     <td>{{$socio->id}}</td>
                                     <td>{{$socio->name}}</td>
                                     <td>{{$socio->nome_informal}}</td>

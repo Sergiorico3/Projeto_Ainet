@@ -29,8 +29,8 @@ Route::get('/home', 'HomeController@index')->name('home.index');
 //Route::get('storage/fotos/{foto}', 'UserController@getfile')->name('getfile')->middleware('auth');
 
 //socio
-//Route::resource('socios', 'UserController');
-
+Route::resource('socios', 'UserController');
+/*
 Route::get('/socios', 'UserController@index')->name('socios.index')->middleware('auth');
 Route::get('/socios/{socio}/edit', 'UserController@edit')->name('socios.edit')->middleware('auth');
 Route::get('/socios/create', 'UserController@create')->name('socios.create');//->middleware('isDirecao');
@@ -42,7 +42,7 @@ Route::patch('/socios/reset_quotas', 'UserController@reset_quotas')->name('socio
 Route::patch('/socios/{socio}/ativo', 'UserController@ativar')->name('socios.ativar')->middleware('isDirecao');
 Route::patch('/socios/desativar_sem_quotas', 'UserController@desativar')->name('socios.desativar')->middleware('isDirecao');
 Route::post('/socios/{socio}/send_reactivate_mail', 'UserController@reset_quotas')->name('socios.send_reactivate_mail')->middleware('auth');
-
+*/
 
 //aeronaves
 Route::resource('aeronaves', 'AeronaveController', ['parameters'=>['aeronaves'=>'aeronave']])->except('show');
