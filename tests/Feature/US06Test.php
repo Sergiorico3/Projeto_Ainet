@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class US06_ATest extends USTestBase
+class US06Test extends USTestBase
 {
     protected function setUp(): void
     {
@@ -36,7 +36,7 @@ class US06_ATest extends USTestBase
                 '<input type="hidden" name="_token"',
                 $this->normalUser->num_socio,
                 $this->normalUser->sexo == 'M' ? 'Masculino' : 'Feminino',
-                $this->normalUser->tipo_socio == 'P' ? 'Piloto' : ($this->normalUser->tipo_socio == 'NP' ? 'Não Piloto' : 'Aeromodelista')
+                $this->normalUser->tipo_socio = 'P' ? 'Piloto' : ($this->normalUser->tipo_socio = 'NP' ? 'Não Piloto' : 'Aeromodelista')
             ]);
         $response->assertSeeInOrder_2(['<input', 'name="nome_informal"', 'value="'.$this->normalUser->nome_informal.'"', '>'],
                 'Campo [nome_informal] não incluido ou inválido');
@@ -48,9 +48,20 @@ class US06_ATest extends USTestBase
                 'Campo [nif] não incluido ou inválido');
         $response->assertSeeInOrder_2(['<input',' name="telefone"', 'value="'.$this->normalUser->telefone.'"', '>'],
                 'Campo [telefone] não incluido ou inválido');
-        $response->assertSeeInOrder_2(['<input',' type="file"',' name="file_foto"', '>'],
-                'Campo [file_foto] não incluido ou inválido');
         $response->assertSeeInOrder_2(['<textarea', 'name="endereco"', '>', $this->normalUser->endereco, '</textarea>'],
                 'Campo [endereco] não incluido ou inválido');
     }
+
+    // // Protecção de recursos será testada posterioremente
+    // public function testProtecaoGetSociosEditParaAnonimo()
+    // {
+    //     $this->get("/socios/". $this->normalUser2->id.'/edit')
+    //             ->assertUnauthorized('GET', "/socios/". $this->normalUser2->id.'/edit');
+    // }
+
+    // public function testProtecaoGetSociosEditParaOutroSocio()
+    // {
+    //     $this->actingAs($this->normalUser)->get("/socios/". $this->normalUser2->id.'/edit')
+    //             ->assertUnauthorized('GET', "/socios/". $this->normalUser2->id.'/edit');
+    // }
 }

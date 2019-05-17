@@ -29,6 +29,10 @@
         <server name="MAIL_DRIVER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>
+<<<<<<< HEAD
         <env name="TELESCOPE_ENABLED" value="false"/> 
+=======
+        <env name="TELESCOPE_ENABLED" value="false"/>  
+>>>>>>> bf57bb9be75af28a822605172ab10d54912dcb6b
     </php>
 </phpunit>
