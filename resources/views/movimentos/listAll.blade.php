@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">Lista de movimentos</div>
 
-                                </div>
+                                
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-5">
                         <br>
@@ -69,7 +69,6 @@
                                     <th>Tipo de instrução</th>
                                     <th>Instrutor</th>
                                     <th>Confirmado</th>
-                                    <th>Observações</th>    
                                 </tr>
                             </thead>
                             <tbody>
@@ -95,7 +94,6 @@
                                     <td>{{$movimento->tipo_instrucao}}</td>
                                     <td>{{$movimento->instrutor_id}}</td>
                                     <td>{{$movimento->confirmado}}</td>
-                                    <td>{{$movimento->observacoes}}</td>
                                 </tr>
                             @endforeach
 

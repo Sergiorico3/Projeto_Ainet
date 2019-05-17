@@ -16,7 +16,7 @@
     <div class="col-sm-12 col-md-4">
         <label for="hora_descolagem">Hora descolagem</label>
         <input
-            type="number" class="form-control"
+            type="datetime" class="form-control"
             name="hora_descolagem" id="hora_descolagem"
             placeholder="Hora descolagem"
             required 
@@ -143,85 +143,100 @@
             title="O nº descolagens deve conter apenas números"/>
             <br>
     </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <div class="col-sm-12 col-md-4">
-        <label for="marca">Marca</label>
+        <label for="num_pessoas">Nº pessoas a bordo</label>
+        <input
+            type="number" class="form-control"
+            name="num_pessoas" id="num_pessoas"
+            placeholder="Nº aterragens"
+            required 
+            pattern="^[0-9]+$"
+            title="O nº pessoas a bordo deve conter apenas números"/>
+            <br>
+    </div>  
+
+    <div class="col-sm-12 col-md-4">
+        <label for="conta_horas_inicio">Conta horas início</label>
+        <input
+            type="number" class="form-contol"
+            name="conta_horas_inicio" id="conta_horas_inicio"
+            placeholder="Conta horas início"
+            required 
+            pattern="^[0-9]+$"
+            title="Conta horas início deve conter apenas números"/>
+            <br>
+    </div>
+
+    <div class="col-sm-12 col-md-4">
+        <label for="conta_horas_fim">Conta horas fim</label>
+        <input
+            type="number" class="form-control"
+            name="conta_horas_fim" id="conta_horas_fim"
+            placeholder="Conta horas fim"
+            required 
+            pattern="^[0-9]+$"
+            title="Conta horas fim deve conter apenas números"/>
+            <br>
+    </div>
+
+    <div class="col-sm-12 col-md-4">
+        <label for="tempo_voo">Tempo voo</label>
+        <input
+            type="number" class="form-control"
+            name="tempo_voo" id="tempo_voo"
+            placeholder="Tempo voo"
+            required 
+            pattern="^[0-9]+$"
+            title="Tempo voo fim deve conter apenas números"/>
+            <br>
+    </div>   
+    
+    <div class="col-sm-12 col-md-4">
+        <label for="tempo_voo">Preço voo</label>
+        <input
+            type="number" class="form-control"
+            name="preco_voo" id="preco_voo"
+            placeholder="Preço voo"
+            required 
+            pattern="^[0-9]+$"
+            title="Preço voo fim deve conter apenas números"/>
+            <br>
+    </div>
+
+    <div class="col-sm-12 col-md-4">
+        <label for="natureza">Método de pagamento</label>
+        <select name="modo_pagamento" id="modo_pagamento" class="form-control">
+            <option disabled selected> -- Selecione o método de pagamento -- </option>
+            <option value="N">Numerário</option>
+            <option value="M">Multibanco</option>
+            <option value="T">Transferência</option>
+            <option value="P">Pacote de horas</option>
+        </select>
+        <br>
+    </div>
+
+    <div class="col-sm-12 col-md-4">
+        <label for="num_recibo">Nº recibo</label>
+        <input
+            type="number" class="form-control"
+            name="num_recibo" id="num_recibo"
+            placeholder="Nº recibo"
+            required 
+            pattern="^[0-9]+$"
+            title="Nº recibo fim deve conter apenas números"/>
+            <br>
+    </div>
+    
+    <div class="col-sm-12 col-md-4">
+        <label for="observacoes">Observações</label>
         <input
             type="text" class="form-control"
-            name="marca" id="marca"
-            placeholder="Introduza a marca"
+            name="observacoes" id="observacoes"
+            placeholder="Observações"
             required
             pattern="^[a-zA-ZÀ-ú\s]+$"
-            title="A marca deve conter apenas letras"/>
-            <br>
-    </div>
-    
-    <div class="col-sm-12 col-md-4">
-        <label for="modelo">Modelo</label>
-        <input
-            type="text" class="form-control"
-            name="modelo" id="modelo"
-            placeholder="Introduza o modelo"
-            required
-            pattern="^[A-Za-z0-9\-]+$"
-            title="O modelo deve conter apenas letras numeros e cifrão"/>
-            <br>
-    </div>
-
-    <div class="col-sm-12 col-md-4">
-        <label for="num_lugares">Nº de lugares</label>
-        <input
-            type="number" class="form-control"
-            name="num_lugares" id="num_lugares"
-            placeholder="Nº de lugares"
-            required 
-            pattern="^[0-9]+$"
-            title="O nº de lugares deve conter apenas números"/>
-            <br>
-    </div>
-
-    <div class="col-sm-12 col-md-4">
-        <label for="conta_horas">Nº de horas</label>
-        <input
-            type="number" class="form-control"
-            name="conta_horas" id="conta_horas"
-            placeholder="Nº de horas"
-            required 
-            pattern="^[0-9]+$"
-            title="O nº horas deve conter apenas números"/>
-            <br>
-    </div>
-
-    <div class="col-sm-12 col-md-4">
-        <label for="preco_hora">Preço hora</label>
-        <input
-            type="number" class="form-control"
-            name="preco_hora" id="preco_hora"
-            placeholder="Preço hora"
-            required 
-            pattern="^[0-9]+$"
-            title="O preço/hora deve conter apenas números"/>
+            title="As observações devem conter apenas letras"/>
             <br>
     </div>
     
