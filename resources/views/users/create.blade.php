@@ -2,7 +2,7 @@
 @section('title', 'Adicionar novo socio')
 @section('content')
 
-<form action="{{route('socios.store')}}" method="post" class="form-group">
+<form action="{{route('socios.store')}}" method="post" class="form-group" enctype="multipart/form-data">
     @csrf
     @method('POST')
     <br><br><br>
@@ -73,13 +73,13 @@
     <div class="col-sm-12 col-md-4">
         <input type="file" name="foto_url" accept="image/*">
     </div>
+
     <div class="col-sm-12 col-md-4">
         <label for="nif">NIF</label>
         <input
             type="number" class="form-control"
             name="nif" id="nif"
             placeholder="NIF"
-            required 
             pattern="^[0-9]+$"
             title="O NIF deve conter apenas números"/>
             <br>

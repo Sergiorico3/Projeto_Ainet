@@ -68,7 +68,6 @@
 
                             </table>
                             {{$pesquisa->appends(request()->except('page'))->links() }}
-                            
                     </div>
                 </div>
             </div>

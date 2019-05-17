@@ -52,9 +52,11 @@ class UserController extends Controller
         $socio->password=Hash::make($socio->data_nascimento);
         
         //Guardar a imagem na BD
-        //por implementar
-
-
+        $socio->save();
+        $extension=$request->file('foto_url')->getClientOriginalExtension();
+        $name= $socio->id . '_photo.'.$extension;
+        $path = Storage::disk('public')->putFileAs('fotos', $request->file('foto_url'),$name);
+        $socio->foto_url=$name;
         $socio->save();
         return redirect()->route("socios.index")->with('success', 'Sócio criado com sucesso!');
     }
