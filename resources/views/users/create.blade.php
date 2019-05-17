@@ -1,4 +1,4 @@
-@extends ('layouts.master')
+@extends ('layouts.app')
 @section('title', 'Adicionar novo socio')
 @section('content')
 
