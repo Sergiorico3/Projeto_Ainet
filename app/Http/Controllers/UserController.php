@@ -97,7 +97,7 @@ class UserController extends Controller
         
         $socio->save();
 
-        return redirect()->action('HomeController@index', Auth::user()->id)->with(['msgglobal' => 'User Edited!']);
+        return redirect()->action('socios.index', Auth::user()->id)->with(['msgglobal' => 'User Edited!']);
     }
 
     public function destroy(){

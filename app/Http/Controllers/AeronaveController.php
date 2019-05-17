@@ -61,9 +61,10 @@ class AeronaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Aeronave $aeronave)
     {
-        //
+        $pagetitle = "Show and edit aeronave";
+        return view('aeronaves.edit', compact('pagetitle', 'aeronave'));
     }
 
     /**
@@ -75,7 +76,7 @@ class AeronaveController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
