@@ -53,7 +53,7 @@
     
     <div class="col-sm-12 col-md-4">
         Data de nascimento:
-        <input type="date" name="data_nascimento">
+        <input type="date" name="data_nascimento" required>
         <br>
     </div>
     
@@ -63,10 +63,9 @@
         type="email" class="form-control"
         name="email" id="inputEmail"
         placeholder="Endereço de e-mail"
+        pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
         required 
-        
-        title="Email must be properly formatted"
-        />
+        title="Email must be properly formatted"/>
         <br>
     </div>
 
