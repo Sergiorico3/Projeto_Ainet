@@ -5,7 +5,7 @@
         <div class="col-sm-14 col-md-14 col-lg-14 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Dashboard</h5>
+                    <h5 class="card-title text-center">Editar sócio</h5>
 
                     <table class="table table-striped">
                             <thead>
@@ -198,14 +198,9 @@
                             <hr class="my-4">
                             <button
                                 type="submit"
-                                class="btn btn-lg btn-primary btn-block text-uppercase"
-                                name="ok">Save</button>
-                            <button
-                                type="submit"
                                 class="btn btn-lg btn-google btn-block text-uppercase"
-                                name="cancel">Cancel</button>
-
-                        </form>
+                                name="ok">Save</button>
+                            </form>
                     </div>
                 </div>
             </div>

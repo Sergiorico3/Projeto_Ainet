@@ -95,8 +95,8 @@
                                   Aeronaves
                                 </a>
                                   <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('aeronaves.index') }} ">Listar</a>
                                     <a class="dropdown-item" href="{{ route('aeronaves.create') }} ">Criar</a>
+                                    <a class="dropdown-item" href="{{ route('aeronaves.index') }} ">Listar</a>
                                 </li>
                               </ul>
                             </div>
@@ -109,7 +109,7 @@
                                 </a>
                                   <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('socios.create') }}">Criar </a>
-                                    <a class="dropdown-item" href="{{ route('socios.edit',Auth::user()->id ) }} ">Editar</a>
+                                    <a class="dropdown-item" href="{{ route('socios.edit', Auth::user()->id ) }} ">Editar</a>
                                     <a class="dropdown-item" href="{{ route('socios.index') }} ">Listar</a>
                                 </li>
                               </ul>

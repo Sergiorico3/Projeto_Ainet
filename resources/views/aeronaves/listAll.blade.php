@@ -24,7 +24,7 @@
                                     <th scope="col">Número de lugares</th>
                                     <th scope="col">Conta horas</th>
                                     <th scope="col">Preço hora</th>
-                                    <th scope="col">Actions</th>
+                                    <th scope="col">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,9 +37,10 @@
                                     <td scope="row">{{$aeronave->conta_horas}}</td>
                                     <td scope="row">{{$aeronave->preco_hora}}</td>
 
-                                    <td scope="row"><div class="col-sm-12 col-md-4">
-                                    
-                                    <a href="{{route('aeronaves.edit', $aeronave->matricula)}}"><button type="submit" class="btn btn-success" name="ok">Editar</button></a></td>
+                                    <td scope="row">
+                                        <a href="{{route('aeronaves.edit', $aeronave->matricula)}}"><button type="submit" class="btn btn-success" name="ok">Editar</button></a>
+                                        <a href="{{route('aeronaves.destroy', $aeronave->matricula)}}"><button type="submit" class="btn btn-danger" name="ok">Apagar</button></a>
+                                    </td>
                                 
                                 </tr>
                             @endforeach

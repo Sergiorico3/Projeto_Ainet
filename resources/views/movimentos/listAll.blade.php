@@ -69,6 +69,7 @@
                                     <th>Tipo de instrução</th>
                                     <th>Instrutor</th>
                                     <th>Confirmado</th>
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -94,6 +95,11 @@
                                     <td>{{$movimento->tipo_instrucao}}</td>
                                     <td>{{$movimento->instrutor_id}}</td>
                                     <td>{{$movimento->confirmado}}</td>
+
+                                    <td scope="row">
+                                        <a href="{{route('movimentos.edit', $movimento->id)}}"><button type="submit" class="btn btn-success" name="ok">Editar</button></a>
+                                        <a href="{{route('movimentos.destroy', $movimento->id)}}"><button type="submit" class="btn btn-danger" name="ok">Apagar</button></a>
+                                    </td>
                                 </tr>
                             @endforeach
 
