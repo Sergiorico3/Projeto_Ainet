@@ -8,7 +8,7 @@
                     <h5 class="card-title text-center">Dashboard</h5>
 
                     <form method="GET" action="{{route('socios.edit',['id'=>$socio->id])}}">
-                        @method('GET')
+                       
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -30,7 +30,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><img src="{{route('getfile',['user'=>$socio->foto_url])}}"></td>
+                                    <td><img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}"></td>
                                     <td>{{$socio->id}}</td>
                                     <td>{{$socio->name}}</td>
                                     <td>{{$socio->nome_informal}}</td>
