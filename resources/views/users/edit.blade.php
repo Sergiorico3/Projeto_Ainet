@@ -40,7 +40,7 @@
                                     <td>{{$socio->telefone}}</td>
                                     <td>{{$socio->endereco}}</td>
                                     <td>{{$socio->quota_paga}}</td>
-                                    <td>{{$socio->ativo}}</td>
+                                    <td>{{$socio->ativo }}</td>
                                     <td>{{$socio->direcao}}</td>
                                 </tr>
                             </table>
@@ -61,20 +61,20 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="profile_photo" class="col-md-4 col-form-label text-md-right">{{ __('Profile Photo') }}</label>
+                                <label for="foto_url" class="col-md-4 col-form-label text-md-right">{{ __('foto') }}</label>
 
                                 <div class="col-md-6">
                                     <input
-                                        id="profile_photo"
+                                        id="foto_url"
                                         type="file"
-                                        class="form-control{{ $errors->has('profile_photo') ? ' is-invalid' : '' }}"
-                                        name="profile_photo"
+                                        class="form-control{{ $errors->has('foto_url') ? ' is-invalid' : '' }}"
+                                        name="foto_url"
                                         accept="image/*"
-                                        value="{{ Auth::user()->profile_photo }}"
+                                        value="{{ Auth::user()->foto_url }}"
                                         optional="optional">
-                                    @if ($errors->has('profile_photo'))
+                                    @if ($errors->has('foto_url'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('profile_photo') }}</strong>
+                                        <strong>{{ $errors->first('foto_url') }}</strong>
                                     </span>
                                     @endif
                                 </div>

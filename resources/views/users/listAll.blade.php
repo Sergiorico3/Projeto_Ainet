@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-15">
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
@@ -38,35 +38,36 @@
                         </div>
                         <br>
                     </form>
-                    
-                        <table class="table table-striped">
+                    <div class="table-responsive"> 
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Foto</th>
-                                    <th>Número de sócio</th>
-                                    <th>Nome Informal</th>
-                                    <th>E-mail</th>
-                                    <th>Telefone</th>
-                                    <th>Tipo sócio</th>
-                                    <th>Nº licença</th>
-                                    <th>Direção</th>
+                                    <th scope="col">Foto</th>
+                                    <th scope="col">Número de sócio</th>
+                                    <th scope="col">Nome Informal</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Tipo sócio</th>
+                                    <th scope="col">Nº licença</th>
+                                    <th scope="col">Direção</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach($pesquisa as $socio)
                                 <tr>
-                                    <td><img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}"></td>
-                                    <td>{{$socio->num_socio}}</td>
-                                    <td>{{$socio->nome_informal}}</td>
-                                    <td>{{$socio->email}}</td>
-                                    <td>{{$socio->telefone}}</td>
-                                    <td>{{$socio->tipo_socio}}</td>
-                                    <td>{{$socio->num_licenca}}</td>
-                                    <td>{{$socio->direcao}}</td>
+                                    <td scope="row"><img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}"></td>
+                                    <td scope="row">{{$socio->num_socio}}</td>
+                                    <td scope="row">{{$socio->nome_informal}}</td>
+                                    <td scope="row">{{$socio->email}}</td>
+                                    <td scope="row">{{$socio->telefone}}</td>
+                                    <td scope="row">{{$socio->tipo_socio}}</td>
+                                    <td scope="row">{{$socio->num_licenca}}</td>
+                                    <td scope="row">{{$socio->direcao}}</td>
                                 </tr>
                             @endforeach
 
                             </table>
+</div>
                             {{$pesquisa->appends(request()->except('page'))->links() }}
                     </div>
                 </div>

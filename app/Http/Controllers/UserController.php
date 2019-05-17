@@ -78,25 +78,21 @@ class UserController extends Controller
     public function update(Request $request, User $socio)
     {
         $name = $request->foto_url;
+        
+        
+        $socio->fill($request->all());
         $socio->save();
-        if ($name != null) {
-            if ($name->isValid()) {
-              
-                $extension=$request->file('foto_url')->getClientOriginalExtension();
-                $name= $socio->id . '_photo.'.$extension;
-                Storage::disk('public')->putFileAs('fotos', $request->file('foto_url'),$name);
-                $socio->foto_url=$name;
-                $socio->save();
-            }
-        }
+        $extension=$request->file('foto_url')->getClientOriginalExtension();
+        $name= $socio->id . '_photo.'.$extension;
+        Storage::disk('public')->putFileAs('fotos', $request->file('foto_url'),$name);
+        $socio->foto_url=$name;
+        $socio->save();
 
 
         $socio = User::findOrFail(Auth::user()->id);
         $socio->fill($request->all());
 
-        if ($name != null) {
-            $socio->foto_url = $name;
-        }
+        $socio->foto_url = $name;
 
         
         $socio->save();

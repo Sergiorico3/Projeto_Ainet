@@ -15,27 +15,27 @@
 
                 </div>
 
-                <div class="card-body">
-                        <table class="table table-striped">
+                <div class="table-responsive"> 
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Matricula</th>
-                                    <th>Marca</th>
-                                    <th>Modelo</th>
-                                    <th>Número de lugares</th>
-                                    <th>Conta horas</th>
-                                    <th>Preço hora</th>
+                                    <th scope="col">Matricula</th>
+                                    <th scope="col">Marca</th>
+                                    <th scope="col">Modelo</th>
+                                    <th scope="col">Número de lugares</th>
+                                    <th scope="col">Conta horas</th>
+                                    <th scope="col">Preço hora</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach($aeronaves as $aeronave)
                                 <tr>
-                                    <td>{{$aeronave->matricula}}</td>
-                                    <td>{{$aeronave->marca}}</td>
-                                    <td>{{$aeronave->modelo}}</td>
-                                    <td>{{$aeronave->num_lugares}}</td>
-                                    <td>{{$aeronave->conta_horas}}</td>
-                                    <td>{{$aeronave->preco_hora}}</td>
+                                    <td scope="row">{{$aeronave->matricula}}</td>
+                                    <td scope="row">{{$aeronave->marca}}</td>
+                                    <td scope="row">{{$aeronave->modelo}}</td>
+                                    <td scope="row">{{$aeronave->num_lugares}}</td>
+                                    <td scope="row">{{$aeronave->conta_horas}}</td>
+                                    <td scope="row">{{$aeronave->preco_hora}}</td>
                                 </tr>
                             @endforeach
 
