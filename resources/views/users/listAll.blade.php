@@ -53,16 +53,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($pesquisa as $user)
+                            @foreach($pesquisa as $socio)
                                 <tr>
-                                    <td><img src="{{Storage::disk('public')->url('fotos/').$user->foto_url}}"></td>
-                                    <td>{{$user->num_socio}}</td>
-                                    <td>{{$user->nome_informal}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>{{$user->telefone}}</td>
-                                    <td>{{$user->tipo_socio}}</td>
-                                    <td>{{$user->num_licenca}}</td>
-                                    <td>{{$user->direcao}}</td>
+                                    <td><img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}"></td>
+                                    <td>{{$socio->num_socio}}</td>
+                                    <td>{{$socio->nome_informal}}</td>
+                                    <td>{{$socio->email}}</td>
+                                    <td>{{$socio->telefone}}</td>
+                                    <td>{{$socio->tipo_socio}}</td>
+                                    <td>{{$socio->num_licenca}}</td>
+                                    <td>{{$socio->direcao}}</td>
                                 </tr>
                             @endforeach
 

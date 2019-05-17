@@ -32,13 +32,8 @@ Route::get('/home', 'HomeController@index')->name('home.index');
 Route::resource('socios', 'UserController');
 /*
 Route::get('/socios', 'UserController@index')->name('socios.index')->middleware('auth');
-<<<<<<< HEAD
-Route::get('/socios/{user}/edit', 'UserController@edit')->name('socios.edit')->middleware('auth');
-Route::get('/socios/create', 'UserController@create')->name('socios.create')->middleware('isDirecao');
-=======
 Route::get('/socios/{socio}/edit', 'UserController@edit')->name('socios.edit')->middleware('auth');
 Route::get('/socios/create', 'UserController@create')->name('socios.create');//->middleware('isDirecao');
->>>>>>> bf57bb9be75af28a822605172ab10d54912dcb6b
 Route::post('/socios', 'UserController@store')->name('socios.store');//->middleware('isDirecao');
 Route::put('/socios/{socio}', 'UserController@update')->name('socios.update')->middleware('auth');
 Route::delete('/socios/{socio}', 'UserController@delete')->name('socios.delete')->middleware('isDirecao');

@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\User;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -70,24 +73,33 @@ class UserController extends Controller
         return view('home', compact('pagetitle', 'socio'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, User $socio)
     {
-        if ($request->has('cancel')) 
-        {
-            return redirect()->action('UserController@index');
+        $name = $request->foto_url;
+        $socio->save();
+        if ($name != null) {
+            if ($name->isValid()) {
+              
+                $extension=$request->file('foto_url')->getClientOriginalExtension();
+                $name= $socio->id . '_photo.'.$extension;
+                Storage::disk('public')->putFileAs('fotos', $request->file('foto_url'),$name);
+                $socio->foto_url=$name;
+                $socio->save();
+            }
         }
 
-        $user = $request->validate([
-            'name' => 'required|regex:/^[\pL\s]+$/u',
-            'age' => 'required|integer|between:1,120',
-        ], [ // Custom Messages
-            'name.regex' => 'Name must only contain letters and spaces.',
-        ]);
 
-        $userModel = User::findOrFail($id);
-        $userModel->fill($user);
-        $userModel->save();
-        return redirect()->action('UserController@index');
+        $socio = User::findOrFail(Auth::user()->id);
+        $socio->fill($request->all());
+
+        if ($name != null) {
+            $socio->foto_url = $name;
+        }
+
+        
+        $socio->save();
+
+        return redirect()->action('HomeController@index', Auth::user()->id)->with(['msgglobal' => 'User Edited!']);
     }
 
     public function destroy(){
