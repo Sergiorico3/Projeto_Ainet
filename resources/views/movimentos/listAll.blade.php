@@ -4,16 +4,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Lista de movimentos</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif You are logged in!
-
-                </div>
+                                </div>
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-5">
                         <br>
