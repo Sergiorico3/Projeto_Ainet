@@ -113,12 +113,7 @@ class UserController extends Controller
         return view('users.edit', compact('pagetitle', 'socio'));
     }
     
-    /* Obsoleto
-    public function getfile(User $id) {
-        
-        return $path = $socio->foto_url;
-    }   
-    */
+    
     
 
     
