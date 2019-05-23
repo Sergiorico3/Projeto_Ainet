@@ -25,33 +25,44 @@
                         E-mail:<br>
                         <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"  autofocus>
                         <br>
+
                         <div class="col-sm-12 col-md-4">
-                            <label for="tipo_socio">Tipo sócio</label><br>
-                            <label for="Piloto">Piloto</label>
-                            <input type="radio" name="tipo_socio" id="tipo_socio" value="P"><br>
-                            <label for="Piloto">Não-Piloto</label>
-                            <input type="radio" name="tipo_socio" id="tipo_socio" value="NP"><br>
-                            <label for="Aeromodelista">Aeromodelista</label>
-                            <input type="radio" name="tipo_socio" id="tipo_socio" value="A"><br>
+                            <select name="tipo_socio" id="tipo_socio" class="form-control">
+                                <option disabled selected>Tipo sócio</option>
+                                <option value="P">Piloto</option>
+                                <option value="NP">Não piloto</option>
+                                <option value="A">Aeromodelista</option>
+                            </select>
                             <br>
                         </div>
 
                         <div class="col-sm-12 col-md-4">
-                            <label for="direcao">Direção</label><br>
-                            <label for="Sim">Sim</label>
-                            <input type="radio" name="direcao" id="direcao" value="1"><br>
-                            <label for="Não">Não</label>
-                            <input type="radio" name="direcao" id="direcao" value="0"><br>
+                            <select name="direcao" id="direcao" class="form-control">
+                                <option disabled selected>Sócio da direção ?</option>
+                                <option value="1">Sim</option>
+                                <option value="0">Não</option>
+                            </select>
                             <br>
                         </div>
 
+                        <div class="col-sm-12 col-md-4">
+                            <select name="quotas_pagas" id="quotas_pagas" class="form-control">
+                                <option disabled selected>Quotas pagas ?</option>
+                                <option value="1">Sim</option>
+                                <option value="0">Não</option>
+                            </select>
+                            <br>
+                        </div>
 
-                        Direção:<br>
-                        <input id="direcao" type="text" class="form-control{{ $errors->has('direcao') ? ' is-invalid' : '' }}" name="direcao" value="{{ old('direcao') }}" >
-                        Quotas pagas:<br>
-                        <input id="quotas_pagas" type="text" class="form-control{{ $errors->has('quotas_pagas') ? ' is-invalid' : '' }}" name="quotas_pagas" value="{{ old('quotas_pagas') }}" >
-                        Ativo:<br>
-                        <input id="ativo" type="text" class="form-control{{ $errors->has('ativo') ? ' is-invalid' : '' }}" name="ativo" value="{{ old('ativo') }}" >
+                        <div class="col-sm-12 col-md-4">
+                            <select name="ativo" id="ativo" class="form-control">
+                                <option disabled selected>Sócio ativo ?</option>
+                                <option value="1">Sim</option>
+                                <option value="0">Não</option>
+                            </select>
+                            <br>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-5">
                                 <br>
@@ -97,7 +108,7 @@
                             @endforeach
 
                             </table>
-</div>
+                            </div>
                             {{$pesquisa->appends(request()->except('page'))->links() }}
                     </div>
                 </div>
