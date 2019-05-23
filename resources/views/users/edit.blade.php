@@ -53,7 +53,7 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Edit socio</h5>
+                        <h5 class="card-title text-center">Editar sócio</h5>
 
                         <form class="form-signin" action="{{ route('socios.update', Auth::user()->id ) }}" method="POST" enctype="multipart/form-data" >
 

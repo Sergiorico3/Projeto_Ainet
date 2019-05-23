@@ -2,6 +2,12 @@
 @section('title', 'Adicionar novo socio')
 @section('content')
 
+<div class="row justify-content-center">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Criar sócio</h5>
+
 <form action="{{route('socios.store')}}" method="post" class="form-group" enctype="multipart/form-data">
     @csrf
     @method('POST')
@@ -126,6 +132,11 @@
         <button type="submit" class="btn btn-success" name="ok">Criar</button>
         <a href="{{route('home.index')}}" class="btn btn-danger">Cancelar</a>
     </div>
+
+</div>
+</div>
+</div>
+</div>
 </form>
 
 @endsection
