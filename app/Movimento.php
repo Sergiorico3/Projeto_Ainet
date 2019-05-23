@@ -16,4 +16,39 @@ class Movimento extends Model
     protected $hidden = [
         
     ];
+
+    public function confirmadoToString(){
+        switch ($this->confirmado) {
+            case '0':
+                return 'Não';
+            case '1':
+                return 'Sim';
+        }
+        return 'Unknown';
+    }
+
+    public function tipo_instrucaoToString(){
+        switch ($this->tipo_instrucao) {
+            case 'D':
+                return 'Duplo comando';
+            case 'S':
+                return 'Solo';
+        }
+        return '';
+    }
+
+    public function naturezaVooToString(){
+        switch ($this->natureza) {
+            case 'T':
+                return 'Treino';
+            case 'I':
+                return 'Instrução';
+            case 'E':
+                return 'Especial';
+        }
+        return 'Unknown';
+    }
+
+
+
 }

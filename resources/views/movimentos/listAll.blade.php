@@ -81,7 +81,7 @@
                                     <td scope="row">{{$movimento->hora_descolagem}}</td>
                                     <td scope="row">{{$movimento->hora_aterragem}}</td>
                                     <td scope="row">{{$movimento->tempo_voo}}</td>
-                                    <td scope="row">{{$movimento->natureza}}</td>
+                                    <td scope="row">{{$movimento->naturezaVooToString()}}</td>
                                     <td scope="row">{{$movimento->piloto_id}}</td>
                                     <td scope="row">{{$movimento->aerodromo_partidoa}}</td>
                                     <td scope="row">{{$movimento->aerodromo_chegada}}</td>
@@ -92,9 +92,9 @@
                                     <td scope="row">{{$movimento->conta_horas_inicio}}</td>
                                     <td scope="row">{{$movimento->conta_horas_fim}}</td>
                                     <td scope="row">{{$movimento->num_pessoas}}</td>
-                                    <td scope="row">{{$movimento->tipo_instrucao}}</td>
+                                    <td scope="row">{{$movimento->tipo_instrucaoToString()}}</td>
                                     <td scope="row">{{$movimento->instrutor_id}}</td>
-                                    <td scope="row">{{$movimento->confirmado}}</td>
+                                    <td scope="row">{{$movimento-> confirmadoToString()}}</td>
 
                                     <td scope="row">
                                         <a href="{{route('movimentos.edit', $movimento->id)}}"><button type="submit" class="btn btn-success" name="ok">Editar</button></a>
