@@ -61,7 +61,8 @@ class MovimentoController extends Controller
      */
     public function create()
     {
-        //
+        $pagetitle = "Adicionar Movimento";
+        return view('movimentos.create', compact('pagetitle'));
     }
 
     /**
@@ -72,7 +73,10 @@ class MovimentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $movimento = new Movimento;
+        $movimento->fill($request->all());
+        $movimento->save();
+        return redirect()->route("movimentos.index")->with('success', 'Movimento criada com sucesso!');
     }
 
     /**

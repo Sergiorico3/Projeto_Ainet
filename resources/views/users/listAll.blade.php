@@ -2,9 +2,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-15">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Lista de sócios</div>
 
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-5">
@@ -50,6 +50,7 @@
                                     <th scope="col">Tipo sócio</th>
                                     <th scope="col">Nº licença</th>
                                     <th scope="col">Direção</th>
+                                    <th scope="col">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,6 +64,11 @@
                                     <td scope="row">{{$socio->tipo_socio}}</td>
                                     <td scope="row">{{$socio->num_licenca}}</td>
                                     <td scope="row">{{$socio->direcao}}</td>
+
+                                    <td scope="row">
+                                        <a href="{{route('socios.edit', $socio->id)}}"><button type="submit" class="btn btn-success" name="ok">Editar</button></a>
+                                        <a href="{{route('socios.destroy', $socio->id)}}"><button type="submit" class="btn btn-danger" name="ok">Apagar</button></a>
+                                    </td>
                                 </tr>
                             @endforeach
 

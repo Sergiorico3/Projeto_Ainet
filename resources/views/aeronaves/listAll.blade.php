@@ -6,6 +6,14 @@
             <div class="card">
                 <div class="card-header">Lista de aeronaves</div>
 
+                <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-5">
+                        <br>
+                        <a href="{{route('aeronaves.create')}}" class="btn btn-info btn-xs" role="button">Criar aeronave</a>
+                    </div>
+                </div>
+                <br>
+
                 <div class="table-responsive"> 
                         <table class="table table-hover">
                             <thead>
@@ -16,6 +24,7 @@
                                     <th scope="col">Número de lugares</th>
                                     <th scope="col">Conta horas</th>
                                     <th scope="col">Preço hora</th>
+                                    <th scope="col">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,6 +36,12 @@
                                     <td scope="row">{{$aeronave->num_lugares}}</td>
                                     <td scope="row">{{$aeronave->conta_horas}}</td>
                                     <td scope="row">{{$aeronave->preco_hora}}</td>
+
+                                    <td scope="row">
+                                        <a href="{{route('aeronaves.edit', $aeronave->matricula)}}"><button type="submit" class="btn btn-success" name="ok">Editar</button></a>
+                                        <a href="{{route('aeronaves.destroy', $aeronave->matricula)}}"><button type="submit" class="btn btn-danger" name="ok">Apagar</button></a>
+                                    </td>
+                                
                                 </tr>
                             @endforeach
 
