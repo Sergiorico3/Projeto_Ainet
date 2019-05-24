@@ -3,9 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Registar novo movimento</div>
+    <div class="card  col-sm-10 col-md-10 card-signin my-14">
+            <div class="card-body">
+                    <h5 class="card-title text-center">Registar novo movimento</h5>
+
                     <form action="{{route('movimentos.store')}}" method="post" class="form-group" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
