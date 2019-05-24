@@ -92,8 +92,10 @@ class UserController extends Controller
         return redirect()->route("socios.index")->with('success', 'Sócio editado com sucesso!');
     }
 
-    public function destroy(){
-
+    public function delete(User $socio){
+        $socio = User::findOrFail($socio->id);
+        $socio->delete();
+        return redirect()->route("socios.index")->with('success', 'Sócio apagado com sucesso');
     }
 
     public function edit(User $socio)
