@@ -24,7 +24,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'id'=> 'required|unique:users|max:20'
+            'num_socio' => 'required | unique:users, num_socio,'.$this->socio->id.'| max:8',
             'num_socio' => 'required | max:8',
             'nome_informal' => 'required | max:40 | string',
             'name' => 'required | max:255 | string',
