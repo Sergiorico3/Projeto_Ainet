@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Aeronave;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreAeronaveRequest;
 
 class AeronaveController extends Controller
 {
@@ -36,7 +37,7 @@ class AeronaveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAeronaveRequest $request)
     {
         $aeronave = new Aeronave;
         $aeronave->fill($request->all());
@@ -76,7 +77,12 @@ class AeronaveController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $aeronave = Aeronave::findOrFail($id);;
+        $aeronave->fill($request->all());
+
+        $aeronave->save();
+
+        return redirect()->route("socios.index")->with('success', 'Aeronave editado com sucesso!');
     }
 
     /**

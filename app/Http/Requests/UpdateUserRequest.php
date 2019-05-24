@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUserRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -25,10 +25,8 @@ class StoreUserRequest extends FormRequest
     {
         return [
             //TODO
-            //'name' => 'required|unique:posts|max:255'
-            
-
-            //'email' => unique:users,email
+            //'email' => unique:users,email, ' $this->socio->id 
+            //serve para ignorar o id do socio
         ];
     }
 }

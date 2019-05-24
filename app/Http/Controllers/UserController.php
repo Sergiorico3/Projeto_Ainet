@@ -78,9 +78,10 @@ class UserController extends Controller
     public function update(Request $request, User $socio)
     {
         $name = $request->foto_url;
-        
-        
         $socio->fill($request->all());
+        
+        $socio = User::findOrFail(Auth::user()->id);
+
         $socio->save();
         $extension=$request->file('foto_url')->getClientOriginalExtension();
         $name= $socio->id . '_photo.'.$extension;
@@ -88,16 +89,7 @@ class UserController extends Controller
         $socio->foto_url=$name;
         $socio->save();
 
-
-        $socio = User::findOrFail(Auth::user()->id);
-        $socio->fill($request->all());
-
-        $socio->foto_url = $name;
-
-        
-        $socio->save();
-
-        return redirect()->action('socios.index', Auth::user()->id)->with(['msgglobal' => 'User Edited!']);
+        return redirect()->route("socios.index")->with('success', 'Sócio editado com sucesso!');
     }
 
     public function destroy(){

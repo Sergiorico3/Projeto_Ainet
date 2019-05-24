@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUserRequest extends FormRequest
+class UpdateAeronaveRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,11 +24,12 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            //TODO
-            //'name' => 'required|unique:posts|max:255'
-            
-
-            //'email' => unique:users,email
+            'matricula'=> 'required|max:8',
+            'marca'=> 'required|max:40',
+            'modelo'=> 'required|max:40',
+            'num_lugares'=> 'required|max:11',
+            'conta_horas'=> 'required|max:11',
+            'preco_hora' => 'required|numeric|max:13,2'
         ];
     }
 }

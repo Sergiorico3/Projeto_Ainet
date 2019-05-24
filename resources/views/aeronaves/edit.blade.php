@@ -5,7 +5,7 @@
         <div class="col-sm-14 col-md-14 col-lg-14 mx-auto">
             <div class="card card-signin my-14">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Editar aeronave</h5>
+                    <h5 class="card-title text-center">Aeronave</h5>
 
                     <div class="table-responsive">
                         <table class="table table-hover">
@@ -39,7 +39,7 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Edit aeronave</h5>
+                        <h5 class="card-title text-center">Editar aeronave</h5>
 
                         <form
                             class="form-signin"
@@ -48,22 +48,6 @@
                             enctype="multipart/form-data">
 
                             @method('put') @csrf
-
-                            <div class="form-label-group">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    name="matricula"
-                                    id="inputMatricula"
-                                    placeholder="Matrícula"
-                                    autofocus="autofocus"
-                                    value="{{ old('matricula', $aeronave->matricula) }}">
-
-                                <label for="inputName">Matrícula</label>
-                                @if ($errors->has('matricula'))
-                                <em>{{ $errors->first('matricula') }}</em>
-                                @endif
-                            </div>
 
                             <div class="form-label-group">
                                 <input

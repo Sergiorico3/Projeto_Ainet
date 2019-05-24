@@ -5,7 +5,7 @@
         <div class="col-sm-14 col-md-14 col-lg-14 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Editar sócio</h5>
+                    <h5 class="card-title text-center">Sócio</h5>
 
                     <table class="table table-striped">
                             <thead>
@@ -60,10 +60,7 @@
                             @method('put') 
                             @csrf
 
-                            <div class="form-group row">
-                                <label for="foto_url" class="col-md-4 col-form-label text-md-right">{{ __('foto') }}</label>
-
-                                <div class="col-md-6">
+                            <div class="form-label-group">
                                     <input
                                         id="foto_url"
                                         type="file"
@@ -72,6 +69,8 @@
                                         accept="image/*"
                                         value="{{ Auth::user()->foto_url }}"
                                         optional="optional">
+                                        
+                                <label for="inputName">Foto</label>
                                     @if ($errors->has('foto_url'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('foto_url') }}</strong>
@@ -79,7 +78,6 @@
                                     @endif
                                 </div>
 
-                            </div>
 
                             <div class="form-label-group">
                                 <input
@@ -89,6 +87,8 @@
                                     id="inputName"
                                     placeholder="Nome completo"
                                     autofocus="autofocus"
+                                    pattern="^[a-zA-ZÀ-ú\s]+$"
+                                    title="Nome completo deve conter apenas letras"
                                     value="{{ old('name', $socio->name) }}">
 
                                 <label for="inputName">Nome completo</label>
@@ -104,6 +104,8 @@
                                     name="nome_informal"
                                     id="inputNameInformal"
                                     placeholder="Nome informal"
+                                    pattern="^[a-zA-ZÀ-ú\s]+$"
+                                    title="Nome informal deve conter apenas letras"
                                     value="{{ old('name', $socio->nome_informal) }}">
                                 <label for="inputName">Nome informal</label>
                                 @if ($errors->has('nome_informal'))
@@ -116,8 +118,10 @@
                                     type="text"
                                     class="form-control"
                                     name="data_nascimento"
-                                    id="inputNameInformal"
+                                    id="data_nascimento"
                                     placeholder="Data nascimento"
+                                    pattern="^\d{1,2}\-\d{1,2}\-\d{4}$"
+                                    title="Data nascimento deve estar formatada corretamente"
                                     value="{{ old('name', $socio->data_nascimento) }}">
                                 <label for="inputName">Data nascimento</label>
                                 @if ($errors->has('data_nascimento'))
@@ -130,8 +134,10 @@
                                     type="text"
                                     class="form-control"
                                     name="email"
-                                    id="inputNameInformal"
+                                    id="email"
                                     placeholder="Email"
+                                    pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                                    title="Email deve estar formatado corretamente"
                                     value="{{ old('name', $socio->email) }}">
                                 <label for="inputName">Email</label>
                                 @if ($errors->has('email'))
@@ -144,8 +150,10 @@
                                     type="text"
                                     class="form-control"
                                     name="nif"
-                                    id="inputNameInformal"
+                                    id="nif"
                                     placeholder="Nif"
+                            pattern="^[0-9]+$"
+                            title="NIF deve conter apenas numeros"
                                     value="{{ old('nif', $socio->nif) }}">
                                 <label for="inputName">Nif</label>
                                 @if ($errors->has('nif'))
@@ -158,8 +166,10 @@
                                     type="text"
                                     class="form-control"
                                     name="telefone"
-                                    id="inputNameInformal"
+                                    id="telefone"
                                     placeholder="Telefone"
+                                    pattern="^[0-9]+$"
+                            title="Numero de telefone deve conter apenas numeros"
                                     value="{{ old('name', $socio->telefone) }}">
                                 <label for="inputName">Telefone</label>
                                 @if ($errors->has('telefone'))
@@ -172,28 +182,14 @@
                                     type="text"
                                     class="form-control"
                                     name="endereco"
-                                    id="inputNameInformal"
+                                    id="endereco"
                                     placeholder="Endereco"
                                     value="{{ old('name', $socio->endereco) }}">
                                 <label for="inputName">Endereco</label>
                                 @if ($errors->has('endereco'))
                                 <em>{{ $errors->first('endereco') }}</em>
                                 @endif
-                            </div>
-
-                            <div class="form-label-group">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    name="endereco"
-                                    id="inputNameInformal"
-                                    placeholder="Endereco"
-                                    value="{{ old('name', $socio->endereco) }}">
-                                <label for="inputName">Endereco</label>
-                                @if ($errors->has('endereco'))
-                                <em>{{ $errors->first('endereco') }}</em>
-                                @endif
-                            </div>
+                            </div> 
 
                             <hr class="my-4">
                             <button
