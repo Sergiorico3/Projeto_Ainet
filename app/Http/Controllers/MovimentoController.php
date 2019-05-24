@@ -106,9 +106,11 @@ class MovimentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Movimento $movimento)
     {
         $this->authorize('update', User::class, $this);
+        $pagetitle = "Show and edit movimento";
+        return view('movimentos.edit', compact('pagetitle', 'movimento'));
     }
 
     /**
@@ -120,7 +122,7 @@ class MovimentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
