@@ -1,35 +1,12 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+
+
     <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Mapa de aeronaves</div>
-                
-                <div class="table-responsive"> 
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Unidade</th>
-                                    <th scope="col">Minutos</th>
-                                    <th scope="col">Preço</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @for($i=0 ; $i < 10; $i++)
-                                <tr>
-                                    <td scope="row"> Unidade <input name="unidades[]" value="{{old('unidades.' . $i, $i+1)}}"> </td>
-                                    <td scope="row"> Minuto <input name="minutos[]" value="{{old('minutos.' . $i, round(($i+1)*6/5)*5)}}"> </td>
-                                    <td scope="row"> Preço <input name="preco[]" value="{{old('preco.' . $i, $i) }}"> </td>
-                                </tr>
-                            @endfor
-                            </table>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="card">          
-                <div class="card-header">Lista de aeronaves</div>
+    <div class="card card-signin my-14">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Lista de aeronaves</h5>
 
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-5">

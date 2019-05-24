@@ -2,9 +2,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Lista de movimentos</div>
+        <div class="card card-signin my-14">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Lista de movimentos</h5>
 
                                 
                 <div class="form-group row mb-0">
@@ -48,7 +48,7 @@
                 <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
-                                <tr>
+                                <tr >
                                     <th scope="col">Movimento</th>
                                     <th scope="col">Matrícula</th>
                                     <th scope="col">Data do voo</th>
@@ -110,12 +110,4 @@
             </div>
         </div>
     </div>
-
-    <style>
-    .table {
-    table-layout: auto;
-    width: 100%;
-    }
-    </style>
-
     @endsection

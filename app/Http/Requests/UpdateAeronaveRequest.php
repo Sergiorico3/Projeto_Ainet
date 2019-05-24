@@ -29,7 +29,10 @@ class UpdateAeronaveRequest extends FormRequest
             'modelo'=> 'required|max:40',
             'num_lugares'=> 'required|max:11',
             'conta_horas'=> 'required|max:11',
-            'preco_hora' => 'required|numeric|max:13,2'
+            'preco_hora' => 'required|numeric|max:13,2',
+            'tempos' => 'required|array|min:10|max:10',
+            'tempos.x' => 'required|integer|min:1'
         ];
     }
+    
 }
