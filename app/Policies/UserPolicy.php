@@ -24,10 +24,18 @@ class UserPolicy
         }
     }
 
-
-    public function view(User $user, User $model)
+    public function viewUser(User $user, User $model)//para mostrar um sócio
     {
-        //
+        if($user->direcao || $user->id == $model->id){
+            return true;
+        }
+    }
+
+    public function viewAll(User $user, User $model)//para mostrar todos os sócios
+    {
+        if($user->direcao){
+            return true;
+        }
     }
 
     /**
@@ -38,7 +46,9 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        //
+        if($user->direcao){
+            return true;
+        }
     }
 
     /**
@@ -50,7 +60,9 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        //
+        if($user->direcao || $user->id == $model->id){
+            return true;
+        }
     }
 
     /**
@@ -62,7 +74,9 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        //
+        if($user->direcao){
+            return true;
+        }
     }
 
     /**

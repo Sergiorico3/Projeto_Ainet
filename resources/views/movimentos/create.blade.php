@@ -42,15 +42,12 @@
                         </div>
 
                         <div class="col-sm-12 col-md-4">
-                            <label for="aeronave">Matricula aeronave</label>
-                            <input
-                                type="text" class="form-control"
-                                name="aeronave" id="aeronave"
-                                placeholder="Introduza a matricula da aeronave"
-                                required
-                                pattern="^[a-zA-ZÀ-ú\s\-]+$"
-                                title="A matricula da aeronave deve conter apenas letras"/>
-                                <br>
+                            <label for="modelo">Matricula Aeronave</label>
+                            <select name="aeronave">
+                                @foreach($aeronaves as $aeronave)
+                                    <option value="{{$aeronave->matricula}}">{{$aeronave->matricula}}</option>
+                                @endforeach
+                            </select> 
                         </div>
 
                         <div class="col-sm-12 col-md-4">
@@ -77,17 +74,33 @@
                                 <br>
                         </div>
 
-                        <div class="col-sm-12 col-md-4">
-                            <label for="piloto_id">Piloto id</label>
-                            <input
-                                type="number" class="form-control"
-                                name="piloto_id" id="piloto_id"
-                                placeholder="Piloto id"
-                                required 
-                                pattern="^[0-9]+$"
-                                title="O Piloto id deve conter apenas números"/>
-                                <br>
+                        <div class="col-sm-12 col-md-12">
+                            <label for="piloto_id">Piloto</label>
+                            <select name="piloto_id">
+                                @foreach($pilotos as $piloto)
+                                    <option value="{{$piloto->id}}">{{$piloto->id . ' - ' . $piloto->name}}</option>
+                                @endforeach
+                            </select> 
                         </div>
+
+                        <div class="col-sm-12 col-md-12">
+                            <label for="instrutor_id">Instrutor</label>
+                            <select name="instrutor_id">
+                                @foreach($intrutores as $instrutor)
+                                    <option value="{{$instrutor->id}}">{{$instrutor->id . ' - ' . $instrutor->name}}</option>
+                                @endforeach
+                            </select> 
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <label for="modelo">Matricula Aeronave</label>
+                            <select name="aeronave">
+                                @foreach($aeronaves as $aeronave)
+                                    <option value="{{$aeronave->matricula}}">{{$aeronave->matricula}}</option>
+                                @endforeach
+                            </select> 
+                        </div>
+
 
                         <div class="col-sm-12 col-md-4">
                             <label for="natureza">Natureza do voo</label>
@@ -102,26 +115,20 @@
 
                         <div class="col-sm-12 col-md-4">
                             <label for="modelo">Aerodromo de partida</label>
-                            <input
-                                type="text" class="form-control"
-                                name="aerodromo_partida" id="aerodromo_partida"
-                                placeholder="Introduza o aerodromo de partida"
-                                required
-                                pattern="^[A-Za-z\-]+$"
-                                title="O aerodromo de partida deve conter apenas letras e/ou cifrão"/>
-                                <br>
+                            <select name="aerodromo_partida">
+                                @foreach($aerodromos as $aerodromo)
+                                    <option value="{{$aerodromo->code}}">{{$aerodromo->nome}}</option>
+                                @endforeach
+                            </select> 
                         </div>
 
                         <div class="col-sm-12 col-md-4">
                             <label for="modelo">Aerodromo de chegada</label>
-                            <input
-                                type="text" class="form-control"
-                                name="aerodromo_chegada" id="aerodromo_chegada"
-                                placeholder="Introduza o aerodromo de chegada"
-                                required
-                                pattern="^[A-Za-z\-]+$"
-                                title="O aerodromo de chegada deve conter apenas letras e/ou cifrão"/>
-                                <br>
+                            <select name="aerodromo_chegada">
+                                @foreach($aerodromos as $aerodromo)
+                                    <option value="{{$aerodromo->code}}">{{$aerodromo->nome}}</option>
+                                @endforeach
+                            </select> 
                         </div>
 
                         <div class="col-sm-12 col-md-4">

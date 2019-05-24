@@ -11,9 +11,9 @@
                             <thead>
                                 <tr>
                                     <th>Foto</th>
-                                    <th>Id</th>
-                                    <th>Nome Completo</th>
+                                    <th>Nº sócio</th>
                                     <th>Nome Informal</th>
+                                    <th>Nome Completo</th>
                                     <th>Email</th>
                                     <th>Tipo Sócio</th>
                                     <th>Sexo</th>
@@ -30,8 +30,8 @@
                                 <tr>
                                     <td><img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}"></td>
                                     <td>{{$socio->id}}</td>
-                                    <td>{{$socio->name}}</td>
                                     <td>{{$socio->nome_informal}}</td>
+                                    <td>{{$socio->name}}</td>
                                     <td>{{$socio->email}}</td>
                                     <td>{{$socio->tipo_socio}}</td>
                                     <td>{{$socio->sexo}}</td>
@@ -155,7 +155,7 @@
                             pattern="^[0-9]+$"
                             title="NIF deve conter apenas numeros"
                                     value="{{ old('nif', $socio->nif) }}">
-                                <label for="inputName">Nif</label>
+                                <label for="inputName">NIF</label>
                                 @if ($errors->has('nif'))
                                 <em>{{ $errors->first('nif') }}</em>
                                 @endif

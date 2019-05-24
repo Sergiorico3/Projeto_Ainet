@@ -46,5 +46,7 @@ Route::post('/socios/{socio}/send_reactivate_mail', 'UserController@reset_quotas
 
 //aeronaves
 Route::resource('aeronaves', 'AeronaveController', ['parameters'=>['aeronaves'=>'aeronave']])->except('show');
+Route::get('/aeronaves/linha_temporal');//todo 
+
 //movimentos
 Route::resource('movimentos', 'MovimentoController');

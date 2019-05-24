@@ -49,6 +49,4 @@ class Movimento extends Model
         return 'Unknown';
     }
 
-
-
 }

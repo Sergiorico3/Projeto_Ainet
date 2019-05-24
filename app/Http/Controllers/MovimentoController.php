@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Movimento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\MovimentoController;
 
 class MovimentoController extends Controller
@@ -62,7 +65,11 @@ class MovimentoController extends Controller
     public function create()
     {
         $pagetitle = "Adicionar Movimento";
-        return view('movimentos.create', compact('pagetitle'));
+        $aerodromos = DB::table("aerodromos")->get();
+        $aeronaves = DB::table("aeronaves")->get();
+        $pilotos = User::where('tipo_socio','P')->get();
+        $intrutores = User::where('instrutor','1')->get();
+        return view('movimentos.create', compact('pagetitle', 'aerodromos','aeronaves', 'pilotos', 'intrutores'));
     }
 
     /**
@@ -75,6 +82,7 @@ class MovimentoController extends Controller
     {
         $movimento = new Movimento;
         $movimento->fill($request->all());
+        $movimento->confirmado = 0;
         $movimento->hora_descolagem = $movimento->data . ' ' . $movimento->hora_descolagem . ':00';
         $movimento->hora_aterragem = $movimento->data . ' ' . $movimento->hora_aterragem . ':00';
         $movimento->save();
@@ -100,7 +108,7 @@ class MovimentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->authorize('update', User::class, $this);
     }
 
     /**

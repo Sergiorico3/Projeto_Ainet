@@ -47,6 +47,7 @@ class UserController extends Controller
     }
 
     public function store(StoreUserRequest $request){
+        $this->authorize("create", User::class);
         $socio = new User;
         $socio->fill($request->all());
         $socio->password=Hash::make($socio->data_nascimento);
@@ -63,6 +64,7 @@ class UserController extends Controller
 
     public function create()
     {
+        $this->authorize("create", User::class);
         return view('users.create');
     }
     
