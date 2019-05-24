@@ -47,9 +47,12 @@ class UserController extends Controller
     }
 
     public function store(StoreUserRequest $request){
-        $this->authorize("create", User::class);
+        //dd("sadadas");
+        //$this->authorize("create", User::class);
         $socio = new User;
+    
         $socio->fill($request->all());
+        
         $socio->password=Hash::make($socio->data_nascimento);
         
         //Guardar a imagem na BD
@@ -64,7 +67,7 @@ class UserController extends Controller
 
     public function create()
     {
-        $this->authorize("create", User::class);
+        //$this->authorize("create", User::class);
         return view('users.create');
     }
     

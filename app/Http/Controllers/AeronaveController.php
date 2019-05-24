@@ -94,6 +94,6 @@ class AeronaveController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+       
     }
 }

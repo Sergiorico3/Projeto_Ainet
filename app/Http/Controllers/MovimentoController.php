@@ -64,6 +64,7 @@ class MovimentoController extends Controller
      */
     public function create()
     {
+        $this->authorize('create',Movimento::class);
         $pagetitle = "Adicionar Movimento";
         $aerodromos = DB::table("aerodromos")->get();
         $aeronaves = DB::table("aeronaves")->get();
@@ -80,6 +81,7 @@ class MovimentoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create',Movimento::class);
         $movimento = new Movimento;
         $movimento->fill($request->all());
         $movimento->confirmado = 0;
@@ -108,7 +110,8 @@ class MovimentoController extends Controller
      */
     public function edit(Movimento $movimento)
     {
-        $this->authorize('update', User::class, $this);
+        
+        $this->authorize('update', $movimento);
         $pagetitle = "Show and edit movimento";
         return view('movimentos.edit', compact('pagetitle', 'movimento'));
     }

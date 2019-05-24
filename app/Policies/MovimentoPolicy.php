@@ -18,7 +18,7 @@ class MovimentoPolicy
      * @return mixed
      */
 
-    public function before($user, $ability) {
+    public function before($movimento, $ability) {
         if ($movimento->confirmado==0)
         {
             return true;

@@ -18,12 +18,7 @@ class AeronavePolicy
      * @return mixed
      */
 
-    public function before($user, $ability) {
-        if ($user->direcao)
-        {
-            return true;
-        }
-    }
+   
      
     public function view(User $user, Aeronave $aeronave)
     {
