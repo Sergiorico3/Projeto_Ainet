@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Movimento;
 use Illuminate\Http\Request;
-use App\Http\Controllers\MovimentoController;
 
 class MovimentoController extends Controller
 {
@@ -98,9 +97,10 @@ class MovimentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Movimento $movimento)
     {
-        //
+        $pagetitle = "Show and edit movimento";
+        return view('movimentos.edit', compact('pagetitle', 'movimento'));
     }
 
     /**
@@ -112,7 +112,7 @@ class MovimentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

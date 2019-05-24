@@ -110,4 +110,12 @@
             </div>
         </div>
     </div>
+
+    <style>
+    .table {
+    table-layout: auto;
+    width: 100%;
+    }
+    </style>
+
     @endsection

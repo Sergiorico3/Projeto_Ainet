@@ -16,9 +16,10 @@ class AeronaveController extends Controller
     public function index()
     {
         $aeronaves = Aeronave::all();
-        return view('aeronaves.listAll', compact('aeronaves'));
-    }
 
+        return view('aeronaves.listAll', compact('aeronaves'));
+    
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -77,7 +78,7 @@ class AeronaveController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $aeronave = Aeronave::findOrFail($id);;
+        $aeronave = Aeronave::findOrFail($id);
         $aeronave->fill($request->all());
 
         $aeronave->save();
