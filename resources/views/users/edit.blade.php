@@ -195,7 +195,7 @@
                             <button
                                 type="submit"
                                 class="btn btn-lg btn-google btn-block text-uppercase"
-                                name="ok">Save</button>
+                                name="ok">Guardar</button>
                             </form>
                     </div>
                 </div>

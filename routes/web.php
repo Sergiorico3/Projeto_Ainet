@@ -49,4 +49,4 @@ Route::resource('aeronaves', 'AeronaveController', ['parameters'=>['aeronaves'=>
 Route::get('/aeronaves/linha_temporal');//todo 
 
 //movimentos
-Route::resource('movimentos', 'MovimentoController');
+Route::resource('movimentos', 'MovimentoController', ['parameters'=>['movimentos'=>'movimento']])->except('show');
