@@ -1,21 +1,22 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Lista de sócios</div>
 
-                <div class="form-group row mb-0">
+    <div class="row justify-content-center">
+    <div class="col-md-auto">
+        <div class="card card-signin my-14">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Filtrar sócios</h5>
+
+                <div class="col-md-auto">
                     <div class="col-md-6 offset-md-5">
                         <br>
-                        <a href="{{route('socios.create')}}" class="btn btn-info btn-xs" role="button">Criar sócio</a>
+                        <a href="{{route('socios.create')}}" class="btn btn-lg btn-google text-uppercase" role="button">Criar sócio</a>
                     </div>
                 </div>
                 
-                <div class="card-body">
 
-                    <form method="GET" action="{{route('socios.index')}}">
+                    <form class="col-md-auto" method="GET" action="{{route('socios.index')}}">
                        
                         <legend>Filtrar sócios:</legend>
                         Número sócio:<br>
@@ -63,16 +64,22 @@
                             <br>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="col-md-auto ">
                             <div class="col-md-6 offset-md-5">
                                 <br>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-lg btn-facebook text-uppercase">
                                     {{ __('Aplicar filtro') }}
                                 </button>
                             </div>
                         </div>
                         <br>
                     </form>
+                        </div></div>
+
+                    <div class="col-md-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Lista de sócios</h5>
                     <div class="table-responsive"> 
                         <table class="table table-hover">
                             <thead>
@@ -101,8 +108,9 @@
                                     <td scope="row">{{$socio->direcaoToString()}}</td>
 
                                     <td scope="row">
-                                        <a href="{{route('socios.edit', $socio->id)}}"><button type="submit" class="btn btn-success" name="ok">Editar</button></a>
-                                        <a href="{{route('socios.delete', $socio->id)}}"><button type="submit" class="btn btn-danger" name="ok">Apagar</button></a>
+                                        <a href="{{route('socios.edit', $socio->id)}}"><button type="submit" class="btn btn-block btn-success text-uppercase" name="ok">Editar</button></a>
+                                        <br>
+                                        <a href="{{route('socios.delete', $socio->id)}}"><button type="submit" class="btn btn-block btn-danger text-uppercase" name="ok">Apagar</button></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -111,7 +119,7 @@
                             </div>
                             {{$pesquisa->appends(request()->except('page'))->links() }}
                     </div>
-                </div>
+                </div> </div> </div>
             </div>
         </div>
     </div>

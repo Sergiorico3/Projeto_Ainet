@@ -1,8 +1,8 @@
 @extends('layouts.app') @section('content')
 <div class="container">
 
-    <div class="row justify-content-center">
-        <div class="col-sm-14 col-md-14 col-lg-12 mx-auto">
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
             <div class="card card-signin my-14">
                 <div class="card-body">
                     <h5 class="card-title text-center">Movimento</h5>
@@ -103,8 +103,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="col-md-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h5 class="card-title text-center">Editar movimento</h5>
@@ -398,7 +397,6 @@
                                 name="ok">Guardar</button>
                         </form>
                     </div>
-                </div>
             </div>
         </div>
 

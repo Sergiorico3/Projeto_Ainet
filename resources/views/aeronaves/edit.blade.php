@@ -2,7 +2,7 @@
 <div class="container">
 
     <div class="row justify-content-center">
-        <div class="col mx-auto">
+        <div class="col-md-auto">
             <div class="card card-signin my-14">
                 <div class="card-body">
                     <h5 class="card-title text-center">Mapa de aeronaves</h5>
@@ -43,9 +43,8 @@
                 </div>
             </div>
 
-        
             <div class="col  mx-auto">
-            <br><br>
+                <br><br>
                 <div class="card card-signin my-14">
                     <div class="card-body">
                         <h5 class="card-title text-center">Aeronave</h5>
@@ -169,8 +168,8 @@
                         </div>
                     </div>
                 </div>
-            
-        </div>
+
+            </div>
 
         </div>
 

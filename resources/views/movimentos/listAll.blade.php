@@ -1,10 +1,12 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+
     <div class="row justify-content-center">
+    <div class="col-md-auto">
         <div class="card card-signin my-14">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Lista de movimentos</h5>
+                    <h5 class="card-title text-center">Filtrar movimentos</h5>
 
                                 
                 <div class="form-group row mb-0">
@@ -44,7 +46,13 @@
                         </div>
                         <br>
                     </form>
+                    </div>
+                    </div> </div>
 
+                    <div class="col-md-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Lista de movimentos</h5>
                 <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
@@ -106,7 +114,7 @@
                             </table>
                             {{$movimentos->appends(request()->except('page'))->links() }}
                     </div>
-                </div>
+                </div></div></div></div>
             </div>
         </div>
     </div>
