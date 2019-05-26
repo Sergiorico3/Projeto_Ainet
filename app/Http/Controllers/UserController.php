@@ -113,8 +113,13 @@ class UserController extends Controller
     }
     
     
-    
+    public function mostrarCertificado(User $socio){
+        return view('users.mostrarcertificado', compact('socio'));
+    }
 
+    public function mostrarLicenca(User $socio){
+        return view('users.mostrarlicenca', compact('socio'));
+    }
     
     
 

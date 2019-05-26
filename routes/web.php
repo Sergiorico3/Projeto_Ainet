@@ -44,6 +44,9 @@ Route::patch('/socios/{socio}/ativo', 'UserController@ativar')->name('socios.ati
 Route::patch('/socios/desativar_sem_quotas', 'UserController@desativar')->name('socios.desativar')->middleware('isDirecao');
 Route::post('/socios/{socio}/send_reactivate_mail', 'UserController@reset_quotas')->name('socios.send_reactivate_mail')->middleware('auth');
 
+Route::get('/pilotos/{piloto}/certificado', 'UserController@mostrarCertificado')->name('socios.mostrarcertificado');
+Route::get('/pilotos/{piloto}/licenca', 'UserController@mostrarLicenca')->name('socios.mostrarlicenca');
+
 //aeronaves
 Route::resource('aeronaves', 'AeronaveController', ['parameters'=>['aeronaves'=>'aeronave']])->except('show');
 Route::get('/aeronaves/linha_temporal');//todo 
