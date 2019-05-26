@@ -26,7 +26,7 @@
                                 placeholder="Hora descolagem"
                                 required 
                                 pattern="^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$"
-                                title="Deve de introduzir uma hora válida"/>
+                                title="Deve introduzir uma hora válida"/>
                                 <br>
                         </div>
 
@@ -38,7 +38,7 @@
                                 placeholder="Hora aterragem"
                                 required 
                                 pattern="^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$"
-                                title="Deve de introduzir uma data válida"/>
+                                title="Deve introduzir uma data válida"/>
                                 <br>
                         </div>
 
@@ -59,7 +59,7 @@
                                 placeholder="Nº diário"
                                 required 
                                 pattern="^[0-9]+$"
-                                title="O nº de diário deve conter apenas números"/>
+                                title="O n.º de diário deve conter apenas números"/>
                                 <br>
                         </div>
 
@@ -71,7 +71,7 @@
                                 placeholder="Nº serviço"
                                 required 
                                 pattern="^[0-9]+$"
-                                title="O nº de serviço deve conter apenas números"/>
+                                title="O n.º de serviço deve conter apenas números"/>
                                 <br>
                         </div>
 
@@ -161,7 +161,7 @@
                             <input
                                 type="number" class="form-control"
                                 name="num_pessoas" id="num_pessoas"
-                                placeholder="Nº aterragens"
+                                placeholder="Nº pessoas"
                                 required 
                                 pattern="^[0-9]+$"
                                 title="O nº pessoas a bordo deve conter apenas números"/>

@@ -7,7 +7,6 @@ use App\Movimento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\MovimentoController;
 
 class MovimentoController extends Controller
 {
@@ -110,10 +109,10 @@ class MovimentoController extends Controller
      */
     public function edit(Movimento $movimento)
     {
-        
         $this->authorize('update', $movimento);
+        $aerodromos = DB::table("aerodromos")->get();
         $pagetitle = "Show and edit movimento";
-        return view('movimentos.edit', compact('pagetitle', 'movimento'));
+        return view('movimentos.edit', compact('pagetitle', 'aerodromos', 'movimento'));
     }
 
     /**
@@ -125,7 +124,11 @@ class MovimentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $movimento = Movimento::findOrFail($id);
+        $movimento->fill($request->all());
+        $movimento->save();
+
+        return redirect()->route("movimentos.index")->with('success', 'Movimento editado com sucesso!');
     }
 
     /**
