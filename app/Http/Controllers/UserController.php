@@ -47,8 +47,6 @@ class UserController extends Controller
     }
 
     public function store(StoreUserRequest $request){
-        //dd("sadadas");
-        //$this->authorize("create", User::class);
         $socio = new User;
     
         $socio->fill($request->all());
@@ -98,7 +96,7 @@ class UserController extends Controller
     }
 
     public function delete(User $socio){
-        $socio = User::findOrFail($socio->id);
+        //$socio = User::findOrFail($socio->id);
         $socio->delete();
         return redirect()->route("socios.index")->with('success', 'Sócio apagado com sucesso');
     }

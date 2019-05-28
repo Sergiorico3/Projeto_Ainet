@@ -23,18 +23,63 @@
                         <legend>Filtrar movimentos:</legend>
                         ID movimento:<br>
                         <input id="id" type="text" class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }}" name="id" value="{{ old('id') }}"  autofocus>
-                        Matricula aeronave:<br>
-                        <input id="aeronave" type="text" class="form-control{{ $errors->has('aeronave') ? ' is-invalid' : '' }}" name="aeronave" value="{{ old('aeronave') }}"  autofocus>
-                        ID piloto:<br>
-                        <input id="piloto_id" type="text" class="form-control{{ $errors->has('piloto_id') ? ' is-invalid' : '' }}" name="piloto_id" value="{{ old('piloto_id') }}"  autofocus>
+                    
+                        <div class="col-sm-12 col-md-12">
+                            <label for="aeronave">Matricula aeronave:</label>
+                            <select name="aeronave">
+                                @foreach($aeronaves as $aeronave)
+                                    <option value="{{$aeronave->matricula}}">{{$aeronave->matricula}}</option>
+                                @endforeach
+                            </select> 
+                        </div>
+
                         ID instrutor:<br>
                         <input id="instrutor_id" type="text" class="form-control{{ $errors->has('instrutor_id') ? ' is-invalid' : '' }}" name="instrutor_id" value="{{ old('instrutor_id') }}"  autofocus>
-                        Data do voo:<br>
-                        <input id="data" type="text" class="form-control{{ $errors->has('data') ? ' is-invalid' : '' }}" name="data" value="{{ old('data') }}" >
-                        Natureza voo:<br>
-                        <input id="natureza" type="text" class="form-control{{ $errors->has('natureza') ? ' is-invalid' : '' }}" name="natureza" value="{{ old('natureza') }}" >
-                        Confirmado:<br>
-                        <input id="confirmado" type="text" class="form-control{{ $errors->has('confirmado') ? ' is-invalid' : '' }}" name="confirmado" value="{{ old('confirmado') }}" >
+
+
+                        <div class="col-sm-12 col-md-12">
+                            <label for="piloto_id">Instrutor:</label>
+                            <select name="piloto_id">
+                                @foreach($instrutores as $instrutor)
+                                    <option value="{{$instrutor->id}}">{{$instrutor->id. '-' .$instrutor->name}}</option>
+                                @endforeach
+                            </select> 
+                        </div>
+
+                        <br>
+                        <div class="col-sm-12 col-md-12">
+                            <label for="piloto_id">Piloto:</label>
+                            <select name="piloto_id">
+                                @foreach($pilotos as $piloto)
+                                    <option value="{{$piloto->id}}">{{$piloto->id. '-' .$piloto->name}}</option>
+                                @endforeach
+                            </select> 
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <select name="natureza" id="natureza" class="form-control">
+                                <option disabled selected>-- Natureza do voo --</option>
+                                <option value="T">Treino</option>
+                                <option value="I">Instrução</option>
+                                <option value="E">Especial</option>
+                            </select>
+                            <br>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            Data do voo:
+                            <input type="date" name="data">
+                            <br><br> 
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <select name="confirmado" id="confirmado" class="form-control">
+                                <option disabled selected>Confirmado ?</option>
+                                <option value="1">Sim</option>
+                                <option value="0">Não</option>
+                            </select>
+                            <br>
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-5">

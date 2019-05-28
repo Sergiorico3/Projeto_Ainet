@@ -11,6 +11,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use SoftDeletes;
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -18,7 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'name', 'num_socio', 'nome_informal', 'sexo', 'data_nascimento', 'email', 'nif', 'tipo_socio', 'quota_paga', 'ativo', 'direcao',
-        ''
+        
     ];
 
     /**

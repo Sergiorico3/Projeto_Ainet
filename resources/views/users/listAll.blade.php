@@ -108,9 +108,15 @@
                                     <td scope="row">{{$socio->direcaoToString()}}</td>
 
                                     <td scope="row">
+
                                         <a href="{{route('socios.edit', $socio->id)}}"><button type="submit" class="btn btn-block btn-success text-uppercase" name="ok">Editar</button></a>
                                         <br>
-                                        <a href="{{route('socios.delete', $socio->id)}}"><button type="submit" class="btn btn-block btn-danger text-uppercase" name="ok">Apagar</button></a>
+                                        <form action="{{ route('socios.delete', $socio) }}" method="post" class="form-inline">      
+                                            <input class="btn btn-block btn-danger text-uppercase" type="submit" value="Remover" />
+                                            <input type="hidden" name="_method" value="delete"/>
+                                            {!! csrf_field() !!}
+                                        </form>
+
                                     </td>
                                 </tr>
                             @endforeach

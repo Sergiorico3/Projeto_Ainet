@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-
-
     <div class="row justify-content-center">
     <div class="card card-signin my-14">
                 <div class="card-body">

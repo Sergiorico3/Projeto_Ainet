@@ -51,9 +51,12 @@ class MovimentoController extends Controller
             $movimentos = $movimentos->where('confirmado', $confirmado);
         }
 
+        $aeronaves = DB::table("aeronaves")->get();
+        $pilotos = User::where('tipo_socio','P')->where('instrutor', '=', '0')->get();
+        $instrutores = User::where('tipo_socio', 'P')->where('instrutor', '=', '1')->get();
 
         $movimentos=$movimentos->paginate(15);
-        return view('movimentos.listAll', compact('movimentos'));
+        return view('movimentos.listAll', compact('movimentos', 'pilotos', 'instrutores', 'aeronaves'));
     }
 
     /**
