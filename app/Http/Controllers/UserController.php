@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\User;
-
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
@@ -96,8 +97,15 @@ class UserController extends Controller
     }
 
     public function delete(User $socio){
-        //$socio = User::findOrFail($socio->id);
-        $socio->delete();
+
+        if($socio->id = Movimento::where('piloto_id','=', $socio->id)){
+            //soft delete (altera só o campo: deleted_at)
+             $socio->delete();
+        }
+        
+        
+        //Hard delete
+        //$socio->forceDelete();
         return redirect()->route("socios.index")->with('success', 'Sócio apagado com sucesso');
     }
 
@@ -110,13 +118,48 @@ class UserController extends Controller
         return view('users.edit', compact('pagetitle', 'socio'));
     }
     
-    
     public function mostrarCertificado(User $socio){
         return view('users.mostrarcertificado', compact('socio'));
     }
 
     public function mostrarLicenca(User $socio){
         return view('users.mostrarlicenca', compact('socio'));
+    
+    }
+
+    //inverter quota_paga
+    public function quota(User $socio){
+        if($socio->quota_paga){
+            $socio->quota_paga = 0;
+        }else{
+            $socio->quota_paga = 1;
+        }
+        $socio->save();
+        return redirect()->route("socios.index")->with('success', 'Alteração feita com sucesso');
+    }
+
+    //Altera todas as quota_paga a 0
+    public function reset_quotas(){
+        User::where('quota_paga','=', '1')->update(['quota_paga'=>'0']);
+        return redirect()->route("socios.index")->with('success', 'Alteração feita com sucesso');
+    }
+
+    //Desativar todos os socios que não têm as quotas pagas
+    public function desativar(){
+        $socios = User::where('quota_paga','=',0)->update(['ativo' => '0']);
+        $socios->save();
+        return redirect()->route("socios.index")->with('success', 'Alteração feita com sucesso');
+    }
+
+    //Inverter ativo 
+    public function ativar(User $socio){
+        if($socio->ativo){
+            $socio->ativo = 0;
+        }else{
+            $socio->ativo = 1;
+        }
+        $socio->save();
+        return redirect()->route("socios.index")->with('success', 'Alteração feita com sucesso');
     }
     
     

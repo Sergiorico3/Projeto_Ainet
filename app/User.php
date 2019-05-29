@@ -40,7 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-
+    
     public function typeSocioToString(){
         switch ($this->tipo_socio) {
             case 'P':

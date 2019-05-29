@@ -87,8 +87,8 @@ class MovimentoController extends Controller
         $movimento = new Movimento;
         $movimento->fill($request->all());
         $movimento->confirmado = 0;
-        $movimento->hora_descolagem = $movimento->data . ' ' . $movimento->hora_descolagem . ':00';
-        $movimento->hora_aterragem = $movimento->data . ' ' . $movimento->hora_aterragem . ':00';
+        $movimento->hora_descolagem = date('y-m-d H:i', strtotime($request->data." ".$request->hora_descolagem));
+        $movimento->hora_aterragem = date('y-m-d H:i', strtotime($request->data." ".$request->hora_aterragem));
         $movimento->save();
         return redirect()->route("movimentos.index")->with('success', 'Movimento criada com sucesso!');
     }
