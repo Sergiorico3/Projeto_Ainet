@@ -163,13 +163,9 @@ class UserController extends Controller
     }
     
 
-    public function changepassword(){
-        return view('users.changepassword');
-    }
-
-    public function changepasswordstore(Request $request ){
-        dd($request->id);
-        User::where('id', '=', $request->id)->update(['password' => $request->password]);
+    public function changepassword(User $socio){
+        $socio->password = Hash::make($request->password);
+        $socio->save();
     }
     
 
