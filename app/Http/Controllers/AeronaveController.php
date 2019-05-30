@@ -100,7 +100,7 @@ class AeronaveController extends Controller
             $aeronave->delete();
             return redirect()->route("aeronaves.index")->with('success', 'Aeronave apagada com sucesso');
         }
-        else{
+        else{           //TODO não passa para o else
             $matricula=$aeronave->matricula;
             DB::delete('delete from aeronaves_valores where matricula = ?', [$matricula]);
             $aeronave->forceDelete();
