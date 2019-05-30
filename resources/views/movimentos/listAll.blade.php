@@ -147,7 +147,7 @@
                                     <td scope="row">{{$movimento->num_pessoas}}</td>
                                     <td scope="row">{{$movimento->tipo_instrucaoToString()}}</td>
                                     <td scope="row">{{$movimento->instrutor_id}}</td>
-                                    <td scope="row">{{$movimento-> confirmadoToString()}}</td>
+                                    <td scope="row">{{$movimento->confirmadoToString()}}</td>
 
                                     <td scope="row">
                                         <a href="{{route('movimentos.edit', $movimento->id)}}"><button type="submit" class="btn btn-success" name="ok">Editar</button></a>

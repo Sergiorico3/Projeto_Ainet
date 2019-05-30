@@ -7,6 +7,7 @@ use App\Movimento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class MovimentoController extends Controller
 {
@@ -66,7 +67,7 @@ class MovimentoController extends Controller
      */
     public function create()
     {
-        $this->authorize('create',Movimento::class);
+        //$this->authorize('create',Movimento::class);
         $pagetitle = "Adicionar Movimento";
         $aerodromos = DB::table("aerodromos")->get();
         $aeronaves = DB::table("aeronaves")->get();
@@ -83,8 +84,24 @@ class MovimentoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('create',Movimento::class);
+        $piloto = Auth::user();
+        $piloto_num_licenca = $piloto->num_licenca;
+        $piloto_validade_licenca = $piloto->validade_licenca;
+        $piloto_tipo_licenca = $piloto->tipo_licenca;
+        $piloto_num_certificado = $piloto->num_certificado;
+        $piloto_validade_certificado = $piloto->validade_certificado;
+        $piloto_classe_certificado = $piloto->classe_certificado;
+
+
+        
         $movimento = new Movimento;
+        $movimento->num_licenca_piloto = $piloto_num_licenca;
+        $movimento->validade_licenca_piloto = $piloto_validade_licenca;
+        $movimento->tipo_licenca_piloto = $piloto_tipo_licenca;
+        $movimento->num_certificado_piloto = $piloto_num_certificado;
+        $movimento->validade_certificado_piloto = $piloto_validade_certificado;
+        $movimento->classe_certificado_piloto = $piloto_classe_certificado;
+        
         $movimento->fill($request->all());
         $movimento->confirmado = 0;
         $movimento->hora_descolagem = date('y-m-d H:i', strtotime($request->data." ".$request->hora_descolagem));
@@ -142,6 +159,6 @@ class MovimentoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

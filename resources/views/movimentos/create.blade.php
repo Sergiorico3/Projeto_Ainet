@@ -177,7 +177,7 @@
                                 required 
                                 pattern="^[0-9]+$"
                                 title="Conta horas início deve conter apenas números"/>
-                                <br>
+                                <br><br>
                         </div>
 
                         <div class="col-sm-12 col-md-4">
