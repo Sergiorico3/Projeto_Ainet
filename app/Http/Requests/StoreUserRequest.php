@@ -24,6 +24,23 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
+            'name' => 'required|max:255',
+            /*
+            "nome_informal" => "Novo Informal " . $uniqueNum,
+            "email" => $uniqueNum . "@nanaemail.pt",
+            "data_nascimento" => $this->format_date_input("1965-08-23"),
+            "nif" => "999999999",
+            "telefone" => "999999999",
+            "endereco" => "Rua para testes",
+            "num_socio" => $uniqueNum,         
+            "ativo" => 1,
+            "quota_paga" => 1,
+            "sexo" => "M",
+            "tipo_socio" => "NP",
+            "direcao" => 1,
+            "instrutor" => 0,
+            "aluno" => 0
+            
             'num_socio' => 'required|integer|max:11|unique:users',
             'nome_informal' => 'required|max:40|string',
             'name' => 'required|max:255|string',
@@ -37,6 +54,7 @@ class StoreUserRequest extends FormRequest
             'quota_paga' => 'required|in:1,0',
             'ativo' => 'required|in:1,0',
             'direcao' => 'required|in:1,0'
+            */
         ];
     }
 }

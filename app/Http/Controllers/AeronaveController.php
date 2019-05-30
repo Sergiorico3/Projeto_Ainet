@@ -83,7 +83,7 @@ class AeronaveController extends Controller
 
         $aeronave->save();
 
-        return redirect()->route("socios.index")->with('success', 'Aeronave editado com sucesso!');
+        return redirect()->route("aeronaves.index")->with('success', 'Aeronave editado com sucesso!');
     }
 
     /**
@@ -92,8 +92,9 @@ class AeronaveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-       
+    public function destroy(Aeronave $aeronave)
+    {   
+        $aeronave->delete();
+        return redirect()->route("aeronaves.index")->with('success', 'Aeronave apagada com sucesso');
     }
 }

@@ -131,7 +131,7 @@
                                 @endforeach
                             </select> 
                         </div>
-
+                        <br>
                         <div class="col-sm-12 col-md-4">
                             <label for="num_aterragens">Nº aterragens</label>
                             <input

@@ -13,7 +13,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,6 +24,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
+            /*
             'num_socio' => 'required | unique:users, num_socio,'.$this->socio->id.'| max:8',
             'num_socio' => 'required | max:8',
             'nome_informal' => 'required | max:40 | string',
@@ -38,6 +39,7 @@ class UpdateUserRequest extends FormRequest
             'quota_paga' => 'required | in:1,0',
             'ativo' => 'required | in:1,0',
             'direcao' => 'required | in:1,0'
+            */
         ];
     }
 }

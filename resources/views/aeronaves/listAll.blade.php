@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-
-
     <div class="row justify-content-center">
     <div class="card card-signin my-14">
                 <div class="card-body">
@@ -41,7 +39,11 @@
 
                                     <td scope="row">
                                         <a href="{{route('aeronaves.edit', $aeronave->matricula)}}"><button type="submit" class="btn btn-success" name="ok">Editar</button></a>
-                                        <a href="{{route('aeronaves.destroy', $aeronave->matricula)}}"><button type="submit" class="btn btn-danger" name="ok">Apagar</button></a>
+                                        <form action="{{ route('aeronaves.destroy', $aeronave) }}" method="post" class="form-inline">      
+                                            <input class="btn btn-block btn-danger " type="submit" value="Apagar" />
+                                            <input type="hidden" name="_method" value="delete"/>
+                                            {!! csrf_field() !!}
+                                        </form>
                                     </td>
                                 
                                 </tr>

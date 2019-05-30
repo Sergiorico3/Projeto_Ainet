@@ -11,15 +11,15 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use SoftDeletes;
+    
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'num_socio', 'nome_informal', 'sexo', 'data_nascimento', 'email', 'nif', 'tipo_socio', 'quota_paga', 'ativo', 'direcao'
+        'name', 'num_socio', 'nome_informal', 'sexo', 'data_nascimento', 'email', 'nif', 'tipo_socio', 'quota_paga', 'ativo', 'direcao',
         
-        /*'email', 'password', 'num_socio', 'tipo_socio', 'nome_informal', 'sexo', 'foto_url', 'nif', 'telefone', 'endereco', 'quota_paga','ativo', 'direcao', 'data_nascimento',*/
     ];
 
     /**
@@ -40,7 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-
+    
     public function typeSocioToString(){
         switch ($this->tipo_socio) {
             case 'P':
