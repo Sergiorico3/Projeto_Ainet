@@ -179,16 +179,13 @@ trait CreatesApplication
                 foreach ($strings as $string) {
                     $msg.= $string. "  |  ";
                 }
-                PHPUnit::assertFalse(
-                    $this->assertSeeInOrder($strings)
-                );
+                PHPUnit::assertThat($strings, new DontSeeInOrder($this->getContent()));
             } catch (ExpectationFailedException $e) {
-                throw new ExpectationFailedException($message ?? "A resposta não inclui as strings (pela ordem indicada): " . $msg, $e->getComparisonFailure());
+                throw new ExpectationFailedException($message ?? "A resposta inclui as strings (pela ordem indicada): " . $msg, $e->getComparisonFailure());
                 //throw new ExpectationFailedException($message ?? $e->getMessage(), $e->getComparisonFailure());
             }
             return $this;
         });
-
 
         TestResponse::macro('assertSuccessfulOrRedirect', function() {
             PHPUnit::assertTrue(

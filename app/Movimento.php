@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Movimento extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'data', 'hora_descolagem', 'hora_aterragem', 'aeronave', 'num_diario' ,
         'num_servico','piloto_id', 'natureza', 'aerodromo_partida', 'aerodromo_chegada',

@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Criar sócio</div>
-                    <form action="{{route('socios.store')}}" method="post" class="form-group" enctype="multipart/form-data">
+                    <form name="store" type="hidden" action="{{route('socios.store')}}" method="POST" class="form-group" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <br>
