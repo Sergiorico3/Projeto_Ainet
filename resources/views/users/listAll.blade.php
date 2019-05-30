@@ -126,7 +126,7 @@
                                                 <tr>
                                                     <td scope="row">
                                                         <td>
-                                                            <img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}"></td>
+                                                            <td><img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}"></td>
                                                             <td scope="row">{{$socio->num_socio}}</td>
                                                             <td scope="row">{{$socio->nome_informal}}</td>
                                                             <td scope="row">{{$socio->email}}</td>
@@ -142,6 +142,17 @@
                                                                         name="ok">Editar
                                                                     </button>
                                                                 </a>
+                                                                
+                                                                @if($socio->tipo_socio  == 'P' && (Auth::user()->direcao || $socio->id = Auth::user()->id))
+                                                                    <br>
+                                                                    <a href="{{route('socios.mostrarlicenca', $socio->id)}}">
+                                                                        <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar licença</button>
+                                                                    </a>
+                                                                    <br>
+                                                                    <a href="{{route('socios.mostrarcertificado', $socio->id)}}">
+                                                                        <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar certificado</button>
+                                                                    </a>
+                                                                @endif
                                                                 <br>
                                                                     <form
                                                                         action="{{ route('socios.delete', $socio) }}"
@@ -167,21 +178,13 @@
                                                                                 <button type="submit" class="btn btn-block btn-success" name="ok">Ativar/Desativar</button>
                                                                                 <br>
                                                                             </form>
-                                                                                @if($socio->num_socio == 'P')
-                                                                                <a href="{{route('socios.mostrarlicenca', $socio->id)}}">
-                                                                                    <button type="submit" class="btn btn-block btn-success" name="ok">Mostrar licença</button>
-                                                                                </a>
-                                                                                <br>
-                                                                                    <a href="{{route('socios.mostrarcertificado', $socio->id)}}">
-                                                                                        <button type="submit" class="btn btn-block btn-success" name="ok">Mostrar certificado</button>
-                                                                                    </a>
-                                                                                @endif
+                                                                                
                                                                                 
                                                             </td>
-                                                        </tr>
+                                                            </tr>
                                                                         @endforeach
-                                            </tbody>
-                                        </table>
+                                                        </tbody>
+                                                        </table>
                                                             </div>
                                                             {{$pesquisa->appends(request()->except('page'))->links() }}
                                                         </div>
