@@ -251,9 +251,9 @@ class USTestBase extends TestCase
         $pilotoInfo = $this->getPilotInfo($idPiloto);
         $data = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $createdAt->format('Y-m-d'). ' 00:00:00');
         $unidades_conta_horas = mt_rand(5,25);
-        $conta_inicio = DB::table('aeronaves')->where('matricula', 'D-EAYV')->first()->conta_horas;
-        $conta_fim = $conta_inicio + $unidades_conta_horas;    
-        DB::table('aeronaves')->where('matricula', 'D-EAYV')->update(['conta_horas' => $conta_fim]);
+//        $conta_inicio = DB::table('aeronaves')->where('matricula', 'D-EAYV')->first()->conta_horas;
+        $conta_inicio = DB::table('movimentos')->where('aeronave', 'D-EAYV')->max('conta_horas_fim');
+        $conta_fim = $conta_inicio + $unidades_conta_horas; 
         $preco_hora = DB::table('aeronaves_valores')
                     ->where('matricula', 'D-EAYV')
                     ->where('unidade_conta_horas', 10)
@@ -443,7 +443,6 @@ class USTestBase extends TestCase
 
     private function addUserToDB($user)
     {
-        //return factory(User::class)->create($user);
         $id =  DB::table('users')->insertGetId($user);
         return User::withTrashed()->findOrFail($id);
     }
@@ -452,16 +451,16 @@ class USTestBase extends TestCase
     {
         //return factory(User::class)->create($user);
         $id =  DB::table('movimentos')->insertGetId($movimento);
-        return DB::table('movimentos')->where('id', $id)->first();
+        $newMovimento = DB::table('movimentos')->where('id', $id)->first();
+        DB::table('aeronaves')->where('matricula', 'D-EAYV')->update(['conta_horas' => $newMovimento->conta_horas_fim]);
+        return $newMovimento;
     }
 
-    protected function addPilotoToAeronaves($userid, $arrayAeronaves)
+    protected function addPilotoToAeronaves($userid)
     {
-        // Para prevenir conflitos e tendo em conta que estes dados não são usados 
-        // nos testes, desativei esta função executando return logo no inicio
-        return;
-        foreach ($arrayAeronaves as $aeronave) {
-            if (DB::table('aeronaves_pilotos')->where("piloto_id", $userid)->where("matricula", $aeronave)->count() == 0) {                
+        if (DB::table('aeronaves_pilotos')->where("piloto_id", $userid)->count() == 0) {
+            $aeronaves = ['D-EAYV', 'G-CKIP', 'CS-AQN'];
+            foreach ($aeronaves as $aeronave) {
                 DB::table('aeronaves_pilotos')->insert([
                     "piloto_id" => $userid,
                     "matricula" => $aeronave
@@ -554,7 +553,7 @@ class USTestBase extends TestCase
             "certificado_confirmado" => "1",
             ]);
         $this->pilotoUser = $this->addUserToDB($pilotoUser);
-        $this->addPilotoToAeronaves($this->pilotoUser->id, ['D-EAYV','G-CKIP']);
+        $this->addPilotoToAeronaves($this->pilotoUser->id);
     }
 
     protected function seedDirecaoUser()
@@ -641,7 +640,7 @@ class USTestBase extends TestCase
             "certificado_confirmado" => "1",
             ]);
         $this->pilotoAlunoUser = $this->addUserToDB($pilotoAlunoUser);
-        $this->addPilotoToAeronaves($this->pilotoAlunoUser->id, ['D-EAYV']);        
+        $this->addPilotoToAeronaves($this->pilotoAlunoUser->id);        
     }
 
     protected function seedPilotoInstrutorUser()
@@ -664,7 +663,7 @@ class USTestBase extends TestCase
             "certificado_confirmado" => "1",
             ]);
         $this->pilotoInstrutorUser = $this->addUserToDB($pilotoInstrutorUser);
-        $this->addPilotoToAeronaves($this->pilotoInstrutorUser->id, ['D-EAYV', 'G-CKIP', 'CS-AQN']);
+        $this->addPilotoToAeronaves($this->pilotoInstrutorUser->id);
     }
 
     protected function seedPilotoDesativadoUser()
@@ -687,7 +686,7 @@ class USTestBase extends TestCase
             "certificado_confirmado" => "1",
             ]);
         $this->pilotoDesativadoUser = $this->addUserToDB($pilotoDesativadoUser);
-        $this->addPilotoToAeronaves($this->pilotoDesativadoUser->id, ['D-EAYV','G-CKIP', 'CS-NEW']);
+        $this->addPilotoToAeronaves($this->pilotoDesativadoUser->id);
     }
 
     protected function seedPilotoDirecaoUser()
@@ -710,7 +709,7 @@ class USTestBase extends TestCase
             "certificado_confirmado" => "1",
             ]);
         $this->pilotoDirecaoUser = $this->addUserToDB($pilotoDirecaoUser);
-        $this->addPilotoToAeronaves($this->pilotoDirecaoUser->id, ['D-EAYV','G-CKIP', 'CS-AQN']);
+        $this->addPilotoToAeronaves($this->pilotoDirecaoUser->id);
     }
 
     protected function seedEmailNaoVerificadoUser()

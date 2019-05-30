@@ -205,8 +205,12 @@ trait CreatesApplication
         });
 
         TestResponse::macro('assertUnauthorized', function($method="", $url="", $message = null) {
+            // Se não tem acesso, deve dar código de erro 401 ou 403,
+            // ou redirecionar para login,
+            // ou redirecionar para email/verify (quando utilizador ainda não verificou email)
+            // ou redirecionar para change password (quando o utilizador ainda não alterar a password inicial)
             PHPUnit::assertTrue(
-                $this->getStatusCode() == 401 || $this->getStatusCode() == 403 || $this->isRedirect(App::make('url')->to('login')) || $this->isRedirect(App::make('url')->to('email/verify')),
+                $this->getStatusCode() == 401 || $this->getStatusCode() == 403 || $this->isRedirect(App::make('url')->to('login')) || $this->isRedirect(App::make('url')->to('email/verify')) || $this->isRedirect(App::make('url')->to('password')),
                 $message ? $message : "Access to resource " . ($method ?? '') . " " . ($url ?? '') . ' should be unauthorized, but resource is accessible! Failed to protect resource.'
             );
             return $this;

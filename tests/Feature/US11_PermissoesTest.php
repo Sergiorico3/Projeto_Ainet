@@ -15,7 +15,6 @@ class US11_PermissoesTest extends USTestBase
         $this->seedNormalUsers();
         $this->seedDesativadoUser();
         $this->seedEmailNaoVerificadoUser();
-        $this->seedSoftDeletedUser();
     }
 
     public function testProtecaoMovimentosParaAnonimo()
@@ -37,12 +36,6 @@ class US11_PermissoesTest extends USTestBase
         $this->actingAs($this->desativadoUser)->get('/movimentos')
                 ->assertUnauthorized('GET', '/movimentos',
                 'Utilizador desativado (ativo=0) pode ver a lista de movimentos!');
-    }
-
-    public function testProtecaoMovimentosParaSocioSoftdeleted()
-    {
-        $this->actingAs($this->softDeletedUser)->get('/movimentos')
-                 ->assertNotStatus(200, 'Utilizador apagado (com SoftDeleted) tem acesso à lista de movimentos!');
     }
 }
     

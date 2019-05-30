@@ -56,7 +56,7 @@ class US16_BTest extends USTestBase
         $newdata = [
             "num_recibo" => "23431224",
             "observacoes" => "Teste XPTO",
-            "conta_horas_fim" => $this->movToSave['conta_horas_fim']+4
+            "conta_horas_fim" => $this->movToSave['conta_horas_inicio']+4
         ];
         $requestData = array_merge($this->movToSave, $newdata);
 
@@ -84,7 +84,7 @@ class US16_BTest extends USTestBase
         $newdata = [
             "num_recibo" => "23431224",
             "observacoes" => "Teste XPTO",
-            "conta_horas_fim" => $this->movToSave['conta_horas_fim']+4,
+            "conta_horas_fim" => $this->movToSave['conta_horas_inicio']+4,
             "piloto_id" => $this->pilotoUser->id,
         ];
         if (!$this->insertMov) {
@@ -116,7 +116,7 @@ class US16_BTest extends USTestBase
         $newdata = [
             "num_recibo" => "4657698675",
             "observacoes" => "Teste XPTO sdsds",
-            "conta_horas_fim" => $this->movInstrucaoToSave['conta_horas_fim']+8,
+            "conta_horas_fim" => $this->movInstrucaoToSave['conta_horas_inicio']+8,
             "natureza" => "I",
             "tipo_instrucao" => "D",
             "piloto_id" => $this->pilotoAlunoUser->id, 
@@ -140,7 +140,7 @@ class US16_BTest extends USTestBase
         $newdata = [
             "num_recibo" => "764545456",
             "observacoes" => "Teste XPTdfsdO sdsds",
-            "conta_horas_fim" => $this->movInstrucaoToSave['conta_horas_fim']+1,
+            "conta_horas_fim" => $this->movInstrucaoToSave['conta_horas_inicio']+1,
             "natureza" => "I",
             "tipo_instrucao" => "D",
             "piloto_id" => $this->pilotoUser->id,
@@ -157,7 +157,7 @@ class US16_BTest extends USTestBase
         $newdata = [
             "num_recibo" => "67442356",
             "observacoes" => "fdgh hsfg ",
-            "conta_horas_fim" => $this->movInstrucaoToSave['conta_horas_fim']+6,
+            "conta_horas_fim" => $this->movInstrucaoToSave['conta_horas_inicio']+6,
             "natureza" => "I",
             "tipo_instrucao" => "D",
             "piloto_id" => $this->pilotoAlunoUser->id, 
