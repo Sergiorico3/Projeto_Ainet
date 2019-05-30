@@ -1,4 +1,4 @@
-@extends ('layouts.app') @section('title', 'Adicionar novo socio')
+@extends ('layouts.app') @section('title', 'Adicionar nova aeronave')
 @section('content')
 <div class="container">
         <div class="card card-signin my-5">
@@ -6,10 +6,7 @@
                 <h5 class="card-title text-center">Criar aeronave</h5>
 
                 <form
-                    action="{{route('aeronaves.store')}}"
-                    method="post"
-                    class="form-group"
-                    enctype="multipart/form-data">
+                    action="{{route('aeronaves.store')}}" method="post" class="form-group" enctype="multipart/form-data">
                     @csrf @method('POST')
                     <br><br><br>
                     <div class="col-sm-12 col-md-4">
@@ -20,9 +17,7 @@
                             name="matricula"
                             id="matricula"
                             placeholder="Introduza a matricula"
-                            required="required"
-                            pattern="^[A-Za-z0-9]+$"
-                            title="A matricula deve contrer apenas letras e números"/>
+                            required="required"/>
                         <br>
                     </div>
 

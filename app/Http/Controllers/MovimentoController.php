@@ -128,10 +128,15 @@ class MovimentoController extends Controller
     public function update(Request $request, $id)
     {
         $movimento = Movimento::findOrFail($id);
+        if($movimento->confirmado){
+            return redirect()->route("movimentos.index")->with('success', 'Movimento não pode ser editado por estar confirmado!');
+        }
+        else{
         $movimento->fill($request->all());
         $movimento->save();
-
         return redirect()->route("movimentos.index")->with('success', 'Movimento editado com sucesso!');
+        }
+
     }
 
     /**
@@ -140,8 +145,33 @@ class MovimentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Movimento $movimento)
     {
-        //delete
+        if($movimento->confirmado){
+            return redirect()->route("movimentos.index")->with('success', 'Movimento não pode ser apagado por estar confirmado!');
+        }
+        else{
+            $movimento->forceDelete();
+            return redirect()->route("movimentos.index")->with('success', 'Movimento apagado com sucesso!');
+        }
+        
+    }
+
+    public function estatisticas()          //TODO
+    {
+        $aeronaves = DB::table("aeronaves")->get();
+
+        dd($aeronaves);
+        foreach ($aeronaves as $aeronave){
+        $aeronave=$movimentos_jan= Movimento::where('aeronave', '=', $aeronave->matricula)
+            ->whereMonth('data','1');
+
+        $aeronave=$movimentos_fev= Movimento::where('aeronave', '=', $aeronave->matricula)
+            ->whereMonth('data','2');
+        }
+
+
+        $pagetitle = "Estatísticas de movimento";
+        return view('movimentos.estatisticas', compact('pagetitle' ,'aeronaves'));
     }
 }

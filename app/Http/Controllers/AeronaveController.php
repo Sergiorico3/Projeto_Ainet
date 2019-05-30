@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Aeronave;
+use App\Movimento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreAeronaveRequest;
 
 class AeronaveController extends Controller
@@ -94,7 +96,16 @@ class AeronaveController extends Controller
      */
     public function destroy(Aeronave $aeronave)
     {   
-        $aeronave->delete();
-        return redirect()->route("aeronaves.index")->with('success', 'Aeronave apagada com sucesso');
+        if( $aeronave->matricula = (Movimento::where('aeronave','=', $aeronave->matricula)) ){
+            $aeronave->delete();
+            return redirect()->route("aeronaves.index")->with('success', 'Aeronave apagada com sucesso');
+        }
+        else{
+            $matricula=$aeronave->matricula;
+            DB::delete('delete from aeronaves_valores where matricula = ?', [$matricula]);
+            $aeronave->forceDelete();
+            return redirect()->route("aeronaves.index")->with('success', 'Aeronave apagada com sucesso');
+        }
+
     }
 }

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Movimento;
+
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
@@ -97,15 +98,14 @@ class UserController extends Controller
     }
 
     public function delete(User $socio){
-
+        
         if($socio->id = Movimento::where('piloto_id','=', $socio->id)){
             //soft delete (altera só o campo: deleted_at)
              $socio->delete();
+        }else{
+            $socio->forceDelete();
         }
         
-        
-        //Hard delete
-        //$socio->forceDelete();
         return redirect()->route("socios.index")->with('success', 'Sócio apagado com sucesso');
     }
 

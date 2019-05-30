@@ -60,3 +60,4 @@ Route::get('/aeronaves/linha_temporal');//todo
 
 //movimentos
 Route::resource('movimentos', 'MovimentoController', ['parameters'=>['movimentos'=>'movimento']])->except('show');
+Route::get('/movimentos/estatisticas', 'MovimentoController@estatisticas')->name('movimentos.estatisticas')->middleware('auth');
