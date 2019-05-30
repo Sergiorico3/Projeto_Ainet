@@ -24,7 +24,6 @@ class US16_PermissoesTest extends USTestBase
         $this->seedPilotoDesativadoUser();
         $this->seedEmailNaoVerificadoUser();
         $this->seedPasswordInicialUser();
-        $this->seedSoftDeletedUser();
         $this->seedNormalMovimentos($this->pilotoUser->id);
         $this->updateMovimento_confirmado($this->normalMovimento->id, 0);
         $this->normalMovimento->confirmado = 0;
@@ -88,13 +87,6 @@ class US16_PermissoesTest extends USTestBase
         $requestData = array_merge($this->movToSave, ["num_recibo" => "87663465678"]);
         $response = $this->makeRequest($requestData, $this->passwordInicialUser);
         $response->assertUnauthorized('POST', "/movimentos", 'Sócio que ainda não alterou a password está autorizado a criar ou alterar movimentos (não devia ter acesso a essa funcionalidade)');
-    }
-
-    public function testProtegeCriarOuAlterarMovimentoComoUserComoSoftDeletedUser()
-    {
-        $requestData = array_merge($this->movToSave, ["num_recibo" => "97443424"]);
-        $response = $this->makeRequest($requestData, $this->softDeletedUser);
-        $response->assertUnauthorized('POST', "/movimentos", 'Sócio "SoftDeleted" está autorizado a criar ou alterar movimentos (não devia ter acesso a essa funcionalidade)');
     }
 
     public function testCriarOuAlterarMovimentoComoPiloto()

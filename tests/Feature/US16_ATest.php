@@ -571,8 +571,8 @@ class US16_ATest extends USTestBase
         }
 
         $newdata = [
-            "conta_horas_inicio" =>  "232422",
-            "conta_horas_fim" =>  "232423",
+            //"conta_horas_inicio" =>  "232422",
+            "conta_horas_fim" =>  $this->movToSave["conta_horas_inicio"] + 23
         ];
         $requestData = array_merge($this->movToSave, $newdata);
         $response = $this->makeRequest($requestData);
@@ -767,6 +767,10 @@ class US16_ATest extends USTestBase
         $requestData = array_merge($this->movToSave, $newdata);
         $response = $this->makeRequest($requestData);
         $response->assertValid('instrutor_id', 'Não aceita o valor de instrutor_id = ' . $this->pilotoInstrutorUser->id . ' (devia aceitar)');
-
     }
 }
+
+// Para verificar os mensagens de erro:
+// dump(app('session.store')->get('errors'));
+
+
