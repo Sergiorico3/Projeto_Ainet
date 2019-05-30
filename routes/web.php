@@ -12,7 +12,10 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::patch('/password', 'UserController@changepasswordstore')->name('socios.changepasswordstore');
+Route::get('/password', 'UserController@changepassword')->name('socios.changepassword');
 Auth::routes(['register'=>false, 'verified'=>true]);
+
 
 //Home
 Route::get('/', 'HomeController@home');
