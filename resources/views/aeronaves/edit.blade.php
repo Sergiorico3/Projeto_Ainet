@@ -26,14 +26,14 @@
                                         <input
                                             style='width:auto'
                                             name="tempos[{{$unidades+1}}]"
-                                            value="{{old('precos.'.$unidades,$valor->$unidade_conta_horas))}}"
+                                            value="{{old('tempos.'.$unidades,$valor->minutos))}}"
                                             readonly="readonly">
                                     </td>
                                     <td scope="row">
                                         <input
                                             style='width:auto'
                                             name="precos[{{$unidades+1}}]"
-                                            value=" {{round((5*round($unidades*6/5))/60* $aeronave->preco_hora)}} "
+                                            value=" {{old('precos.'.$unidades,$valor->preco))}} "
                                             readonly="readonly">
                                     </td>
                                 </tr>

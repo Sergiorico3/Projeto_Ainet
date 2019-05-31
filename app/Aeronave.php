@@ -12,7 +12,7 @@ class Aeronave extends Model
     public $incrementing = false;    
 
     public function valores(){
-        return $this->hasMany("App\Aeronaves_valor", "matricula", "matricula"). $unidades = $valor->unidade_conta_horas;        
+        return $this->hasMany("App\Aeronaves_valore", "matricula", "matricula");        
     }
 
     protected $fillable = [

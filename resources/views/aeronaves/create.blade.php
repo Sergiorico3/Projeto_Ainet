@@ -29,7 +29,7 @@
                                         <input
                                             style='width:auto'
                                             name="tempos[{{$unidades}}]"
-                                            value="{{old('precos.'.$unidades,5*round($unidades*6/5))}}"
+                                            value="{{old('tempos.'.$unidades,5*round($unidades*6/5))}}"
                                             readonly="readonly">
                                     </td>
                                     <td scope="row">
