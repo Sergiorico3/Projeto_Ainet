@@ -6,28 +6,20 @@
             <h5 class="card-title text-center">Filtrar sócios</h5>
 
             <div class="col-md-auto">
-                <div class="col-md-6 offset-md-5">
-                    <br>
-                        <a
-                            href="{{route('socios.create')}}"
-                            class="btn btn-lg btn-google "
-                            role="button">Criar sócio</a>
-                    </div>
-
+                <div class="col-md-6 offset-md-5"><br>
+                    <a href="{{route('socios.create')}}" class="btn btn-lg btn-google" role="button">Criar sócio</a>
+                </div>
                     <form method="POST" class="form-ad" action="{{route('socios.desativar')}}">
                         {!!csrf_field()!!}
                         @method('patch')
                         <button type="submit" class="btn btn-dark" name="ok">Desativar sócios com quotas por pagar</button>
+                    </form><br>
+                    <form method="POST" class="form-ad" action="{{route('socios.reset_quotas')}}">
+                        @method('patch') @csrf
+                        <button type="submit" class="btn btn-dark" name="ok">Declara as quotas de todos os sócios como "por pagar"</button>
                     </form>
 
-                    <br>
-
-                        <form method="POST" class="form-ad" action="{{route('socios.reset_quotas')}}">
-                            @method('patch') @csrf
-                            <button type="submit" class="btn btn-dark" name="ok">Declara as quotas de todos os sócios como "por pagar"</button>
-                        </form>
-
-                    </div>
+                </div>
 
                     <br>
                         <form class="col-md-auto" method="GET" action="{{route('socios.index')}}">
@@ -125,8 +117,8 @@
                                                 @foreach($pesquisa as $socio)
                                                 <tr>
                                                     <td scope="row">
-                                                        <td>
-                                                            <td><img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}"></td>
+                                                        
+                                                            <img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}">
                                                             <td scope="row">{{$socio->num_socio}}</td>
                                                             <td scope="row">{{$socio->nome_informal}}</td>
                                                             <td scope="row">{{$socio->email}}</td>
@@ -145,13 +137,17 @@
                                                                 
                                                                 @if($socio->tipo_socio  == 'P' && (Auth::user()->direcao || $socio->id = Auth::user()->id))
                                                                     <br>
-                                                                    <a href="{{route('socios.mostrarlicenca', $socio->id)}}">
-                                                                        <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar licença</button>
-                                                                    </a>
+                                                                    @if(Storage::disk("local")->exists("docs_piloto/licenca_".$socio->id.'.pdf'))
+                                                                        <a href="{{route('socios.mostrarlicenca', $socio->id)}}">
+                                                                            <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar licença</button>
+                                                                        </a>
+                                                                    @endif
                                                                     <br>
-                                                                    <a href="{{route('socios.mostrarcertificado', $socio->id)}}">
-                                                                        <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar certificado</button>
-                                                                    </a>
+                                                                    @if(Storage::disk("local")->exists("docs_piloto/certificado_".$socio->id.'.pdf'))
+                                                                        <a href="{{route('socios.mostrarcertificado', $socio->id)}}">
+                                                                            <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar certificado</button>
+                                                                        </a>
+                                                                    @endif
                                                                 @endif
                                                                 <br>
                                                                     <form
@@ -182,7 +178,7 @@
                                                                                 
                                                             </td>
                                                             </tr>
-                                                                        @endforeach
+                                                @endforeach
                                                         </tbody>
                                                         </table>
                                                             </div>
