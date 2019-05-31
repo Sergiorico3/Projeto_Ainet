@@ -108,25 +108,17 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Editar movimento</h5>
 
-                        <form
-                            class="form-signin"
-                            action="{{ route('movimentos.update', $movimento ) }}"
-                            method="POST"
-                            enctype="multipart/form-data">
-
-                            @method('put') @csrf
+                        <form method="POST" action="{{ route('movimentos.update', $movimento ) }}" class="form-signin" enctype="multipart/form-data">
+                            @method('PUT') @csrf
 
                             <div class="form-label-group">
-                                <input
-                                    type="date"
-                                    class="form-control"
-                                    name="data"
-                                    id="inputData"
-                                    placeholder="Data do voo"
+                            <input type="hidden" name="data" value="">
+                                <input name="data" type="date" class="form-control" id="inputData" placeholder="Data do voo"
                                     autofocus="autofocus"
                                     pattern="^\d{4}\-\d{1,2}\-\d{1,2}$"
                                     title="Data do voo deve ter o formato correto (exemplo: 2013-11-24)"
-                                    value="{{ old('data', $movimento->data) }}">
+                                    value="{{ old('data', $movimento->data) }}"
+                                    required>
                                 <label for="inputData">Data do voo</label>
                                 @if ($errors->has('data'))
                                 <em>{{ $errors->first('data') }}</em>

@@ -24,7 +24,11 @@ class UpdateMovimentoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'data' => 'required|date|date_format:Y-m-d',
+            'hora_descolagem' => 'required|date_format:H:i',
+            'hora_aterragem' => 'required|date_format:H:i',
+            'aeronave' => 'required',
+            'num_diario' => 'required'
         ];
     }
 }

@@ -26,18 +26,18 @@
                                         <input
                                             style='width:auto'
                                             name="tempos[{{$unidades+1}}]"
-                                            value="{{old('tempos.'.$unidades,$valor->minutos))}}"
+                                            value="{{old('tempos.'.$unidades,$valor->minutos)}}"
                                             readonly="readonly">
                                     </td>
                                     <td scope="row">
                                         <input
                                             style='width:auto'
                                             name="precos[{{$unidades+1}}]"
-                                            value=" {{old('precos.'.$unidades,$valor->preco))}} "
+                                            value=" {{old('precos.'.$unidades,$valor->preco)}} "
                                             readonly="readonly">
                                     </td>
                                 </tr>
-                                @endfor
+                                @endforeach
                             </table>
                         </div>
                     </div>

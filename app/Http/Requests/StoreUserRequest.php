@@ -31,7 +31,7 @@ class StoreUserRequest extends FormRequest
             'name' => 'required|max:255|string',
             'sexo' => 'required|in:M,F', 
             'data_nascimento' => 'required|before:today',
-            'email' => 'required|max:255', 
+            'email' => 'required|email|max:255|unique:users,email', 
             'foto_url' => 'required',
             'nif' => 'required|min:9|max:9',
             'telefone' => 'required|max:20',

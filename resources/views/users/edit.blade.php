@@ -56,14 +56,9 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Editar sócio</h5>
 
-                    <form
-                        class="form-signin"
-                        action="{{ route('socios.update', Auth::user()->id ) }}"
-                        method="POST"
-                        enctype="multipart/form-data">
-
-                        @method('put') @csrf
-
+                    <form method="POST" class="form-signin" action="{{ route('socios.update', Auth::user()->id ) }}" enctype="multipart/form-data">
+                        @method('put') 
+                        @csrf
                         <div class="form-label-group">
                             <input
                                 id="foto_url"

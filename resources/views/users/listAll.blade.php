@@ -6,7 +6,6 @@
             <h5 class="card-title text-center">Filtrar sócios</h5>
 
             <div class="col-md-auto">
-<<<<<<< HEAD
             @can('updateAll', 'App\User')
                 <div class="col-md-6 offset-md-5">
                     <br>
@@ -18,11 +17,6 @@
                 </div>
 
                     
-=======
-                <div class="col-md-6 offset-md-5"><br>
-                    <a href="{{route('socios.create')}}" class="btn btn-lg btn-google" role="button">Criar sócio</a>
-                </div>
->>>>>>> d3c800de04bb28485c421b0a7bebf8d9fcfe5c07
                     <form method="POST" class="form-ad" action="{{route('socios.desativar')}}">
                         {!!csrf_field()!!}
                         @method('patch')
@@ -32,7 +26,6 @@
                         @method('patch') @csrf
                         <button type="submit" class="btn btn-dark" name="ok">Declara as quotas de todos os sócios como "por pagar"</button>
                     </form>
-<<<<<<< HEAD
             
                     <br>
 
@@ -43,11 +36,6 @@
 
                 </div>
                 @endcan
-=======
-
-                </div>
-
->>>>>>> d3c800de04bb28485c421b0a7bebf8d9fcfe5c07
                     <br>
                         <form class="col-md-auto" method="GET" action="{{route('socios.index')}}">
 

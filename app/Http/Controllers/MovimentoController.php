@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreMovimentoRequest;
+use App\Http\Requests\UpdateMovimentoRequest;
 
 class MovimentoController extends Controller
 {
@@ -143,7 +144,7 @@ class MovimentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateMovimentoRequest $request, $id)
     {
         $movimento = Movimento::findOrFail($id);
         if($movimento->confirmado){

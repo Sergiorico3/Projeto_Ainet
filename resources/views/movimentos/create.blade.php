@@ -7,7 +7,7 @@
             <div class="card-body">
                     <h5 class="card-title text-center">Registar novo movimento</h5>
 
-                    <form action="{{route('movimentos.store')}}" method="post" class="form-group" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('movimentos.store')}}" class="form-group" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <br>
@@ -56,8 +56,7 @@
                             <input
                                 type="number" class="form-control"
                                 name="num_diario" id="num_diario"
-                                placeholder="Nº diário"
-                                required 
+                                placeholder="Nº diário" 
                                 pattern="^[0-9]+$"
                                 title="O n.º de diário deve conter apenas números"/>
                                 <br>

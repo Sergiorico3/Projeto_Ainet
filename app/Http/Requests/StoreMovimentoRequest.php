@@ -27,8 +27,8 @@ class StoreMovimentoRequest extends FormRequest
             'data' => 'required|date|date_format:Y-m-d',
             'hora_descolagem' => 'required|date_format:H:i',
             'hora_aterragem' => 'required|date_format:H:i',
-            'aeronave' => 'required',
-            'num_diario' => 'required, digits'
+            'aeronave' => 'required|min:0|max:9',
+            'num_diario' => 'required|integer|min:0|max:9'
         ];
     }
 }
