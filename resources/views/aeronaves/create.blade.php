@@ -9,6 +9,40 @@
                     action="{{route('aeronaves.store')}}" method="post" class="form-group" enctype="multipart/form-data">
                     @csrf @method('POST')
                     <br><br><br>
+
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Unidade</th>
+                                    <th scope="col">Minutos</th>
+                                    <th scope="col">Preço</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for($unidades=1 ; $unidades <= 10; $unidades++)
+                                <tr>
+                                    <td scope="row">
+                                        {{$unidades}}</td>
+                                    <td scope="row">
+                                        <input
+                                            style='width:auto'
+                                            name="tempos[{{$unidades}}]"
+                                            value="{{old('precos.'.$unidades,5*round($unidades*6/5))}}"
+                                            readonly="readonly">
+                                    </td>
+                                    <td scope="row">
+                                        <input
+                                            style='width:auto'
+                                            name="precos[{{$unidades}}]"
+                                            value="{{old('precos.'.$unidades)}} "
+                                            readonly="readonly">
+                                    </td>
+                                </tr>
+                                @endfor
+                            </table>
+                        </div>
                     <div class="col-sm-12 col-md-4">
                         <label for="matricula">Matricula</label>
                         <input

@@ -51,6 +51,13 @@ class UserPolicy
         }
     }
 
+    public function updateAll(User $user)
+    {
+        if($user->direcao){
+            return true;
+        }
+    }
+
     /**
      * Determine whether the user can update the model.
      *

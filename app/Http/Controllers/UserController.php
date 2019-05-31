@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Movimento;
 
-use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
+
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -129,7 +129,11 @@ class UserController extends Controller
 
     //inverter quota_paga
     public function quota(User $socio){
-        if($socio->quota_paga){
+        $this->authorize('updateAll',User::class);
+        if (request()->filled('quota_paga')){
+            $socio->quota_paga = request()->quota_paga;
+        }
+        elseif($socio->quota_paga){
             $socio->quota_paga = 0;
         }else{
             $socio->quota_paga = 1;
@@ -140,12 +144,14 @@ class UserController extends Controller
 
     //Altera todas as quota_paga a 0
     public function reset_quotas(){
+        $this->authorize('updateAll',User::class);
         User::where('quota_paga','=', '1')->update(['quota_paga'=>'0']);
         return redirect()->route("socios.index")->with('success', 'Alteração feita com sucesso');
     }
 
     //Desativar todos os socios que não têm as quotas pagas
     public function desativar(){
+        $this->authorize('updateAll',User::class);
         $socios = User::where('quota_paga','=',0)->update(['ativo' => '0']);
         $socios->save();
         return redirect()->route("socios.index")->with('success', 'Alteração feita com sucesso');
@@ -153,7 +159,11 @@ class UserController extends Controller
 
     //Inverter ativo 
     public function ativar(User $socio){
-        if($socio->ativo){
+        $this->authorize('updateAll',User::class);
+        if (request()->filled('ativo')){
+            $socio->ativo = request()->ativo;
+        }
+        elseif($socio->ativo){
             $socio->ativo = 0;
         }else{
             $socio->ativo = 1;

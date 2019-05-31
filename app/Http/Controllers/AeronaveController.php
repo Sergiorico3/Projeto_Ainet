@@ -96,13 +96,12 @@ class AeronaveController extends Controller
      */
     public function destroy(Aeronave $aeronave)
     {   
-        if( $aeronave->matricula = (Movimento::where('aeronave','=', $aeronave->matricula)) ){
+        if( Movimento::where('aeronave','=', $aeronave->matricula)->count()){
             $aeronave->delete();
             return redirect()->route("aeronaves.index")->with('success', 'Aeronave apagada com sucesso');
         }
         else{           //TODO não passa para o else
-            $matricula=$aeronave->matricula;
-            DB::delete('delete from aeronaves_valores where matricula = ?', [$matricula]);
+            DB::table('aeronaves_valores')-> where('matricula',$aeronave->matricula)->delete();
             $aeronave->forceDelete();
             return redirect()->route("aeronaves.index")->with('success', 'Aeronave apagada com sucesso');
         }

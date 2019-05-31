@@ -17,21 +17,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @for($unidades=1 ; $unidades <= 10; $unidades++)
+
+                                @foreach ($aeronave->valores as $unidades=>$valor)
                                 <tr>
                                     <td scope="row">
-                                        {{$unidades}}</td>
+                                        {{$unidades+1}}</td>
                                     <td scope="row">
                                         <input
                                             style='width:auto'
-                                            name="minutos[{{$unidades}}]"
-                                            value="{{5*round($unidades*6/5)}}"
+                                            name="tempos[{{$unidades+1}}]"
+                                            value="{{old('precos.'.$unidades,$valor->$unidade_conta_horas))}}"
                                             readonly="readonly">
                                     </td>
                                     <td scope="row">
                                         <input
                                             style='width:auto'
-                                            name="preco[{{$unidades}}]"
+                                            name="precos[{{$unidades+1}}]"
                                             value=" {{round((5*round($unidades*6/5))/60* $aeronave->preco_hora)}} "
                                             readonly="readonly">
                                     </td>

@@ -6,20 +6,23 @@
             <h5 class="card-title text-center">Filtrar sócios</h5>
 
             <div class="col-md-auto">
+            @can('updateAll', 'App\User')
                 <div class="col-md-6 offset-md-5">
                     <br>
+                    
                         <a
                             href="{{route('socios.create')}}"
                             class="btn btn-lg btn-google "
                             role="button">Criar sócio</a>
-                    </div>
+                </div>
 
+                    
                     <form method="POST" class="form-ad" action="{{route('socios.desativar')}}">
                         {!!csrf_field()!!}
                         @method('patch')
                         <button type="submit" class="btn btn-dark" name="ok">Desativar sócios com quotas por pagar</button>
                     </form>
-
+            
                     <br>
 
                         <form method="POST" class="form-ad" action="{{route('socios.reset_quotas')}}">
@@ -27,8 +30,8 @@
                             <button type="submit" class="btn btn-dark" name="ok">Declara as quotas de todos os sócios como "por pagar"</button>
                         </form>
 
-                    </div>
-
+                </div>
+                @endcan
                     <br>
                         <form class="col-md-auto" method="GET" action="{{route('socios.index')}}">
 
@@ -165,20 +168,23 @@
                                                                         <input type="hidden" name="_method" value="delete"/> {!!csrf_field()!!}
                                                                     </form>
                                                                     <br>
-
-                                                                        <form class="form-ad" action="{{route('socios.quota', $socio)}}" method="post">
+                                                                    @can('updateAll', 'App\User')
+                                                                        <form method="POST" class="form-ad" action="{{route('socios.quota', $socio)}}" >
                                                                             {!!csrf_field()!!}
                                                                             @method('patch')
-                                                                            <button type="submit" class="btn btn-block btn-success" name="ok">Inverter estado da quota</button>
+            
+                                                                            <input type="hidden" name="quota_paga" value="">
+                                                                            <button type="submit" class="btn btn-block btn-success" >Inverter estado da quota</button>
                                                                         </form>
                                                                         <br>
-                                                                            <form class="form-ad" action="{{route('socios.ativar', $socio)}}" method="post">
+                                                                            <form  method="POST" class="form-ad" action="{{route('socios.ativar', $socio)}}">
                                                                                 {!!csrf_field()!!}
                                                                                 @method('patch')
-                                                                                <button type="submit" class="btn btn-block btn-success" name="ok">Ativar/Desativar</button>
+                                                                                <input type="hidden" name="ativo" value="">
+                                                                                <button type="submit" class="btn btn-block btn-success">Ativar/Desativar</button>
                                                                                 <br>
                                                                             </form>
-                                                                                
+                                                                                @endcan
                                                                                 
                                                             </td>
                                                             </tr>
