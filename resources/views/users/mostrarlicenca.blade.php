@@ -5,7 +5,7 @@
         <div class="card card-signin my-14">
                 <div class="card-body">
                     <h5 class="card-title text-center">Licença</h5>
-                        <embed src="{{Storage::disk('public')->url('/docs_piloto').'/licenca_'.Auth::id().'.pdf'}}" width="800px" height="1000px" />
+                        <embed src="{{Storage::disk('public')->url('/docs_piloto').'/licenca_'.$socio->id.'.pdf'}}" width="800px" height="1000px" />
                 </div>
             </div>
         </div>

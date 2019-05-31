@@ -145,11 +145,11 @@
                                                                 
                                                                 @if($socio->tipo_socio  == 'P' && (Auth::user()->direcao || $socio->id = Auth::user()->id))
                                                                     <br>
-                                                                    <a href="{{route('socios.mostrarlicenca', $socio->id)}}">
+                                                                    <a href="{{route('socios.mostrarlicenca', $socio)}}">
                                                                         <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar licença</button>
                                                                     </a>
                                                                     <br>
-                                                                    <a href="{{route('socios.mostrarcertificado', $socio->id)}}">
+                                                                    <a href="{{route('socios.mostrarcertificado', $socio)}}">
                                                                         <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar certificado</button>
                                                                     </a>
                                                                 @endif

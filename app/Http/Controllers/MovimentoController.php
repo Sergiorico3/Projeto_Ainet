@@ -178,7 +178,6 @@ class MovimentoController extends Controller
     {
         $aeronaves = DB::table("aeronaves")->get();
 
-        dd($aeronaves);
         foreach ($aeronaves as $aeronave){
         $aeronave=$movimentos_jan= Movimento::where('aeronave', '=', $aeronave->matricula)
             ->whereMonth('data','1');
