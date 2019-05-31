@@ -164,15 +164,6 @@
                                                                 
                                                                 @if($socio->tipo_socio  == 'P' && (Auth::user()->direcao || $socio->id = Auth::user()->id))
                                                                     <br>
-<<<<<<< HEAD
-                                                                    <a href="{{route('socios.mostrarlicenca', $socio)}}">
-                                                                        <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar licença</button>
-                                                                    </a>
-                                                                    <br>
-                                                                    <a href="{{route('socios.mostrarcertificado', $socio)}}">
-                                                                        <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar certificado</button>
-                                                                    </a>
-=======
                                                                     @if(Storage::disk("local")->exists("docs_piloto/licenca_".$socio->id.'.pdf'))
                                                                         <a href="{{route('socios.mostrarlicenca', $socio->id)}}">
                                                                             <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar licença</button>
@@ -184,7 +175,6 @@
                                                                             <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar certificado</button>
                                                                         </a>
                                                                     @endif
->>>>>>> d3c800de04bb28485c421b0a7bebf8d9fcfe5c07
                                                                 @endif
                                                                 <br>
                                                                     <form
@@ -202,13 +192,9 @@
                                                                         <form method="POST" class="form-ad" action="{{route('socios.quota', $socio)}}" >
                                                                             {!!csrf_field()!!}
                                                                             @method('patch')
-<<<<<<< HEAD
             
                                                                             <input type="hidden" name="quota_paga" value="">
                                                                             <button type="submit" class="btn btn-block btn-success" >Inverter estado da quota</button>
-=======
-                                                                            <button type="submit" class="btn btn-block btn-success" name="quota_paga">Inverter estado da quota</button>
->>>>>>> d3c800de04bb28485c421b0a7bebf8d9fcfe5c07
                                                                         </form>
                                                                         <br>
                                                                             <form  method="POST" class="form-ad" action="{{route('socios.ativar', $socio)}}">
