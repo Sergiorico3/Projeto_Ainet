@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Criar sócio</div>
-                    <form method="POST" type="hidden" name="store"  action="{{route('socios.store')}}"  class="form-group" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('socios.store')}}" type="hidden" name="store" class="form-group" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <br>
@@ -102,7 +102,7 @@
                         
                         <div class="col-sm-12 col-md-4">
                             <label for="quota_paga">Quotas em dia</label><br>
-                            <label for="masculino">Sim</label>
+                            <label for="Masculino">Sim</label>
                             <input type="radio" name="quota_paga" id="1" value="1"><br>
                             <label for="feminino">Não</label>
                             <input type="radio" name="quota_paga" id="0" value="0"><br>
