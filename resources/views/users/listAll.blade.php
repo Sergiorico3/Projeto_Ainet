@@ -165,7 +165,7 @@
                                                                         <form class="form-ad" action="{{route('socios.quota', $socio)}}" method="post">
                                                                             {!!csrf_field()!!}
                                                                             @method('patch')
-                                                                            <button type="submit" class="btn btn-block btn-success" name="ok">Inverter estado da quota</button>
+                                                                            <button type="submit" class="btn btn-block btn-success" name="quota_paga">Inverter estado da quota</button>
                                                                         </form>
                                                                         <br>
                                                                             <form class="form-ad" action="{{route('socios.ativar', $socio)}}" method="post">
