@@ -20,11 +20,11 @@
                     <form method="POST" class="form-ad" action="{{route('socios.desativar')}}">
                         {!!csrf_field()!!}
                         @method('patch')
-                        <button type="submit" class="btn btn-dark" name="ok">Desativar sócios com quotas por pagar</button>
+                        <button type="submit" class="btn btn-dark" name="ativo">Desativar sócios com quotas por pagar</button>
                     </form><br>
                     <form method="POST" class="form-ad" action="{{route('socios.reset_quotas')}}">
                         @method('patch') @csrf
-                        <button type="submit" class="btn btn-dark" name="ok">Declara as quotas de todos os sócios como "por pagar"</button>
+                        <button type="submit" class="btn btn-dark" name="quotas">Declara as quotas de todos os sócios como "por pagar"</button>
                     </form>
             
                     <br>
@@ -108,7 +108,7 @@
                             </div>
                        </form> <br>
                         
-
+                @can('viewUser', 'App\User', 'Auth::user()')
                         <div class="col-md-auto">
                             <div class="card card-signin my-5">
                                 <div class="card-body">
@@ -122,6 +122,7 @@
                                                     <th scope="col">Nome Informal</th>
                                                     <th scope="col">E-mail</th>
                                                     <th scope="col">Telefone</th>
+                                                    <th scope="col">Sexo</th>
                                                     <th scope="col">Tipo sócio</th>
                                                     <th scope="col">Nº licença</th>
                                                     <th scope="col">Direção</th>
@@ -138,10 +139,12 @@
                                                             <td scope="row">{{$socio->nome_informal}}</td>
                                                             <td scope="row">{{$socio->email}}</td>
                                                             <td scope="row">{{$socio->telefone}}</td>
+                                                            <td scope="row">{{$socio->sexo}}</td>
                                                             <td scope="row">{{$socio->typeSocioToString()}}</td>
                                                             <td scope="row">{{$socio->num_licenca}}</td>
                                                             <td scope="row">{{$socio->direcaoToString()}}</td>
                                                             <td scope="row">
+                                                           
                                                                 <a href="{{route('socios.edit', $socio->id)}}">
                                                                     <button
                                                                         type="submit"
@@ -149,6 +152,7 @@
                                                                         name="ok">Editar
                                                                     </button>
                                                                 </a>
+                                                           
                                                                 
                                                                 @if($socio->tipo_socio  == 'P' && (Auth::user()->direcao || $socio->id = Auth::user()->id))
                                                                     <br>
@@ -192,7 +196,7 @@
                                                                                 <button type="submit" class="btn btn-block btn-success">Ativar/Desativar</button>
                                                                                 <br>
                                                                             </form>
-                                                                                @endcan
+                                                                    @endcan
                                                                                 
                                                             </td>
                                                             </tr>
@@ -209,4 +213,5 @@
                                         </div>
                                     </div>
                                 </div>
+            @endcan
 @endsection

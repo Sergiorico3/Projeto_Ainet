@@ -17,6 +17,7 @@ class UserController extends Controller
 {
     public function index()
     {
+        $this->authorize('update',User::class, Auth::user());
         $pesquisa=request()->query();
         
         $num_socio=request()->query('num_socio');
@@ -111,10 +112,8 @@ class UserController extends Controller
 
     public function edit(User $socio)
     {
+        $this->authorize('update',User::class, Auth::user());
         $pagetitle = "Show and edit socio";
-        /*
-        $user = User::findOrFail($user);
-        */
         return view('users.edit', compact('pagetitle', 'socio'));
     }
     

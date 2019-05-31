@@ -25,6 +25,7 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
+            'num_socio' => 'required|max:11|integer|unique:',
             /*            
             'num_socio' => 'required|integer|max:11|unique:users',
             'nome_informal' => 'required|max:40|string',
