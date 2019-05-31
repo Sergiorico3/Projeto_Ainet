@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class isAtivo
+class IsAtivo
 {
     /**
      * Handle an incoming request.
@@ -15,6 +15,10 @@ class isAtivo
      */
     public function handle($request, Closure $next)
     {
+        if(auth()->user()->ativo){
+            
         return $next($request);
+        }
+        throw new AccessDeniedHttpException('Unauthorized.');
     }
 }

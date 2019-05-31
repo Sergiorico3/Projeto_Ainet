@@ -239,17 +239,19 @@
                                 <br>
                         </div>
                         
-                        <div class="col-sm-12 col-md-4">
-                            <label for="observacoes">Observações</label>
-                            <input
-                                type="text" class="form-control"
-                                name="observacoes" id="observacoes"
-                                placeholder="Observações"
-                                required
-                                pattern="^[a-zA-ZÀ-ú\s]+$"
-                                title="As observações devem conter apenas letras"/>
-                                <br>
-                        </div>
+                        <div class="form-label-group">
+                                <textarea
+                                   
+                                    class="form-control"
+                                    name="observacoes"
+                                    id="inputObservacoes"
+                                    placeholder="observacoes"
+                                    autofocus="autofocus">{{ old('observacoes', $movimento->observacoes) }}c</textarea>
+                                <label for="inputObservacoes">Observações</label>
+                                @if ($errors->has('observacoes'))
+                                <em>{{ $errors->first('observacoes') }}</em>
+                                @endif
+                            </div>
                         
                         <div class="col-sm-12 col-md-4">
                             <button type="submit" class="btn btn-success" name="ok">Criar</button>

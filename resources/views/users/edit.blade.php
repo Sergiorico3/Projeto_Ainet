@@ -181,10 +181,22 @@
                                 name="endereco"
                                 id="endereco"
                                 placeholder="Endereco"
-                                value="{{ old('name', $socio->endereco) }}">
+                                value="{{ old('endereco', $socio->endereco) }}">
                             <label for="inputName">Endereco</label>
                             @if ($errors->has('endereco'))
                             <em>{{ $errors->first('endereco') }}</em>
+                            @endif
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <label for="sexo">Sexo</label><br>
+                            <label for="Masculino">Masculino</label>
+                            <input @cannot("updateAll", App\User::class) disabled @endcannot type="radio" name="sexo" id="M" value="M" {{ old('sexo', $socio->sexo) =='M'? "checked":""}}><br>
+                            <label for="Feminino">Feminino</label>
+                            <input @cannot("updateAll", App\User::class) disabled  @endcannot type="radio" name="sexo" id="F" value="F" {{ old('sexo', $socio->sexo) =='F'? "checked":""}}><br>
+                            <br>
+                            @if ($errors->has('sexo'))
+                            <em>{{ $errors->first('sexo') }}</em>
                             @endif
                         </div>
 

@@ -19,7 +19,7 @@ Auth::routes(['register'=>false, 'verified'=>true]);
 
 //Home
 Route::get('/', 'HomeController@home');
-Route::get('/home', 'HomeController@index')->name('home.index');
+
 
 //Password
 //Route::get('/password', 'Auth.LoginController@passwordShow')->name('password.change')->middleware('auth');
@@ -32,34 +32,36 @@ Route::get('/home', 'HomeController@index')->name('home.index');
 //Route::get('storage/fotos/{foto}', 'UserController@getfile')->name('getfile')->middleware('auth');
 
 //socio
-Route::patch('/socios/reset_quotas', 'UserController@reset_quotas')->name('socios.reset_quotas')->middleware('IsDirecao');
-Route::patch('/socios/{socio}/quota', 'UserController@quota')->name('socios.quota')->middleware('IsDirecao');
-
-Route::patch('/socios/{socio}/ativo', 'UserController@ativar')->name('socios.ativar')->middleware('IsDirecao');
-Route::patch('/socios/desativar_sem_quotas', 'UserController@desativar')->name('socios.desativar')->middleware('IsDirecao');
-
-
-
-Route::resource('socios', 'UserController');
-
-
-
-Route::get('/socios', 'UserController@index')->name('socios.index')->middleware('auth');
-Route::get('/socios/{socio}/edit', 'UserController@edit')->name('socios.edit')->middleware('auth');
-Route::get('/socios/create', 'UserController@create')->name('socios.create');//->middleware('isDirecao');
-Route::post('/socios', 'UserController@store')->name('socios.store');//->middleware('isDirecao');
-Route::put('/socios/{socio}', 'UserController@update')->name('socios.update')->middleware('auth');
-Route::delete('/socios/{socio}', 'UserController@delete')->name('socios.delete')->middleware('IsDirecao');
-
-//Route::post('/socios/{socio}/send_reactivate_mail', 'UserController@reset_quotas')->name('socios.send_reactivate_mail')->middleware('auth');
-
-Route::get('/pilotos/{piloto}/certificado', 'UserController@mostrarCertificado')->name('socios.mostrarcertificado');
-Route::get('/pilotos/{piloto}/licenca', 'UserController@mostrarLicenca')->name('socios.mostrarlicenca');
-
-//aeronaves
-Route::resource('aeronaves', 'AeronaveController', ['parameters'=>['aeronaves'=>'aeronave']])->except('show');
-Route::get('/aeronaves/linha_temporal');//todo 
-
-//movimentos
-Route::resource('movimentos', 'MovimentoController', ['parameters'=>['movimentos'=>'movimento']])->except('show');
-Route::get('/movimentos/estatisticas', 'MovimentoController@estatisticas')->name('movimentos.estatisticas')->middleware('auth');
+Route::group(['middleware'=>['auth','verified','ativo']],function(){
+    Route::get('/home', 'HomeController@index')->name('home.index');
+    Route::patch('/socios/reset_quotas', 'UserController@reset_quotas')->name('socios.reset_quotas')->middleware('IsDirecao');
+    Route::patch('/socios/{socio}/quota', 'UserController@quota')->name('socios.quota')->middleware('IsDirecao');
+    Route::patch('/socios/{socio}/ativo', 'UserController@ativar')->name('socios.ativar')->middleware('IsDirecao');
+    Route::patch('/socios/desativar_sem_quotas', 'UserController@desativar')->name('socios.desativar')->middleware('IsDirecao');
+    
+    
+    
+    Route::resource('socios', 'UserController');
+    
+    
+    
+    Route::get('/socios', 'UserController@index')->name('socios.index')->middleware('auth');
+    Route::get('/socios/{socio}/edit', 'UserController@edit')->name('socios.edit')->middleware('auth');
+    Route::get('/socios/create', 'UserController@create')->name('socios.create');//->middleware('isDirecao');
+    Route::post('/socios', 'UserController@store')->name('socios.store');//->middleware('isDirecao');
+    Route::put('/socios/{socio}', 'UserController@update')->name('socios.update')->middleware('auth');
+    Route::delete('/socios/{socio}', 'UserController@delete')->name('socios.delete')->middleware('IsDirecao');
+    
+    //Route::post('/socios/{socio}/send_reactivate_mail', 'UserController@reset_quotas')->name('socios.send_reactivate_mail')->middleware('auth');
+    
+    Route::get('/pilotos/{piloto}/certificado', 'UserController@mostrarCertificado')->name('socios.mostrarcertificado');
+    Route::get('/pilotos/{piloto}/licenca', 'UserController@mostrarLicenca')->name('socios.mostrarlicenca');
+    
+    //aeronaves
+    Route::resource('aeronaves', 'AeronaveController', ['parameters'=>['aeronaves'=>'aeronave']])->except('show');
+    Route::get('/aeronaves/linha_temporal');//todo 
+    
+    //movimentos
+    Route::resource('movimentos', 'MovimentoController', ['parameters'=>['movimentos'=>'movimento']])->except('show');
+    Route::get('/movimentos/estatisticas', 'MovimentoController@estatisticas')->name('movimentos.estatisticas')->middleware('auth');
+});

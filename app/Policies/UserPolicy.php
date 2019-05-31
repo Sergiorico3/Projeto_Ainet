@@ -29,13 +29,15 @@ class UserPolicy
         if($user->direcao || $user->id == $model->id){
             return true;
         }
+        return false;
     }
 
-    public function viewAll(User $user, User $model)//para mostrar todos os sócios
+    public function viewAll(User $user)//para mostrar todos os sócios
     {
         if($user->direcao){
             return true;
         }
+        return false;
     }
 
     /**
@@ -49,6 +51,7 @@ class UserPolicy
         if($user->direcao){
             return true;
         }
+        return false;
     }
 
     public function updateAll(User $user)
@@ -56,6 +59,7 @@ class UserPolicy
         if($user->direcao){
             return true;
         }
+        return false;
     }
 
     /**
@@ -70,6 +74,7 @@ class UserPolicy
         if($user->direcao || $user->id == $model->id){
             return true;
         }
+        return false;
     }
 
     /**
@@ -84,6 +89,7 @@ class UserPolicy
         if($user->direcao){
             return true;
         }
+        return false;
     }
 
     /**

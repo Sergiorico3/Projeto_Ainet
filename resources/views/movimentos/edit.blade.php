@@ -368,14 +368,13 @@
                             </div>
 
                             <div class="form-label-group">
-                                <input
-                                    type="text"
+                                <textarea
+                                   
                                     class="form-control"
                                     name="observacoes"
                                     id="inputObservacoes"
                                     placeholder="observacoes"
-                                    autofocus="autofocus"
-                                    value="{{ old('observacoes', $movimento->observacoes) }}">
+                                    autofocus="autofocus">{{ old('observacoes', $movimento->observacoes) }}c</textarea>
                                 <label for="inputObservacoes">Observações</label>
                                 @if ($errors->has('observacoes'))
                                 <em>{{ $errors->first('observacoes') }}</em>

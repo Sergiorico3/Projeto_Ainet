@@ -17,7 +17,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $this->authorize('update',User::class, Auth::user());
+
         $pesquisa=request()->query();
         
         $num_socio=request()->query('num_socio');
@@ -44,12 +44,15 @@ class UserController extends Controller
         if ($direcao) {
             $pesquisa = $pesquisa->where('direcao', $direcao);
         }
-
-        $pesquisa=$pesquisa->paginate(15);
+        if (auth()->user()->cannot('viewAll',User::class)){
+            $pesquisa = $pesquisa->where('ativo', '1');
+        }
+        $pesquisa=$pesquisa->paginate(20);
         return view('users.listAll', compact('pesquisa'));  
     }
 
     public function store(StoreUserRequest $request){
+        $this->authorize('create',User::class);
         $socio = new User;
     
         $socio->fill($request->all());
@@ -68,7 +71,7 @@ class UserController extends Controller
 
     public function create()
     {
-        //$this->authorize("create", User::class);
+        $this->authorize("create", User::class);
         return view('users.create');
     }
     
@@ -83,6 +86,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $socio)
     {
+        $this->authorize('update',$socio);
         $name = $request->foto_url;
         $socio->fill($request->all());
         
@@ -99,7 +103,7 @@ class UserController extends Controller
     }
 
     public function delete(User $socio){
-        
+        $this->authorize('delete',$socio);
         if($socio->id = Movimento::where('piloto_id','=', $socio->id)){
             //soft delete (altera só o campo: deleted_at)
              $socio->delete();
@@ -112,7 +116,7 @@ class UserController extends Controller
 
     public function edit(User $socio)
     {
-        $this->authorize('update',User::class, Auth::user());
+        $this->authorize('update', $socio);
         $pagetitle = "Show and edit socio";
         return view('users.edit', compact('pagetitle', 'socio'));
     }
