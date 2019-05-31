@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Criar sócio</div>
-                    <form name="store" type="hidden" action="{{route('socios.store')}}" method="POST" class="form-group" enctype="multipart/form-data">
+                    <form method="POST" type="hidden" name="store"  action="{{route('socios.store')}}"  class="form-group" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <br>
@@ -58,7 +58,7 @@
                         <div class="col-sm-12 col-md-4">
                             Data de nascimento:
                             <input type="date" name="data_nascimento" required>
-                            <br>
+                            <br><br>
                         </div>
                         
                         <div class="col-sm-12 col-md-4">
@@ -74,7 +74,8 @@
                         </div>
 
                         <div class="col-sm-12 col-md-4">
-                            <input type="file" name="foto_url" accept="image/*">
+                            <label for="inputEmail">Foto</label>
+                            <input type="file" name="foto_url" accept="image/*"><br><br>
                         </div>
 
                         <div class="col-sm-12 col-md-4">

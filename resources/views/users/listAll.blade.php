@@ -6,6 +6,7 @@
             <h5 class="card-title text-center">Filtrar sócios</h5>
 
             <div class="col-md-auto">
+<<<<<<< HEAD
             @can('updateAll', 'App\User')
                 <div class="col-md-6 offset-md-5">
                     <br>
@@ -17,11 +18,21 @@
                 </div>
 
                     
+=======
+                <div class="col-md-6 offset-md-5"><br>
+                    <a href="{{route('socios.create')}}" class="btn btn-lg btn-google" role="button">Criar sócio</a>
+                </div>
+>>>>>>> d3c800de04bb28485c421b0a7bebf8d9fcfe5c07
                     <form method="POST" class="form-ad" action="{{route('socios.desativar')}}">
                         {!!csrf_field()!!}
                         @method('patch')
                         <button type="submit" class="btn btn-dark" name="ok">Desativar sócios com quotas por pagar</button>
+                    </form><br>
+                    <form method="POST" class="form-ad" action="{{route('socios.reset_quotas')}}">
+                        @method('patch') @csrf
+                        <button type="submit" class="btn btn-dark" name="ok">Declara as quotas de todos os sócios como "por pagar"</button>
                     </form>
+<<<<<<< HEAD
             
                     <br>
 
@@ -32,6 +43,11 @@
 
                 </div>
                 @endcan
+=======
+
+                </div>
+
+>>>>>>> d3c800de04bb28485c421b0a7bebf8d9fcfe5c07
                     <br>
                         <form class="col-md-auto" method="GET" action="{{route('socios.index')}}">
 
@@ -128,8 +144,8 @@
                                                 @foreach($pesquisa as $socio)
                                                 <tr>
                                                     <td scope="row">
-                                                        <td>
-                                                            <td><img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}"></td>
+                                                        
+                                                            <img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}">
                                                             <td scope="row">{{$socio->num_socio}}</td>
                                                             <td scope="row">{{$socio->nome_informal}}</td>
                                                             <td scope="row">{{$socio->email}}</td>
@@ -148,6 +164,7 @@
                                                                 
                                                                 @if($socio->tipo_socio  == 'P' && (Auth::user()->direcao || $socio->id = Auth::user()->id))
                                                                     <br>
+<<<<<<< HEAD
                                                                     <a href="{{route('socios.mostrarlicenca', $socio)}}">
                                                                         <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar licença</button>
                                                                     </a>
@@ -155,6 +172,19 @@
                                                                     <a href="{{route('socios.mostrarcertificado', $socio)}}">
                                                                         <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar certificado</button>
                                                                     </a>
+=======
+                                                                    @if(Storage::disk("local")->exists("docs_piloto/licenca_".$socio->id.'.pdf'))
+                                                                        <a href="{{route('socios.mostrarlicenca', $socio->id)}}">
+                                                                            <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar licença</button>
+                                                                        </a>
+                                                                    @endif
+                                                                    <br>
+                                                                    @if(Storage::disk("local")->exists("docs_piloto/certificado_".$socio->id.'.pdf'))
+                                                                        <a href="{{route('socios.mostrarcertificado', $socio->id)}}">
+                                                                            <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar certificado</button>
+                                                                        </a>
+                                                                    @endif
+>>>>>>> d3c800de04bb28485c421b0a7bebf8d9fcfe5c07
                                                                 @endif
                                                                 <br>
                                                                     <form
@@ -172,9 +202,13 @@
                                                                         <form method="POST" class="form-ad" action="{{route('socios.quota', $socio)}}" >
                                                                             {!!csrf_field()!!}
                                                                             @method('patch')
+<<<<<<< HEAD
             
                                                                             <input type="hidden" name="quota_paga" value="">
                                                                             <button type="submit" class="btn btn-block btn-success" >Inverter estado da quota</button>
+=======
+                                                                            <button type="submit" class="btn btn-block btn-success" name="quota_paga">Inverter estado da quota</button>
+>>>>>>> d3c800de04bb28485c421b0a7bebf8d9fcfe5c07
                                                                         </form>
                                                                         <br>
                                                                             <form  method="POST" class="form-ad" action="{{route('socios.ativar', $socio)}}">
@@ -188,7 +222,7 @@
                                                                                 
                                                             </td>
                                                             </tr>
-                                                                        @endforeach
+                                                @endforeach
                                                         </tbody>
                                                         </table>
                                                             </div>

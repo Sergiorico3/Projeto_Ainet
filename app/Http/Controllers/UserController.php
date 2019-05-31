@@ -118,13 +118,18 @@ class UserController extends Controller
         return view('users.edit', compact('pagetitle', 'socio'));
     }
     
-    public function mostrarCertificado(User $socio){
-        return view('users.mostrarcertificado', compact('socio'));
+    public function mostrarCertificado(User $piloto){
+        if(Storage::disk("local")->exists("docs_piloto/certificado_".$piloto->id.'.pdf')){
+            return Storage::disk("local")->response("docs_piloto/certificado_".$piloto->id.'.pdf');
+        }
+        return redirect()->back();
     }
 
-    public function mostrarLicenca(User $socio){
-        return view('users.mostrarlicenca', compact('socio'));
-    
+    public function mostrarLicenca(User $piloto){
+        if(Storage::disk("local")->exists("docs_piloto/licenca_".$piloto->id.'.pdf')){
+            return Storage::disk("local")->response("docs_piloto/licenca_".$piloto->id.'.pdf');
+        }
+        return redirect()->back();
     }
 
     //inverter quota_paga

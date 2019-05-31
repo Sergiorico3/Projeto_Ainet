@@ -13,11 +13,10 @@ class IsDirecao
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-    if ($request->user() && $request->user()->direcao == 1) {
-        return $next($request);
-    }
-    throw new AccessDeniedHttpException('Unauthorized.');
+    public function handle($request, Closure $next){
+        if ($request->user() && $request->user()->direcao == 1) {
+            return $next($request);
+        }
+        throw new AccessDeniedHttpException('Unauthorized.');
     }
 }

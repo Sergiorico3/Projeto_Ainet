@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreMovimentoRequest;
 
 class MovimentoController extends Controller
 {
@@ -82,7 +83,7 @@ class MovimentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMovimentoRequest $request)
     {
         $piloto = Auth::user();
         $piloto_num_licenca = $piloto->num_licenca;

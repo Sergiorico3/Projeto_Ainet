@@ -32,10 +32,12 @@ Route::get('/home', 'HomeController@index')->name('home.index');
 //Route::get('storage/fotos/{foto}', 'UserController@getfile')->name('getfile')->middleware('auth');
 
 //socio
-Route::patch('/socios/reset_quotas', 'UserController@reset_quotas')->name('socios.reset_quotas');
-Route::patch('/socios/{socio}/ativo', 'UserController@ativar')->name('socios.ativar')->middleware('isDirecao');
-Route::patch('/socios/desativar_sem_quotas', 'UserController@desativar')->name('socios.desativar')->middleware('isDirecao');
-Route::patch('/socios/{socio}/quota', 'UserController@quota')->name('socios.quota')->middleware('auth');
+Route::patch('/socios/reset_quotas', 'UserController@reset_quotas')->name('socios.reset_quotas')->middleware('IsDirecao');
+Route::patch('/socios/{socio}/quota', 'UserController@quota')->name('socios.quota')->middleware('IsDirecao');
+
+Route::patch('/socios/{socio}/ativo', 'UserController@ativar')->name('socios.ativar')->middleware('IsDirecao');
+Route::patch('/socios/desativar_sem_quotas', 'UserController@desativar')->name('socios.desativar')->middleware('IsDirecao');
+
 
 
 Route::resource('socios', 'UserController');
@@ -47,7 +49,7 @@ Route::get('/socios/{socio}/edit', 'UserController@edit')->name('socios.edit')->
 Route::get('/socios/create', 'UserController@create')->name('socios.create');//->middleware('isDirecao');
 Route::post('/socios', 'UserController@store')->name('socios.store');//->middleware('isDirecao');
 Route::put('/socios/{socio}', 'UserController@update')->name('socios.update')->middleware('auth');
-Route::delete('/socios/{socio}', 'UserController@delete')->name('socios.delete')->middleware('isDirecao');
+Route::delete('/socios/{socio}', 'UserController@delete')->name('socios.delete')->middleware('IsDirecao');
 
 //Route::post('/socios/{socio}/send_reactivate_mail', 'UserController@reset_quotas')->name('socios.send_reactivate_mail')->middleware('auth');
 

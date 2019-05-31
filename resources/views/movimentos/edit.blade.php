@@ -118,7 +118,7 @@
 
                             <div class="form-label-group">
                                 <input
-                                    type="text"
+                                    type="date"
                                     class="form-control"
                                     name="data"
                                     id="inputData"
@@ -135,7 +135,7 @@
 
                             <div class="form-label-group">
                                 <input
-                                    type="text"
+                                    type="time"
                                     class="form-control"
                                     name="hora_descolagem"
                                     id="inputHora_descolagem"
@@ -152,7 +152,7 @@
 
                             <div class="form-label-group">
                                 <input
-                                    type="text"
+                                    type="time"
                                     class="form-control"
                                     name="hora_aterragem"
                                     id="inputHora_aterragem"
