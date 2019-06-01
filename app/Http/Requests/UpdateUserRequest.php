@@ -24,12 +24,12 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|nullable|max:255|regex:/^[a-zA-Z]+$/u',
-            'num_socio' => 'required|max:11|integer|unique:',
-            'nome_informal' => 'required|string|nullable|min:1|max:40|regex:/^[\w-]*$/',
+            'name' => 'string|nullable|max:255|regex:/^[a-zA-ZÀ-ú\s]+$/',
+            'num_socio' => 'max:11|integer|unique:',
+            'nome_informal' => 'string|nullable|min:1|max:40|regex:/^[0-9a-zA-ZÀ-ú\s]+$/',
             'nif' => 'nullable|min:9|max:9',
             'telefone' => 'nullable|digits_between:1,20',
-            'email' => 'required|regex:/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/|unique:users,email,$this->socio->email'
+            'email' => 'regex:/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/|unique:users,email,$this->socio->email'
             /*
             'num_socio' => 'required | unique:users, num_socio,'.$this->socio->id.'| max:8',
             'num_socio' => 'required | max:8',

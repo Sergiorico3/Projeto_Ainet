@@ -56,7 +56,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Editar sócio</h5>
                     
-                    <form method="POST"  action="{{ route('socios.update', Auth::user()->id ) }}" class="form-signin" enctype="multipart/form-data">
+                    <form method="POST"  action="{{ route('socios.update', $socio) }}" class="form-signin" enctype="multipart/form-data">
                         @method('PUT') @csrf
                         <div class="form-label-group">
                             <input
@@ -65,7 +65,7 @@
                                 class="form-control{{ $errors->has('foto_url') ? ' is-invalid' : '' }}"
                                 name="foto_url"
                                 accept="image/*"
-                                value="{{ Auth::user()->foto_url }}"
+                                value="{{$socio->foto_url}}"
                                 optional="optional">
 
                             <label for="inputName">Foto</label>
@@ -165,8 +165,7 @@
                                 name="telefone"
                                 id="telefone"
                                 placeholder="Telefone"
-                                pattern="^[0-9]+$"
-                                
+                                pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
                                 title="Numero de telefone deve conter apenas numeros"
                                 value="{{ old('name', $socio->telefone) }}">
                             <label for="inputName">Telefone</label>

@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Movimento;
 
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreUserRequest;
+
+//use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UpdateUserRequest;
 
 
 class UserController extends Controller
@@ -89,11 +90,11 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, User $socio)
     {
-        $this->authorize('update',$socio);
+        //$this->authorize('update',$socio);
         $name = $request->foto_url;
         $socio->fill($request->all());
         
-        $socio = User::findOrFail(Auth::user()->id);
+        //$socio = User::findOrFail(Auth::user()->id);
 
         $socio->save();
         $extension=$request->file('foto_url')->getClientOriginalExtension();
@@ -189,7 +190,7 @@ class UserController extends Controller
     }
 
     public function changepasswordstore(Request $request){
-
+        Auth::user()->password = $request->password;
     }
     
 
