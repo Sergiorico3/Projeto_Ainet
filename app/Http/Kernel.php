@@ -51,7 +51,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'isDirecao' => \App\Http\Middleware\IsDirecao::class,
+        'IsDirecao' => \App\Http\Middleware\IsDirecao::class,
         'ativo' => \App\Http\Middleware\IsAtivo::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

@@ -24,12 +24,12 @@ class StoreAeronaveRequest extends FormRequest
     public function rules()             //date / email /integer / numeric
     {
         return [
-            'matricula'=> 'required|max:8',
-            'marca'=> 'required|max:40',
+            'matricula'=> 'required|string|nullable|min:1|max:8',
+            'marca'=> 'required|string|max:40',
             'modelo'=> 'required|max:40',
-            'num_lugares'=> 'required|max:11',
-            'conta_horas'=> 'required|max:11',
-            'preco_hora' => 'required|min:0|max:13.2'
+            'num_lugares'=> 'required|integer|min:1|max:11',
+            'conta_horas'=> 'required|digits_between:1,11',
+            'preco_hora' => 'required|numeric|between:0,9999999999999.99'
         ];
     }
 }
