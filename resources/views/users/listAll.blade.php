@@ -150,13 +150,14 @@
                                                            
                                                                 
                                                                 @if($socio->tipo_socio  == 'P' && (Auth::user()->direcao || $socio->id = Auth::user()->id))
-                                                                    <br>
+                                                                    
                                                                     @if(Storage::disk("local")->exists("docs_piloto/licenca_".$socio->id.'.pdf'))
+                                                                        <br>
                                                                         <a href="{{route('socios.mostrarlicenca', $socio->id)}}">
                                                                             <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar licença</button>
-                                                                        </a>
+                                                                        </a><br>
                                                                     @endif
-                                                                    <br>
+                                                                    
                                                                     @if(Storage::disk("local")->exists("docs_piloto/certificado_".$socio->id.'.pdf'))
                                                                         <a href="{{route('socios.mostrarcertificado', $socio->id)}}">
                                                                             <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar certificado</button>
