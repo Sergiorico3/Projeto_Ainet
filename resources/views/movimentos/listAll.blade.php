@@ -27,29 +27,27 @@
                         <div class="col-sm-12 col-md-12">
                             <label for="aeronave">Matricula aeronave:</label>
                             <select name="aeronave">
+                                <option value=''></option>
                                 @foreach($aeronaves as $aeronave)
                                     <option value="{{$aeronave->matricula}}">{{$aeronave->matricula}}</option>
                                 @endforeach
                             </select> 
                         </div>
 
-                        ID instrutor:<br>
-                        <input id="instrutor_id" type="text" class="form-control{{ $errors->has('instrutor_id') ? ' is-invalid' : '' }}" name="instrutor_id" value="{{ old('instrutor_id') }}"  autofocus>
-
-
                         <div class="col-sm-12 col-md-12">
-                            <label for="piloto_id">Instrutor:</label>
-                            <select name="piloto_id">
+                            <label for="instrutor_id">Instrutor:</label>
+                            <select name="instrutor_id">
+                                <option value=''></option>
                                 @foreach($instrutores as $instrutor)
                                     <option value="{{$instrutor->id}}">{{$instrutor->id. '-' .$instrutor->name}}</option>
                                 @endforeach
                             </select> 
                         </div>
 
-                        <br>
                         <div class="col-sm-12 col-md-12">
                             <label for="piloto_id">Piloto:</label>
                             <select name="piloto_id">
+                                <option value=''></option>
                                 @foreach($pilotos as $piloto)
                                     <option value="{{$piloto->id}}">{{$piloto->id. '-' .$piloto->name}}</option>
                                 @endforeach

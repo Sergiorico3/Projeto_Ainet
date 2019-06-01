@@ -75,7 +75,7 @@
 
                         <div class="col-sm-12 col-md-4">
                             <label for="inputEmail">Foto</label>
-                            <input type="file" name="foto_url" accept="image/*"><br><br>
+                            <input type="file" name="foto_url" accept="image/*" required><br><br>
                         </div>
 
                         <div class="col-sm-12 col-md-4">
@@ -86,6 +86,17 @@
                                 placeholder="NIF"
                                 pattern="^[0-9]+$"
                                 title="O NIF deve conter apenas números"/>
+                                <br>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <label for="telefone">Telefone</label>
+                            <input
+                                type="number" class="form-control"
+                                name="telefone" id="telefone"
+                                placeholder="Telefone"
+                                pattern="^[0-9]+$"
+                                title="O telefone deve conter apenas números"/>
                                 <br>
                         </div>
 

@@ -9,14 +9,9 @@
             @can('updateAll', 'App\User')
                 <div class="col-md-6 offset-md-5">
                     <br>
-                    
-                        <a
-                            href="{{route('socios.create')}}"
-                            class="btn btn-lg btn-google "
-                            role="button">Criar sócio</a>
+                    <a href="{{route('socios.create')}}" class="btn btn-lg btn-google" role="button">Criar sócio</a>
                 </div>
 
-                    
                     <form method="POST" class="form-ad" action="{{route('socios.desativar')}}">
                         {!!csrf_field()!!}
                         @method('patch')

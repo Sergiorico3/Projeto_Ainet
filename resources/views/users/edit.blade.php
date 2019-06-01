@@ -166,6 +166,7 @@
                                 id="telefone"
                                 placeholder="Telefone"
                                 pattern="^[0-9]+$"
+                                
                                 title="Numero de telefone deve conter apenas numeros"
                                 value="{{ old('name', $socio->telefone) }}">
                             <label for="inputName">Telefone</label>

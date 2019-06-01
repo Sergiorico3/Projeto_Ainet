@@ -52,6 +52,8 @@ class MovimentoController extends Controller
         }
         if ($confirmado) {      
             $movimentos = $movimentos->where('confirmado', $confirmado);
+        }else{
+            $movimentos = $movimentos->where('confirmado', 0);
         }
 
         $aeronaves = DB::table("aeronaves")->get();
@@ -94,8 +96,6 @@ class MovimentoController extends Controller
         $piloto_validade_certificado = $piloto->validade_certificado;
         $piloto_classe_certificado = $piloto->classe_certificado;
 
-
-        
         $movimento = new Movimento;
         $movimento->num_licenca_piloto = $piloto_num_licenca;
         $movimento->validade_licenca_piloto = $piloto_validade_licenca;
@@ -131,7 +131,7 @@ class MovimentoController extends Controller
      */
     public function edit(Movimento $movimento)
     {
-        $this->authorize('update', $movimento);
+        //$this->authorize('update', $movimento);
         $aerodromos = DB::table("aerodromos")->get();
         $pagetitle = "Show and edit movimento";
         return view('movimentos.edit', compact('pagetitle', 'aerodromos', 'movimento'));
@@ -144,16 +144,18 @@ class MovimentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMovimentoRequest $request, $id)
+    public function update(UpdateMovimentoRequest $request,$id)
     {
         $movimento = Movimento::findOrFail($id);
         if($movimento->confirmado){
             return redirect()->route("movimentos.index")->with('success', 'Movimento não pode ser editado por estar confirmado!');
         }
         else{
-        $movimento->fill($request->all());
-        $movimento->save();
-        return redirect()->route("movimentos.index")->with('success', 'Movimento editado com sucesso!');
+            $movimento->fill($request->all());
+            $movimento->hora_descolagem = date('y-m-d H:i', strtotime($request->data." ".$request->hora_descolagem));
+            $movimento->hora_aterragem = date('y-m-d H:i', strtotime($request->data." ".$request->hora_aterragem));
+            $movimento->save();
+            return redirect()->route("movimentos.index")->with('success', 'Movimento editado com sucesso!');
         }
 
     }

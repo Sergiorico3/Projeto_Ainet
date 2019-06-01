@@ -24,8 +24,13 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'num_socio' => 'required|max:11|integer|unique:',
+            'name' => 'required|string|nullable|max:255|regex:/^[a-zA-Z]+$/u',
+            'num_socio' => 'required|max:11|integer|unique',
+            'nome_informal' => 'required|string|nullable|max:40|regex:/^[\w-]*$/',
+            'nif' => 'min:9|max:9|nullable',
+            'telefone' => 'nullable|digits_between:1,20',
+            'email' => 'required|regex:/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/|unique:users,email'
+            
             /*            
             'num_socio' => 'required|integer|max:11|unique:users',
             'nome_informal' => 'required|max:40|string',

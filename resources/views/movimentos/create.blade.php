@@ -8,8 +8,8 @@
                     <h5 class="card-title text-center">Registar novo movimento</h5>
 
                     <form method="POST" action="{{route('movimentos.store')}}" class="form-group" enctype="multipart/form-data">
-                        @csrf
                         @method('POST')
+                        @csrf
                         <br>
 
                         <div class="col-sm-12 col-md-4">
