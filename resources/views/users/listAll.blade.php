@@ -117,7 +117,6 @@
                                                     <th scope="col">Nome Informal</th>
                                                     <th scope="col">E-mail</th>
                                                     <th scope="col">Telefone</th>
-                                                    <th scope="col">Sexo</th>
                                                     <th scope="col">Tipo sócio</th>
                                                     <th scope="col">Nº licença</th>
                                                     <th scope="col">Direção</th>
@@ -134,7 +133,6 @@
                                                             <td scope="row">{{$socio->nome_informal}}</td>
                                                             <td scope="row">{{$socio->email}}</td>
                                                             <td scope="row">{{$socio->telefone}}</td>
-                                                            <td scope="row">{{$socio->sexo}}</td>
                                                             <td scope="row">{{$socio->typeSocioToString()}}</td>
                                                             <td scope="row">{{$socio->num_licenca}}</td>
                                                             <td scope="row">{{$socio->direcaoToString()}}</td>

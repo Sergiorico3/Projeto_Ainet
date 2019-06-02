@@ -63,5 +63,35 @@ class User extends Authenticatable implements MustVerifyEmail
         return 'Unknown';
     }
 
+    public function quotasPagasToString(){
+        switch ($this->quota_paga) {
+            case '0':
+                return 'Não';
+            case '1':
+                return 'Sim';
+        }
+        return 'Unknown';
+    }
+
+    public function sexoToString(){
+        switch ($this->sexo) {
+            case 'M':
+                return 'Masculino';
+            case 'F':
+                return 'Feminino';
+        }
+        return 'Unknown';
+    }
+
+    public function ativoToString(){
+        switch ($this->ativo) {
+            case '0':
+            return 'Não';
+        case '1':
+            return 'Sim';
+        }
+        return 'Unknown';
+    }
+
 
 }

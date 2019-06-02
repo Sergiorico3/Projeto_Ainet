@@ -22,7 +22,7 @@
                                     <th scope="col">Marca</th>
                                     <th scope="col">Modelo</th>
                                     <th scope="col">Número de lugares</th>
-                                    <th scope="col">Conta horas</th>
+                                    <th scope="col">Total horas</th>
                                     <th scope="col">Preço hora</th>
                                     <th scope="col">Ações</th>
                                 </tr>

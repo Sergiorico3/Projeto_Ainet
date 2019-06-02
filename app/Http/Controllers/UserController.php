@@ -189,7 +189,10 @@ class UserController extends Controller
     }
 
     public function changepasswordstore(Request $request){
-        Auth::user()->password = $request->password;
+        $socio = Auth::user();
+        $socio->password = $request->password;
+        $socio->save();
+        return redirect()->route("socios.index")->with('success', 'Alteração feita com sucesso');
     }
     
 
