@@ -43,9 +43,20 @@ class AeronavePolicy
      * @param  \App\Aeronave  $aeronave
      * @return mixed
      */
-    public function update(User $user, Aeronave $aeronave)
+    public function update(User $user)
     {
-        //
+        if($user->direcao && $user->ativo){
+            return true;
+        }
+        return false;
+    }
+
+    public function edit(User $user)
+    {
+        if($user->direcao && $user->ativo){
+            return true;
+        }
+        return false;
     }
 
     /**

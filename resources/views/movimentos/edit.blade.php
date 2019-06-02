@@ -79,7 +79,7 @@
                                     <td scope="row">{{$movimento->num_diario}}</td>
                                     <td scope="row">{{$movimento->num_servico}}</td>
                                     <td scope="row">{{$movimento->piloto_id}}</td>
-                                    <td scope="row">{{$movimento->naturezaVooToString()}}</td>
+                                    <td scope="row">{{$movimento->natureza}}</td>
                                     <td scope="row">{{$movimento->aerodromo_partida}}</td>
                                     <td scope="row">{{$movimento->aerodromo_chegada}}</td>
                                     <td scope="row">{{$movimento->num_aterragens}}</td>
@@ -93,7 +93,7 @@
                                     <td scope="row">{{$movimento->num_recibo}}</td>
                                     <td scope="row">{{$movimento->observacoes}}</td>
                                     <!-- Caso seja relativo a um voo de instrução -->
-                                    <td scope="row">{{$movimento->tipo_instrucaoToString()}}</td>
+                                    <td scope="row">{{$movimento->tipo_instrucao}}</td>
                                     <td scope="row">{{$movimento->instrutor_id}}</td>
                                 </tr>
                             </table>
@@ -108,7 +108,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Editar movimento</h5>
 
-                        <form method="POST" action="{{ route('movimentos.update', $movimento ) }}" class="form-signin" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('movimentos.update', $movimento)}}" class="form-signin" enctype="multipart/form-data">
                             @method('PUT') @csrf
 
                             <div class="form-label-group">
@@ -133,7 +133,7 @@
                                     id="inputHora_descolagem"
                                     placeholder="Hora de descolagem"
                                     autofocus="autofocus"
-                                    pattern="^\d{4}\-\d{1,2}\-\d{1,2}$\ \d{1,2}\:\d{1,2}\:d{1,2}$"
+                                    pattern="^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$"
                                     title="Deve introduzir uma hora de descolagem válida (exemplo: 2013-11-24 08:45:00)"
                                     value="{{ old('hora_descolagem', $movimento->hora_descolagem) }}">
                                 <label for="inputHora_descolagem">Hora de descolagem</label>
@@ -151,7 +151,7 @@
                                     placeholder="Hora de aterragem"
                                     autofocus="autofocus"
                                     pattern="^\d{4}\-\d{1,2}\-\d{1,2}$\ \d{1,2}\:\d{1,2}\:d{1,2}$"
-                                    title="Deve introduzir uma hora de descolagem válida (exemplo: 2013-11-24 08:45:00) "
+                                    title="Deve introduzir uma hora de aterragem válida (exemplo: 2013-11-24 08:45:00) "
                                     value="{{ old('hora_aterragem', $movimento->hora_aterragem) }}">
                                 <label for="inputHora_aterragem">Hora de aterragem</label>
                                 @if ($errors->has('hora_aterragem'))
@@ -338,7 +338,7 @@
                                 @endif
                             </div>
 
-                            <label for="natureza">Método de pagamento</label>
+                            <label for="modo_pagamento">Método de pagamento</label>
                             <select name="modo_pagamento" id="modo_pagamento" class="form-control">
                                 <option disabled="disabled" selected="selected">
                                     -- Selecione o método de pagamento --
@@ -374,7 +374,7 @@
                                     name="observacoes"
                                     id="inputObservacoes"
                                     placeholder="observacoes"
-                                    autofocus="autofocus">{{ old('observacoes', $movimento->observacoes) }}c</textarea>
+                                    autofocus="autofocus">{{ old('observacoes', $movimento->observacoes) }}</textarea>
                                 <label for="inputObservacoes">Observações</label>
                                 @if ($errors->has('observacoes'))
                                 <em>{{ $errors->first('observacoes') }}</em>

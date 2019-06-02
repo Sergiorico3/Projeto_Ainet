@@ -24,21 +24,23 @@ class UpdateMovimentoRequest extends FormRequest
     public function rules()
     {
         return [
-            'data' => 'required|date|date_format:Y-m-d',
-            'hora_descolagem' => 'required|date_format:H:i',
-            'hora_aterragem' => 'required|date_format:H:i',
-            'aeronave' => 'required|min:0|max:9|exists:aeronaves,matricula',
-            'num_diario' => 'required|integer|min:0|max:9',
-            'num_servico' => 'required|integer|min:0|max:9',
-            'piloto_id' => 'required|integer|min:0|max:9|exists:users,id',
-            'natureza' => 'required|in:T,I,E',
-            'classe_certificado_instrutor' => 'required|exists:classes_certificados,code',
-            'classe_certificado_piloto' => 'required|exists:classes_certificados,code',
-            'aerodromo_partida' => 'required|exists:aerodromos,code',
-            'aerodromo_chegada' => 'required|exists:aerodromos,code',
-            'instrutor_id' => 'required|exists:users,id',
-            'tipo_licenca_instrutor' => 'required|exists:licencas,code',
-            'tipo_licenca_piloto' => 'required|exists:licencas,code',
+            /*
+            'data' => 'nullable|date|date_format:Y-m-d',
+            'hora_descolagem' => 'date_format:H:i',
+            'hora_aterragem' => 'date_format:H:i',
+            'aeronave' => 'min:0|max:9|exists:aeronaves,matricula',
+            'num_diario' => 'integer|min:0|max:9',
+            'num_servico' => 'integer|min:0|max:9',
+            'piloto_id' => 'integer|min:0|max:9|exists:users,id',
+            'natureza' => 'in:T,I,E',
+            'classe_certificado_instrutor' => 'exists:classes_certificados,code',
+            'classe_certificado_piloto' => 'exists:classes_certificados,code',
+            'aerodromo_partida' => 'exists:aerodromos,code',
+            'aerodromo_chegada' => 'exists:aerodromos,code',
+            'instrutor_id' => 'exists:users,id',
+            'tipo_licenca_instrutor' => 'exists:licencas,code',
+            'tipo_licenca_piloto' => 'exists:licencas,code',
+            */
         ];
     }
 }

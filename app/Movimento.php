@@ -33,6 +33,8 @@ class Movimento extends Model
                 return 'Duplo comando';
             case 'S':
                 return 'Solo';
+            default:
+                return 'Não aplicavel';
         }
         return '';
     }
@@ -45,6 +47,8 @@ class Movimento extends Model
                 return 'Instrução';
             case 'E':
                 return 'Especial';
+            default:
+                return 'Não aplicavel';
         }
         return 'Unknown';
     }

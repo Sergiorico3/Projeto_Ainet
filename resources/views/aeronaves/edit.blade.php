@@ -82,14 +82,8 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">Editar aeronave</h5>
 
-                            <form
-                                class="form-signin"
-                                action="{{ route('aeronaves.update', $aeronave ) }}"
-                                method="POST"
-                                enctype="multipart/form-data">
-
-                                @method('put') @csrf
-
+                            <form method="POST" action="{{route('aeronaves.update',$aeronave)}}" class="form-signin" enctype="multipart/form-data">
+                                @method('PUT') @csrf
                                 <div class="form-label-group">
                                     <input
                                         type="text"
@@ -97,7 +91,7 @@
                                         name="marca"
                                         id="inputMarca"
                                         placeholder="Marca"
-                                        value="{{ old('name', $aeronave->marca) }}">
+                                        value="{{ old('marca', $aeronave->marca) }}">
                                     <label for="inputName">Marca</label>
                                     @if ($errors->has('marca'))
                                     <em>{{ $errors->first('marca') }}</em>
@@ -111,7 +105,7 @@
                                         name="modelo"
                                         id="inputModelo"
                                         placeholder="Modelo"
-                                        value="{{ old('name', $aeronave->modelo) }}">
+                                        value="{{ old('modelo', $aeronave->modelo) }}">
                                     <label for="inputName">Modelo</label>
                                     @if ($errors->has('modelo'))
                                     <em>{{ $errors->first('modelo') }}</em>
@@ -125,7 +119,7 @@
                                         name="num_lugares"
                                         id="inputNumLugares"
                                         placeholder="Número de lugares"
-                                        value="{{ old('name', $aeronave->num_lugares) }}">
+                                        value="{{ old('num_lugares', $aeronave->num_lugares) }}">
                                     <label for="inputName">Número de lugares</label>
                                     @if ($errors->has('num_lugares'))
                                     <em>{{ $errors->first('num_lugares') }}</em>
@@ -153,7 +147,7 @@
                                         name="preco_hora"
                                         id="inputPrecoHora"
                                         placeholder="preco_hora"
-                                        value="{{ old('name', $aeronave->preco_hora) }}">
+                                        value="{{ old('preco_hora', $aeronave->preco_hora) }}">
                                     <label for="inputName">Preço hora</label>
                                     @if ($errors->has('preco_hora'))
                                     <em>{{ $errors->first('preco_hora') }}</em>

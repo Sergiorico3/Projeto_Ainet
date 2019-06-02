@@ -24,7 +24,8 @@ class StoreMovimentoRequest extends FormRequest
     public function rules()
     {
         return [
-            'data' => 'required|date|date_format:Y-m-d',
+            'data' => 'required|date',
+            /*
             'hora_descolagem' => 'required|date_format:H:i',
             'hora_aterragem' => 'required|date_format:H:i',
             'aeronave' => 'required|min:0|max:9|exists:aeronaves,matricula',
@@ -38,7 +39,8 @@ class StoreMovimentoRequest extends FormRequest
             'aerodromo_chegada' => 'required|exists:aerodromos,code',
             'instrutor_id' => 'required|exists:users,id',
             'tipo_licenca_instrutor' => 'required|exists:licencas,code',
-            'tipo_licenca_piloto' => 'required|exists:licencas,code',
+            'tipo_licenca_piloto' => 'required|exists:licencas,code', 
+            */
         ];
     }
 }

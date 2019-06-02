@@ -36,7 +36,7 @@
                                     <td scope="row">{{$aeronave->num_lugares}}</td>
                                     <td scope="row">{{$aeronave->conta_horas}}</td>
                                     <td scope="row">{{$aeronave->preco_hora}}</td>
-
+                                @can("update",App\Aeronave::class)
                                     <td scope="row">
                                         <a href="{{route('aeronaves.edit', $aeronave->matricula)}}"><button type="submit" class="btn btn-success" name="ok">Editar</button></a>
                                         <form action="{{ route('aeronaves.destroy', $aeronave) }}" method="post" class="form-inline">      
@@ -45,7 +45,7 @@
                                             {!! csrf_field() !!}
                                         </form>
                                     </td>
-                                
+                                @endcan
                                 </tr>
                             @endforeach
 

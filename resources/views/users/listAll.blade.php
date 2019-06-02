@@ -9,14 +9,9 @@
             @can('updateAll', 'App\User')
                 <div class="col-md-6 offset-md-5">
                     <br>
-                    
-                        <a
-                            href="{{route('socios.create')}}"
-                            class="btn btn-lg btn-google "
-                            role="button">Criar sócio</a>
+                    <a href="{{route('socios.create')}}" class="btn btn-lg btn-google" role="button">Criar sócio</a>
                 </div>
 
-                    
                     <form method="POST" class="form-ad" action="{{route('socios.desativar')}}">
                         {!!csrf_field()!!}
                         @method('patch')
@@ -155,13 +150,14 @@
                                                            
                                                                 
                                                                 @if($socio->tipo_socio  == 'P' && (Auth::user()->direcao || $socio->id = Auth::user()->id))
-                                                                    <br>
+                                                                    
                                                                     @if(Storage::disk("local")->exists("docs_piloto/licenca_".$socio->id.'.pdf'))
+                                                                        <br>
                                                                         <a href="{{route('socios.mostrarlicenca', $socio->id)}}">
                                                                             <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar licença</button>
-                                                                        </a>
+                                                                        </a><br>
                                                                     @endif
-                                                                    <br>
+                                                                    
                                                                     @if(Storage::disk("local")->exists("docs_piloto/certificado_".$socio->id.'.pdf'))
                                                                         <a href="{{route('socios.mostrarcertificado', $socio->id)}}">
                                                                             <button type="submit" class="btn btn-block btn-secondary" name="ok">Mostrar certificado</button>
