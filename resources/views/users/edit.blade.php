@@ -56,18 +56,12 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Editar sócio</h5>
                     
-                    <form method="POST"  action="{{ route('socios.update', $socio) }}" class="form-signin" enctype="multipart/form-data">
+                    <form method="POST" type="hidden" action="{{ route('socios.update', $socio) }}" class="form-signin" enctype="multipart/form-data">
                         @method('PUT') @csrf
-                        <div class="form-label-group">
-                            <input
-                                id="foto_url"
-                                type="file"
-                                class="form-control{{ $errors->has('foto_url') ? ' is-invalid' : '' }}"
-                                name="foto_url"
-                                accept="image/*"
-                                value="{{$socio->foto_url}}"
-                                optional="optional">
 
+                        <div class="form-label-group">
+                            <input id="foto_url" type="file" class="form-control{{ $errors->has('foto_url') ? ' is-invalid' : '' }}"
+                                name="foto_url" accept="image/*" value="{{$socio->foto_url}}" optional="optional">
                             <label for="foto_url">Foto</label>
                             @if ($errors->has('foto_url'))
                             <span class="invalid-feedback">
