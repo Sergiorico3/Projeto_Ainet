@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
 
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -84,14 +85,13 @@ class UserController extends Controller
         return view('home', compact('pagetitle', 'socio'));
     }
 
-    public function update(Request $request, User $socio)
-    {
+    public function update(UpdateUserRequest $request, User $socio)
+    {        
+        dd($socio);
         $this->authorize('update',$socio);
         $name = $request->foto_url;
         $socio->fill($request->all());
-        
         $socio = User::findOrFail(Auth::user()->id);
-
         $socio->save();
         $extension=$request->file('foto_url')->getClientOriginalExtension();
         $name= $socio->id . '_photo.'.$extension;
