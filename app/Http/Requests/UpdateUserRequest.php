@@ -24,12 +24,6 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|nullable|max:255|regex:/^[a-zA-ZÀ-ú\s]+$/',
-            'num_socio' => 'max:11|integer|unique:',
-            'nome_informal' => 'required|string|nullable|min:1|max:40|regex:/^[0-9a-zA-ZÀ-ú\s]+$/',
-            'nif' => 'nullable|min:9|max:9',
-            'telefone' => 'nullable|digits_between:1,20',
-            'email' => 'regex:/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/|unique:users,email,'.$this->socio->id
             /*
             'num_socio' => 'required | unique:users, num_socio,'.$this->socio->id.'| max:8',
             'num_socio' => 'required | max:8',
@@ -44,8 +38,26 @@ class UpdateUserRequest extends FormRequest
             'tipo_socio' => 'required | in:P,NP,A',
             'quota_paga' => 'required | in:1,0',
             'ativo' => 'required | in:1,0',
-            'direcao' => 'required | in:1,0'
+            'direcao' => 'required | in:1,0',
             */
+            'name' => 'required|string|nullable|max:255|regex:/^[a-zA-ZÀ-ú\s]+$/',
+            'email' => 'regex:/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/|unique:users,email,' . $this->socio->id,
+            'nome_informal' => 'required|string|nullable|min:1|max:40|regex:/^[0-9a-zA-ZÀ-ú\s]+$/',
+            'sexo' => 'in:M,F',
+            'foto_url' => 'nullable|file|mimes:jpeg,png,jpg|max:3000',
+            'data_nascimento' => 'date',
+            'nif' => 'digits_between:1,20|nullable|min:9|max:9',
+            'telefone' => 'nullable|digits_between:1,20',
+            'endereco' => 'nullable|string',
+            'tipo_socio	' => 'in:P,NP,A',
+            'quota_paga' => 'in:1,0',
+            'ativo' => 'in:1,0',
+            'direcao' => 'in:1,0',
+            'instrutor' => 'in:1,0',
+            'aluno' => 'in:1,0',
+            'licenca_confirmada' => 'nullable|in:1,0',
+            'certificado_confirmado' => 'nullable|in:1,0',
+            'num_socio' => 'max:11|integer',
         ];
     }
 }

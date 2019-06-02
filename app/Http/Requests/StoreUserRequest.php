@@ -30,7 +30,7 @@ class StoreUserRequest extends FormRequest
             'nif' => 'min:9|max:9|nullable',
             'telefone' => 'nullable|digits_between:1,20',
             'email' => 'required|regex:/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/|unique:users,email'
-            
+
             /*            
             'num_socio' => 'required|integer|max:11|unique:users',
             'nome_informal' => 'required|max:40|string',
