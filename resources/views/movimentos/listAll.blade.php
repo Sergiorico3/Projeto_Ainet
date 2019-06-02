@@ -46,7 +46,7 @@
 
                         <div class="col-sm-12 col-md-12">
                             <label for="piloto_id">Piloto:</label>
-                            <select name="piloto_id">
+                            <select name="piloto">
                                 <option value=''></option>
                                 @foreach($pilotos as $piloto)
                                     <option value="{{$piloto->id}}">{{$piloto->id. '-' .$piloto->name}}</option>

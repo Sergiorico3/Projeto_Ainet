@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Mudar password</div>
-                    <form method="post" action="{{route('socios.changepasswordstore', Auth::user()->id)}}"  class="form-group" enctype="multipart/form-data">
+                    <form method="post" action="{{route('socios.changepasswordstore')}}"  class="form-group" enctype="multipart/form-data">
                         @method('patch') @csrf
 
                         <br>
