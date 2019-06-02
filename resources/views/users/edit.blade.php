@@ -183,6 +183,24 @@
                             @endif
                         </div>
 
+                        
+
+                        <div class="form-label-group">
+                            <input @cannot("updateAll", App\User::class) disabled @endcannot 
+                                type="text"
+                                class="form-control"
+                                name="num_socio"
+                                id="num_socio"
+                                placeholder="num_socio"
+                                pattern="^[0-9]+$"
+                                title="N.º Sócio deve conter apenas numeros"
+                                value="{{ old('num_socio', $socio->num_socio) }}">
+                            <label for="num_socio">N.º Sócio</label>
+                            @if ($errors->has('num_socio'))
+                            <em>{{ $errors->first('num_socio') }}</em>
+                            @endif
+                        </div>
+
                         <div class="col-sm-12 col-md-4">
                             <label for="sexo">Sexo</label><br>
                             <label for="Masculino">Masculino</label>
@@ -192,6 +210,101 @@
                             <br>
                             @if ($errors->has('sexo'))
                             <em>{{ $errors->first('sexo') }}</em>
+                            @endif
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <label for="ativo">Ativo</label><br>
+                            <label for="1">Sim</label>
+                            <input @cannot("updateAll", App\User::class) disabled @endcannot type="radio" name="ativo" id="A" value="1" {{ old('ativo', $socio->ativo) =='1'? "checked":""}}><br>
+                            <label for="0">Não</label>
+                            <input @cannot("updateAll", App\User::class) disabled  @endcannot type="radio" name="ativo" id="N" value="0" {{ old('ativo', $socio->ativo) =='0'? "checked":""}}><br>
+                            <br>
+                            @if ($errors->has('ativo'))
+                            <em>{{ $errors->first('ativo') }}</em>
+                            @endif
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <label for="quota_paga">Quota Paga</label><br>
+                            <label for="1">Sim</label>
+                            <input @cannot("updateAll", App\User::class) disabled @endcannot type="radio" name="quota_paga" id="P" value="1" {{ old('ativo', $socio->quota_paga) =='1'? "checked":""}}><br>
+                            <label for="0">Não</label>
+                            <input @cannot("updateAll", App\User::class) disabled  @endcannot type="radio" name="quota_paga" id="N" value="0" {{ old('ativo', $socio->quota_paga) =='0'? "checked":""}}><br>
+                            <br>
+                            @if ($errors->has('quota_paga'))
+                            <em>{{ $errors->first('quota_paga') }}</em>
+                            @endif
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <label for="tipo_socio">Tipo sócio</label>
+                            <select @cannot("updateAll", App\User::class) disabled @endcannot name="tipo_socio" id="tipo_socio" class="form-control">
+                                <option disabled selected> -- Selecione o tipo de sócio -- </option>
+                                <option value="P">Piloto</option>
+                                <option value="NP">Não piloto</option>
+                                <option value="A">Aeromodelista</option>
+                            </select>
+                            <br>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <label for="direcao">Direção</label><br>
+                            <label for="1">Sim</label>
+                            <input @cannot("updateAll", App\User::class) disabled @endcannot type="radio" name="direcao" id="D" value="1" {{ old('ativo', $socio->direcao) =='1'? "checked":""}}><br>
+                            <label for="0">Não</label>
+                            <input @cannot("updateAll", App\User::class) disabled  @endcannot type="radio" name="direcao" id="N" value="0" {{ old('ativo', $socio->direcao) =='0'? "checked":""}}><br>
+                            <br>
+                            @if ($errors->has('direcao'))
+                            <em>{{ $errors->first('direcao') }}</em>
+                            @endif
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <label for="instrutor">Instrutor</label><br>
+                            <label for="1">Sim</label>
+                            <input @cannot("updateAll", App\User::class) disabled @endcannot type="radio" name="instrutor" id="I" value="1" {{ old('ativo', $socio->instrutor) =='1'? "checked":""}}><br>
+                            <label for="0">Não</label>
+                            <input @cannot("updateAll", App\User::class) disabled  @endcannot type="radio" name="instrutor" id="N" value="0" {{ old('ativo', $socio->instrutor) =='0'? "checked":""}}><br>
+                            <br>
+                            @if ($errors->has('instrutor'))
+                            <em>{{ $errors->first('instrutor') }}</em>
+                            @endif
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <label for="aluno">Aluno</label><br>
+                            <label for="1">Sim</label>
+                            <input @cannot("updateAll", App\User::class) disabled @endcannot type="radio" name="aluno" id="I" value="1" {{ old('ativo', $socio->aluno) =='1'? "checked":""}}><br>
+                            <label for="0">Não</label>
+                            <input @cannot("updateAll", App\User::class) disabled  @endcannot type="radio" name="aluno" id="N" value="0" {{ old('ativo', $socio->aluno) =='0'? "checked":""}}><br>
+                            <br>
+                            @if ($errors->has('aluno'))
+                            <em>{{ $errors->first('aluno') }}</em>
+                            @endif
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <label for="certificado_confirmado">Certificado confirmado</label><br>
+                            <label for="1">Sim</label>
+                            <input @cannot("updateAll", App\User::class) disabled @endcannot type="radio" name="certificado_confirmado" id="I" value="1" {{ old('ativo', $socio->certificado_confirmado) =='1'? "checked":""}}><br>
+                            <label for="0">Não</label>
+                            <input @cannot("updateAll", App\User::class) disabled  @endcannot type="radio" name="certificado_confirmado" id="N" value="0" {{ old('ativo', $socio->certificado_confirmado) =='0'? "checked":""}}><br>
+                            <br>
+                            @if ($errors->has('certificado_confirmado'))
+                            <em>{{ $errors->first('certificado_confirmado') }}</em>
+                            @endif
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <label for="licenca_confirmada">Licença confirmado</label><br>
+                            <label for="1">Sim</label>
+                            <input @cannot("updateAll", App\User::class) disabled @endcannot type="radio" name="licenca_confirmada" id="I" value="1" {{ old('ativo', $socio->licenca_confirmada) =='1'? "checked":""}}><br>
+                            <label for="0">Não</label>
+                            <input @cannot("updateAll", App\User::class) disabled  @endcannot type="radio" name="licenca_confirmada" id="N" value="0" {{ old('ativo', $socio->licenca_confirmada) =='0'? "checked":""}}><br>
+                            <br>
+                            @if ($errors->has('licenca_confirmada'))
+                            <em>{{ $errors->first('licenca_confirmada') }}</em>
                             @endif
                         </div>
 
