@@ -24,10 +24,6 @@
             
                     <br>
 
-                        <form method="POST" class="form-ad" action="{{route('socios.reset_quotas')}}">
-                            @method('patch') @csrf
-                            <button type="submit" class="btn btn-dark" name="ok">Declara as quotas de todos os sócios como "por pagar"</button>
-                        </form>
 
                 </div>
                 @endcan

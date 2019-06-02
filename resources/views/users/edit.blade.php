@@ -61,7 +61,7 @@
 
                         <div class="form-label-group">
                             <input id="foto_url" type="file" class="form-control{{ $errors->has('foto_url') ? ' is-invalid' : '' }}"
-                                name="foto_url" accept="image/*" value="{{$socio->foto_url}}" optional="optional">
+                                name="foto_url" accept="image/*" value="{{old('foto_url',$socio->foto_url)}}" optional="optional">
                             <label for="foto_url">Foto</label>
                             @if ($errors->has('foto_url'))
                             <span class="invalid-feedback">
