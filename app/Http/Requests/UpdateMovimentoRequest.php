@@ -24,7 +24,6 @@ class UpdateMovimentoRequest extends FormRequest
     public function rules()
     {
         return [
-            /*
             'data' => 'nullable|date|date_format:Y-m-d',
             'hora_descolagem' => 'date_format:H:i',
             'hora_aterragem' => 'date_format:H:i',
@@ -39,8 +38,7 @@ class UpdateMovimentoRequest extends FormRequest
             'aerodromo_chegada' => 'exists:aerodromos,code',
             'instrutor_id' => 'exists:users,id',
             'tipo_licenca_instrutor' => 'exists:licencas,code',
-            'tipo_licenca_piloto' => 'exists:licencas,code',
-            */
+            'tipo_licenca_piloto' => 'exists:licencas,code'
         ];
     }
 }
