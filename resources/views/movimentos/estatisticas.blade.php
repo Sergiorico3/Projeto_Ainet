@@ -8,7 +8,7 @@
                     <h3 class="card-title text-center">Estatísticas</h3>
 
                     <div class="table-responsive">
-                    <h6 class="card-title text-center">Aeronave mês</h6>
+                        <h6 class="card-title text-center">Aeronave mês</h6>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -51,7 +51,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($aeronaves as $aeronave)
+                                @foreach($aeronaves as $aeronave)
                                 <tr>
                                     <td scope="row">{{aeronave->$movimentos_jan}}</td>
                                     <td scope="row">{{$movimentos_fev}}</td>
@@ -66,13 +66,13 @@
                                     <td scope="row">{{$movimento->tempo_voo}}</td>
                                     <td scope="row">{{$movimento->tempo_voo}}</td>
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
 
                     <div class="table-responsive">
-                    <h6 class="card-title text-center">Aeronave ano</h6>
+                        <h6 class="card-title text-center">Aeronave ano</h6>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -82,12 +82,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($movimentos as $movimento)
+                                @foreach($movimentos as $movimento)
                                 <tr>
                                     <td scope="row">{{$movimento->tempo_voo}}</td>
                                     <td scope="row">{{$movimento->tempo_voo}}</td>
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -98,4 +98,4 @@
 </div>
 
 
-        @endsection
+@endsection

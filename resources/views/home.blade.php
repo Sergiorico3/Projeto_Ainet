@@ -28,38 +28,38 @@
                     <tbody>
                         <tr>
                             <td scope="row">
-                                    <img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}">
-                                    <td scope="row">{{$socio->num_socio}}</td>
-                                    <td scope="row">{{$socio->nome_informal}}</td>
-                                    <td scope="row">{{$socio->name}}</td>
-                                    <td scope="row">{{$socio->sexoToString()}}</td>
-                                    <td scope="row">{{$socio->data_nascimento}}</td>
-                                    <td scope="row">{{$socio->email}}</td>
-                                    <td scope="row">{{$socio->nif}}</td>
-                                    <td scope="row">{{$socio->telefone}}</td>
-                                    <td scope="row">{{$socio->endereco}}</td>
-                                    <td scope="row">{{$socio->quotasPagasToString()}}</td>
-                                    <td scope="row">{{$socio->ativoToString()}}</td>
-                                    <td scope="row">{{$socio->typeSocioToString()}}</td>
-                                    <td scope="row">{{$socio->num_licenca}}</td>
-                                    <td scope="row">{{$socio->direcaoToString()}}</td>
+                                <img src="{{Storage::disk('public')->url('fotos/').$socio->foto_url}}">
+                            <td scope="row">{{$socio->num_socio}}</td>
+                            <td scope="row">{{$socio->nome_informal}}</td>
+                            <td scope="row">{{$socio->name}}</td>
+                            <td scope="row">{{$socio->sexoToString()}}</td>
+                            <td scope="row">{{$socio->data_nascimento}}</td>
+                            <td scope="row">{{$socio->email}}</td>
+                            <td scope="row">{{$socio->nif}}</td>
+                            <td scope="row">{{$socio->telefone}}</td>
+                            <td scope="row">{{$socio->endereco}}</td>
+                            <td scope="row">{{$socio->quotasPagasToString()}}</td>
+                            <td scope="row">{{$socio->ativoToString()}}</td>
+                            <td scope="row">{{$socio->typeSocioToString()}}</td>
+                            <td scope="row">{{$socio->num_licenca}}</td>
+                            <td scope="row">{{$socio->direcaoToString()}}</td>
                         </tr>
-                                </tbody>
-                                </table>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                    </tbody>
+                </table>
             </div>
-        </div>
 
-                </div>
-
-            </div>
         </div>
     </div>
-    @endsection
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+@endsection

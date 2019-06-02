@@ -129,9 +129,7 @@
 
 
                     <div class="form-label-group">
-                        <input @cannot("updateAll", App\User::class) disabled @endcannot type="text" class="form-control" 
-                        name="num_socio" id="num_socio" placeholder="N.º Sócio" pattern="^[0-9]+$" 
-                        title="N.º Sócio deve conter apenas numeros" value="{{ old('num_socio', $socio->num_socio) }}">
+                        <input @cannot("updateAll", App\User::class) disabled @endcannot type="text" class="form-control" name="num_socio" id="num_socio" placeholder="N.º Sócio" pattern="^[0-9]+$" title="N.º Sócio deve conter apenas numeros" value="{{ old('num_socio', $socio->num_socio) }}">
                         <label for="num_socio">N.º Sócio</label>
                         @if ($errors->has('num_socio'))
                         <em>{{ $errors->first('num_socio') }}</em>
