@@ -16,7 +16,6 @@ use App\Http\Requests\StoreUserRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateUserRequest;
 
-
 class UserController extends Controller
 {
     public function index()
@@ -93,14 +92,14 @@ class UserController extends Controller
         //$this->authorize('update',$socio);
         $name = $request->foto_url;
         $socio->fill($request->all());
-        
-        //$socio = User::findOrFail(Auth::user()->id);
 
-        $socio->save();
-        $extension=$request->file('foto_url')->getClientOriginalExtension();
-        $name= $socio->id . '_photo.'.$extension;
-        Storage::disk('public')->putFileAs('fotos', $request->file('foto_url'),$name);
-        $socio->foto_url=$name;
+        if($name){
+            $socio->save();
+            $extension=$request->file('foto_url')->getClientOriginalExtension();
+            $name= $socio->id . '_photo.'.$extension;
+            Storage::disk('public')->putFileAs('fotos', $request->file('foto_url'),$name);
+            $socio->foto_url=$name;
+        }
         $socio->save();
 
         return redirect()->route("socios.index")->with('success', 'Sócio editado com sucesso!');
