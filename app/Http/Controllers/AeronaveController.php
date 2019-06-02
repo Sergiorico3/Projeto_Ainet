@@ -24,7 +24,6 @@ class AeronaveController extends Controller
         $aeronaves = Aeronave::all();
 
         return view('aeronaves.listAll', compact('aeronaves'));
-    
     }
     /**
      * Show the form for creating a new resource.
@@ -35,7 +34,6 @@ class AeronaveController extends Controller
     {
         $pagetitle = "Adicionar aeronave";
         return view('aeronaves.create', compact('pagetitle'));
-
     }
 
     /**
@@ -85,7 +83,7 @@ class AeronaveController extends Controller
      */
     public function update(UpdateAeronaveRequest $request, $id)
     {
-        
+
         //$this->authorize('update', User::class);
         $aeronave = Aeronave::findOrFail($id);
         $aeronave->fill($request->all());
@@ -102,16 +100,54 @@ class AeronaveController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Aeronave $aeronave)
-    {   
-        if( Movimento::where('aeronave','=', $aeronave->matricula)->count()){
+    {
+        if (Movimento::where('aeronave', '=', $aeronave->matricula)->count()) {
             $aeronave->delete();
             return redirect()->route("aeronaves.index")->with('success', 'Aeronave apagada com sucesso');
-        }
-        else{           //TODO não passa para o else
-            DB::table('aeronaves_valores')-> where('matricula',$aeronave->matricula)->delete();
+        } else {           //TODO não passa para o else
+            DB::table('aeronaves_valores')->where('matricula', $aeronave->matricula)->delete();
             $aeronave->forceDelete();
             return redirect()->route("aeronaves.index")->with('success', 'Aeronave apagada com sucesso');
         }
+    }
 
+    public function listaPilotos(Aeronave $aeronave)
+    {
+        //$this->authorize('edit', User::class);
+        $matricula = $aeronave->matricula;
+        $aeronaves_pilotos = DB::table("aeronaves_pilotos")->get()->where('matricula', $matricula);
+
+        $piloto_ids = DB::table("aeronaves_pilotos")->get('piloto_id');
+
+
+        foreach ($piloto_ids as $piloto_id) {
+            $unique = (DB::table("aeronaves_pilotos")->get()->where('matricula', '<>', $matricula)->where('piloto_id', '!=', $piloto_id));
+            $aeronaves_nao_autorizados = $unique->unique('piloto_id');
+            $aeronaves_nao_autorizados->values()->all();
+        }
+
+        $pagetitle = "Lista de pilotos autorizados a voar uma aeronave";
+        return view('aeronaves.listaPilotos', compact('pagetitle', 'aeronaves_pilotos', 'aeronaves_nao_autorizados'));
+    }
+
+    public function remover(Aeronave $aeronave, User $piloto)
+    {
+        $matricula = $aeronave->matricula;
+        $piloto_id = $piloto->id;
+
+        if ($piloto_id) {
+            $piloto = DB::table("aeronaves_pilotos")->where('matricula', $matricula)->where('piloto_id', $piloto_id)->delete();
+        }
+
+        return redirect()->route("aeronaves.index")->with('success', 'Piloto removido com sucesso');
+    }
+
+    public function acrescentar(Aeronave $aeronave, User $piloto)
+    {
+        $matricula = $aeronave->matricula;
+        $piloto_id = $piloto->id;
+        DB::table('aeronaves_pilotos')->insert(['matricula' => $matricula, 'piloto_id' => $piloto_id]);
+
+        return redirect()->route("aeronaves.index")->with('success', 'Piloto autorizado com sucesso');
     }
 }

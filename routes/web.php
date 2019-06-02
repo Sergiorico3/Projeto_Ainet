@@ -60,6 +60,10 @@ Route::group(['middleware'=>['auth','verified','ativo']],function(){
     //aeronaves
     Route::resource('aeronaves', 'AeronaveController', ['parameters'=>['aeronaves'=>'aeronave']])->except('show');
     Route::get('/aeronaves/linha_temporal');//todo 
+    Route::get('/aeronaves/{aeronave}/piloto', 'AeronaveController@listaPilotos')->name('aeronaves.listaPilotos');
+    Route::post('/aeronaves/{aeronave}/pilotos/{piloto}', 'AeronaveController@acrescentar')->name('aeronaves.acrescentar');
+    Route::delete('/aeronaves/{aeronave}/pilotos/{piloto}', 'AeronaveController@remover')->name('aeronaves.remover');
+
     
     //movimentos
     Route::resource('movimentos', 'MovimentoController', ['parameters'=>['movimentos'=>'movimento']])->except('show');

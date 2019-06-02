@@ -20,47 +20,47 @@ class MovimentoController extends Controller
      */
     public function index()
     {
-        $movimentos=request()->query();
-        
-        $id=request()->query('id');
-        $aeronave=request()->query('aeronave');
-        $piloto_id=request()->query('piloto_id');
-        $instrutor_id=request()->query('instrutor_id');
-        $data=request()->query('data');
-        $natureza=request()->query('natureza');
-        $confirmado=request()->query('confirmado');
+        $movimentos = request()->query();
 
-        $movimentos = Movimento::where('id','>','0');
-        
-        if ($id) {      
+        $id = request()->query('id');
+        $aeronave = request()->query('aeronave');
+        $piloto_id = request()->query('piloto_id');
+        $instrutor_id = request()->query('instrutor_id');
+        $data = request()->query('data');
+        $natureza = request()->query('natureza');
+        $confirmado = request()->query('confirmado');
+
+        $movimentos = Movimento::where('id', '>', '0');
+
+        if ($id) {
             $movimentos = $movimentos->where('id', $id);
         }
-        if ($aeronave) {      
+        if ($aeronave) {
             $movimentos = $movimentos->where('aeronave', $aeronave);
         }
-        if ($piloto_id) {      
+        if ($piloto_id) {
             $movimentos = $movimentos->where('piloto_id', $piloto_id);
         }
-        if ($instrutor_id) {      
+        if ($instrutor_id) {
             $movimentos = $movimentos->where('instrutor_id', $instrutor_id);
         }
-        if ($data) {      
+        if ($data) {
             $movimentos = $movimentos->where('data', $data);
         }
-        if ($natureza) {      
+        if ($natureza) {
             $movimentos = $movimentos->where('natureza', $natureza);
         }
-        if ($confirmado) {      
+        if ($confirmado) {
             $movimentos = $movimentos->where('confirmado', $confirmado);
-        }else{
+        } else {
             $movimentos = $movimentos->where('confirmado', 0);
         }
 
         $aeronaves = DB::table("aeronaves")->get();
-        $pilotos = User::where('tipo_socio','P')->where('instrutor', '=', '0')->get();
+        $pilotos = User::where('tipo_socio', 'P')->where('instrutor', '=', '0')->get();
         $instrutores = User::where('tipo_socio', 'P')->where('instrutor', '=', '1')->get();
 
-        $movimentos=$movimentos->paginate(15);
+        $movimentos = $movimentos->paginate(15);
         return view('movimentos.listAll', compact('movimentos', 'pilotos', 'instrutores', 'aeronaves'));
     }
 
@@ -75,9 +75,9 @@ class MovimentoController extends Controller
         $pagetitle = "Adicionar Movimento";
         $aerodromos = DB::table("aerodromos")->get();
         $aeronaves = DB::table("aeronaves")->get();
-        $pilotos = User::where('tipo_socio','P')->get();
-        $intrutores = User::where('instrutor','1')->get();
-        return view('movimentos.create', compact('pagetitle', 'aerodromos','aeronaves', 'pilotos', 'intrutores'));
+        $pilotos = User::where('tipo_socio', 'P')->get();
+        $intrutores = User::where('instrutor', '1')->get();
+        return view('movimentos.create', compact('pagetitle', 'aerodromos', 'aeronaves', 'pilotos', 'intrutores'));
     }
 
     /**
@@ -103,11 +103,11 @@ class MovimentoController extends Controller
         $movimento->num_certificado_piloto = $piloto_num_certificado;
         $movimento->validade_certificado_piloto = $piloto_validade_certificado;
         $movimento->classe_certificado_piloto = $piloto_classe_certificado;
-        
+
         $movimento->fill($request->all());
         $movimento->confirmado = 0;
-        $movimento->hora_descolagem = date('y-m-d H:i', strtotime($request->data." ".$request->hora_descolagem));
-        $movimento->hora_aterragem = date('y-m-d H:i', strtotime($request->data." ".$request->hora_aterragem));
+        $movimento->hora_descolagem = date('y-m-d H:i', strtotime($request->data . " " . $request->hora_descolagem));
+        $movimento->hora_aterragem = date('y-m-d H:i', strtotime($request->data . " " . $request->hora_aterragem));
         $movimento->save();
         return redirect()->route("movimentos.index")->with('success', 'Movimento criada com sucesso!');
     }
@@ -119,9 +119,7 @@ class MovimentoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        
-    }
+    { }
 
     /**
      * Show the form for editing the specified resource.
@@ -144,20 +142,18 @@ class MovimentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMovimentoRequest $request,$id)
+    public function update(UpdateMovimentoRequest $request, $id)
     {
         $movimento = Movimento::findOrFail($id);
-        if($movimento->confirmado){
+        if ($movimento->confirmado) {
             return redirect()->route("movimentos.index")->with('success', 'Movimento não pode ser editado por estar confirmado!');
-        }
-        else{
+        } else {
             $movimento->fill($request->all());
-            $movimento->hora_descolagem = date('y-m-d H:i', strtotime($request->data." ".$request->hora_descolagem));
-            $movimento->hora_aterragem = date('y-m-d H:i', strtotime($request->data." ".$request->hora_aterragem));
+            $movimento->hora_descolagem = date('y-m-d H:i', strtotime($request->data . " " . $request->hora_descolagem));
+            $movimento->hora_aterragem = date('y-m-d H:i', strtotime($request->data . " " . $request->hora_aterragem));
             $movimento->save();
             return redirect()->route("movimentos.index")->with('success', 'Movimento editado com sucesso!');
         }
-
     }
 
     /**
@@ -168,30 +164,28 @@ class MovimentoController extends Controller
      */
     public function destroy(Movimento $movimento)
     {
-        if($movimento->confirmado){
+        if ($movimento->confirmado) {
             return redirect()->route("movimentos.index")->with('success', 'Movimento não pode ser apagado por estar confirmado!');
-        }
-        else{
+        } else {
             $movimento->forceDelete();
             return redirect()->route("movimentos.index")->with('success', 'Movimento apagado com sucesso!');
         }
-        
     }
 
     public function estatisticas()          //TODO
     {
         $aeronaves = DB::table("aeronaves")->get();
 
-        foreach ($aeronaves as $aeronave){
-        $aeronave=$movimentos_jan= Movimento::where('aeronave', '=', $aeronave->matricula)
-            ->whereMonth('data','1');
+        foreach ($aeronaves as $aeronave) {
+            $aeronave = $movimentos_jan = Movimento::where('aeronave', '=', $aeronave->matricula)
+                ->whereMonth('data', '1');
 
-        $aeronave=$movimentos_fev= Movimento::where('aeronave', '=', $aeronave->matricula)
-            ->whereMonth('data','2');
+            $aeronave = $movimentos_fev = Movimento::where('aeronave', '=', $aeronave->matricula)
+                ->whereMonth('data', '2');
         }
 
 
         $pagetitle = "Estatísticas de movimento";
-        return view('movimentos.estatisticas', compact('pagetitle' ,'aeronaves'));
+        return view('movimentos.estatisticas', compact('pagetitle', 'aeronaves'));
     }
 }

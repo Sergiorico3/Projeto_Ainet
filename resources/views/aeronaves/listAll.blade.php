@@ -38,12 +38,13 @@
                                 <td scope="row">{{$aeronave->preco_hora}}</td>
                                 @can("update",App\Aeronave::class)
                                 <td scope="row">
-                                    <a href="{{route('aeronaves.edit', $aeronave->matricula)}}"><button type="submit" class="btn btn-success" name="ok">Editar</button></a>
-                                    <form action="{{ route('aeronaves.destroy', $aeronave) }}" method="post" class="form-inline">
-                                        <input class="btn btn-block btn-danger " type="submit" value="Apagar" />
+                                    <a href="{{route('aeronaves.edit', $aeronave->matricula)}}"><button type="submit" class="form-control form-group btn btn-success" name="ok">Editar</button></a>
+                                    <form action="{{ route('aeronaves.destroy', $aeronave) }}" method="post" class="form-group">
+                                        <input class="btn btn-block btn-google" type="submit" value="Apagar" />
                                         <input type="hidden" name="_method" value="delete" />
                                         {!! csrf_field() !!}
                                     </form>
+                                    <a href="{{route('aeronaves.listaPilotos', $aeronave->matricula)}}"><button type="submit" class="form-control form-group btn btn-facebook" name="ok">Pilotos autorizados</button></a>
                                 </td>
                                 @endcan
                             </tr>
